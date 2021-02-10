@@ -21,6 +21,16 @@ class HelloHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'hello': 'Hello!' })
 
+class GoodbyeHandler(tornado.web.RequestHandler):
+    def get(self):
+        #access the data
+
+        #grab the data we need
+
+        # pack data into json
+        self.write({ 'bye': 'Bye!',
+        'bye2': 'BYE!!!!!!' })
+
 def make_app(bundle_path, debug):
     return tornado.web.Application(
        template_path=os.path.join(os.path.dirname(__file__), "views"),
@@ -28,7 +38,8 @@ def make_app(bundle_path, debug):
        debug=debug,
        handlers=[
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
-           (r".*/api/hello", HelloHandler)
+           (r".*/api/hello", HelloHandler),
+           (r".*/api/goodbye", GoodbyeHandler),
            ],
        )
 
@@ -39,6 +50,7 @@ if __name__ == "__main__":
         bundle_path = 'http://localhost:8008/bundle.js'
         debug = True
     app = make_app(bundle_path, debug)
-    app.listen(8888)
-    print('http://localhost:8888')
+    port = 8080
+    app.listen(port)
+    print('http://localhost:{}'.format(port))
     tornado.ioloop.IOLoop.current().start()

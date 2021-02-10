@@ -10,23 +10,21 @@ import request from 'superagent-bluebird-promise'
 export default {
   data () {
     return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello World!'
+      msg: 'Bye World!',
+      listOfData:[]
     }
   },
 
   methods: {
     fetchData() {
       request
-        .get('/api/hello')
+        .get('/api/goodbye')
         .then((res) => {
           //console.log(res.body)
-          this.msg = res.body.hello
+          this.msg = res.body.bye2
         })
         //.catch((err) => {
+
           //console.log(err)
         //})
     }
