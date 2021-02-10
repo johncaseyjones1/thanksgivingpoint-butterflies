@@ -10,7 +10,7 @@
 
 ### Usage
 
-    git clone https://github.com/shinux/vue-tornado-boilerplate.git
+    git clone https://github.com/johncaseyjones1/thanksgivingpoint-butterflies.git
 
     pip install -r requirements.txt
 

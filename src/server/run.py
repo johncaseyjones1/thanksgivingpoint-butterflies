@@ -17,19 +17,17 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render('index.html', bundle_path=self.bundle_path)
 
-class HelloHandler(tornado.web.RequestHandler):
+class DashboardHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write({ 'hello': 'Hello!' })
+        self.write({ 'dashboard': 'Dashboard!' })
 
-class GoodbyeHandler(tornado.web.RequestHandler):
+class ActivitiesHandler(tornado.web.RequestHandler):
     def get(self):
-        #access the data
+        self.write({ 'activities': 'Activities!' })
 
-        #grab the data we need
-
-        # pack data into json
-        self.write({ 'bye': 'Bye!',
-        'bye2': 'BYE!!!!!!' })
+class GalleryHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write({ 'gallery': 'Gallery!' })
 
 def make_app(bundle_path, debug):
     return tornado.web.Application(
@@ -38,8 +36,9 @@ def make_app(bundle_path, debug):
        debug=debug,
        handlers=[
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
-           (r".*/api/hello", HelloHandler),
-           (r".*/api/goodbye", GoodbyeHandler),
+           (r".*/api/dashboard", DashboardHandler),
+           (r".*/api/activities", ActivitiesHandler),
+           (r".*/api/gallery", GalleryHandler),
            ],
        )
 

@@ -18,15 +18,11 @@ export default {
   methods: {
     fetchData() {
       request
-        .get('/api/goodbye')
+        .get('/api/activities')
         .then((res) => {
-          //console.log(res.body)
-          this.msg = res.body.bye2
+          this.msg = res.body.activities
         })
-        //.catch((err) => {
 
-          //console.log(err)
-        //})
     }
   },
 

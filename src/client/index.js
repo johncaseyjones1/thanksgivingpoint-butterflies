@@ -2,16 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import App from './App'
-import Hello from './components/Hello'
-import Goodbye from './components/Goodbye'
+import Dashboard from './components/Dashboard'
+import Activities from './components/Activities'
+import Gallery from './components/Gallery'
 
 Vue.config.debug = true
 Vue.use(Router)
 
 const router = new Router({
   routes: [
-    { name: 'hello', path: '/hello', component: Hello },
-    { name: 'goodbye', path: '/goodbye', component: Goodbye }
+    { name: 'Dashboard', path: '/', component: Dashboard },
+    { name: 'Activities', path: '/activities', component: Activities },
+    { name: 'Gallery', path: '/gallery', component: Gallery }
   ]
 })
 
