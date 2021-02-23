@@ -19,6 +19,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 class DashboardHandler(tornado.web.RequestHandler):
     def get(self):
+        #acces mongodb
         self.write({ 'dashboard': 'Dashboard!' })
 
 class ActivitiesHandler(tornado.web.RequestHandler):
