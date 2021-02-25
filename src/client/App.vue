@@ -6,6 +6,7 @@
         <router-link class="router_item" :to="{ name: 'Dashboard' }">Dashboard</router-link>
         <router-link class="router_item" :to="{ name: 'Activities' }">Activities</router-link>
         <router-link class="router_item" :to="{ name: 'Gallery' }">Gallery</router-link>
+        <router-link class="router_item" :to="{ name: 'ObservationInput' }">Observations</router-link>
       </div>
     </div>
     <router-view ></router-view>

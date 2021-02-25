@@ -1,9 +1,17 @@
+import sys
+sys.path.append('../')
 
 import os
 import sys
+import json
 
 import tornado.ioloop
 import tornado.web
+import tornado.escape
+
+from service.ObservationService import InsertObservation
+from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+
 
 # from tornado import template
 # from pyjade.ext.tornado import patch_tornado
@@ -30,6 +38,16 @@ class GalleryHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'gallery': 'Gallery!' })
 
+class InsertObservationHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        speciesPrediction = requestBody["speciesPrediction"]
+
+        request = InsertObservationRequest('1', '1', 'noPath', speciesPrediction)
+        responseMessage = InsertObservation.insertOneObservation(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
 def make_app(bundle_path, debug):
     return tornado.web.Application(
        template_path=os.path.join(os.path.dirname(__file__), "views"),
@@ -40,6 +58,7 @@ def make_app(bundle_path, debug):
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/activities", ActivitiesHandler),
            (r".*/api/gallery", GalleryHandler),
+           (r".*/api/observation/post/", InsertObservationHandler),
            ],
        )
 
