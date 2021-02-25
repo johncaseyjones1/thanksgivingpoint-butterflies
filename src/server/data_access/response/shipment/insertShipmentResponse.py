@@ -1,7 +1,7 @@
 class InsertShipmentResponse:
 
-    def __init__(self, message):
-        self.message = message
+    def __init__(self, ID):
+        self.ID = ID
 
-    def getMessage(self):
-        return self.message
+    def getID(self):
+        return self.ID
