@@ -58,7 +58,7 @@ class ObservationDAO:
 
 
     # This function is for inserting one observation into the MongoDB Database
-    def insertOneObservation(request):
+    def insertOneObservation(self, request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["observation"]
@@ -66,11 +66,12 @@ class ObservationDAO:
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
         observation = {"date": request.date,
                         "time": request.time,
-                        "picture": request.picturePath}
+                        "picture": request.picturePath,
+                        "speciesPrediction": request.speciesPrediction}
 
         ID = col.insert_one(observation).inserted_id
 
-        return insertObservationResponse.InsertObservationResponse(ID)
+        return insertObservationResponse.InsertObservationResponse("Successfully inserted {}!".format(request.speciesPrediction))
 
 
 
