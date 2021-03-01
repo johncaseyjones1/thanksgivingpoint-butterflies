@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h1>What is your species prediction?</h1>
-      <input v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
+  <div id="predictionForm">
+    <h1 class="predictionFormItem">What is your species prediction?</h1>
+      <br><br>
+      <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
       <p></p>
-      <input type="file" name="photo" @change="fileChanged">
-      <button v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
-      <p></p>
-    {{message}}
+      <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
+      <br>
+      <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
+      <p class="predictionFormItem">{{message}}</p>
+    
   </div>
 </template>
 
@@ -19,7 +21,7 @@ import request from 'superagent-bluebird-promise'
 export default {
   data () {
     return {
-      message: 'Please use the highest quality photo you can',
+      message: 'Please use the best photo you can',
       speciesPrediction: '',
       file: null
     }
@@ -67,3 +69,20 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  #predictionForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .predictionFormItem {
+    align-self: center;
+    flex-grow: 4;
+    max-width: 80%;
+    min-width: 60%;
+  }
+
+</style>
