@@ -2,6 +2,8 @@ import pymongo
 import unittest
 import json
 
+from datetime import datetime
+
 from request.observation import getObservationRequest
 from response.observation import getObservationResponse
 from request.observation import getObservationsInRangeRequest
@@ -64,14 +66,13 @@ class ObservationDAO:
         col = db["observation"]
 
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
-        observation = {"date": request.date,
-                        "time": request.time,
+        observation = {"dateTime": request.dateTime,
                         "picture": request.picturePath,
                         "speciesPrediction": request.speciesPrediction}
 
         ID = col.insert_one(observation).inserted_id
-
-        return insertObservationResponse.InsertObservationResponse("Successfully inserted {}!".format(request.speciesPrediction))
+        resp = "Successfully inserted {}!".format(request.speciesPrediction)
+        return insertObservationResponse.InsertObservationResponse(resp)
 
 
 
@@ -87,7 +88,7 @@ class UnitTests(unittest.TestCase):
     # Test insertOneObservation
     def testInsert(self):
         request = insertObservationRequest.InsertObservationRequest("test", "test", "test")
-        response = ObservationDAO.insertOneObservation(request=request)
+        response = ObservationDAO.insertOneObservation(self, request=request)
 
         assert response.getMessage() is not None
 
@@ -116,32 +117,26 @@ class UnitTests(unittest.TestCase):
         # Test dates
         col.insert_one({"_id": "test1",
                         "date": "2021/01/01",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         col.insert_one({"_id": "test2",
                         "date": "2021/01/02",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         col.insert_one({"_id": "test3",
                         "date": "2021/01/03",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         col.insert_one({"_id": "test4",
                         "date": "2021/01/04",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         col.insert_one({"_id": "test5",
                         "date": "2021/01/05",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         col.insert_one({"_id": "test6",
                         "date": "2021/01/06",
-                        "time": "00:00:00",
                         "picture": "test"})
 
         request = getObservationsInRangeRequest.GetObservationsInRangeRequest("2021/01/02", "2021/01/05")

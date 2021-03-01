@@ -7,10 +7,13 @@ path = os.path.dirname(parent_dir)
 sys.path.insert(1, "/home/caseyjones/github/thanksgivingpoint-butterflies/src/server/data_access/")
 from ObservationDAO import ObservationDAO
 
+from datetime import datetime
 
 class InsertObservation:
 
     @staticmethod
     def insertOneObservation(request):
+        now = datetime.utcnow().now()
+        request.setDateTime(now)
         observationDAO = ObservationDAO()
         return observationDAO.insertOneObservation(request)
