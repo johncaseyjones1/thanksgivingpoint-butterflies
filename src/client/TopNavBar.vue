@@ -1,14 +1,14 @@
 <template>
     <div>
-        <b-navbar 
-            toggleable="lg"
-            type="light"
-            variant="light"
-        >
+        <b-navbar toggleable="lg" type="light" variant="light">
+            <b-navbar-brand>
+                <img src="src/client/icons/logo.png" alt="logo">
+                Thanksgiving Point
+            </b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-nav>
-                    <b-nav-item active-class="active" class="nav-link" v-for="routes in links" 
+                <b-navbar-nav class="ml-auto">
+                    <b-nav-item exact-active-class="active" class="nav-link" v-for="routes in links" 
                         :key="routes.id" :to="routes.path" >
                         {{ routes.name }} 
                     </b-nav-item>    
@@ -44,8 +44,13 @@ export default {
                 },
                 {
                     id: 3,
-                    name: 'ObservationInput',
+                    name: 'Observations',
                     path: '/observationInput',
+                },
+                {
+                    id: 4,
+                    name: 'Staff',
+                    path: '/staff/dashboard',
                 },
             ],
         }
