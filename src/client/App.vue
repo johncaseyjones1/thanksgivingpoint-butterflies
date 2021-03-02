@@ -52,6 +52,10 @@ export default {
     background-color: white !important;
   }
 
+  .logo-text {
+    font-size: 16px;
+  }
+
   .active {
     color: #fe4600 !important;
   }
