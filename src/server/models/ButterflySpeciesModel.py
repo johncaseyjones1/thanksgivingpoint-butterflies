@@ -10,7 +10,7 @@ class ButterflySpecies:
     def setSpeciesID(self, id):
         self.speciesID = id
 
-    def getScientificName(self):
+    def getSpeciesID(self):
         return self.speciesID
 
     def setTopWingColor(self, tColor):
