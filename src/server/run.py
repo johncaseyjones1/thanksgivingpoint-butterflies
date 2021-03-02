@@ -4,6 +4,7 @@ sys.path.append('../')
 import os
 import sys
 import json
+import uuid
 
 import tornado.ioloop
 import tornado.web
@@ -38,15 +39,28 @@ class GalleryHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'gallery': 'Gallery!' })
 
-class InsertObservationHandler(tornado.web.RequestHandler):
+class ObservationHandler(tornado.web.RequestHandler):
     def post(self):
         requestBody = tornado.escape.json_decode(self.request.body)
         speciesPrediction = requestBody["speciesPrediction"]
-
-        request = InsertObservationRequest('1', '1', 'noPath', speciesPrediction)
+        filePath = requestBody['filePath']
+        request = InsertObservationRequest('1', filePath, speciesPrediction)
         responseMessage = InsertObservation.insertOneObservation(request).getMessage()
         
         self.write({"message": responseMessage})
+
+class PhotoHandler(tornado.web.RequestHandler):
+    def post(self):
+        hex = uuid.uuid4().hex
+        filePath = "/var/www/butterfly/static/uploads/" + hex + ".jpg"
+        imgFile = self.request.files.get('image')
+        for img in imgFile:
+            img ['filename']
+            with open(filePath, "wb") as f:
+                f.write(img["body"])
+        
+        self.write({"filePath": filePath})
+        
 
 def make_app(bundle_path, debug):
     return tornado.web.Application(
@@ -58,7 +72,8 @@ def make_app(bundle_path, debug):
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/activities", ActivitiesHandler),
            (r".*/api/gallery", GalleryHandler),
-           (r".*/api/observation/post/", InsertObservationHandler),
+           (r".*/api/observations", ObservationHandler),
+           (r".*/api/photos", PhotoHandler),
            ],
        )
 
