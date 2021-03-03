@@ -1,0 +1,812 @@
+[
+    {
+        "Species": "Adelpha fessonia",
+        "Common Name": "Banded Mexican",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 2.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Anteos clorinde",
+        "Common Name": "White Angled Sulphur",
+        "Primary Color": "Yellow",
+        "Secondary Color": "Green",
+        "Wing Shape": 4.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Archaeopropona demophon",
+        "Common Name": "Banded King Shoemaker",
+        "Primary Color": "Brown",
+        "Secondary Color": "Blue",
+        "Wing Shape": 2.0,
+        "Pattern": "Striped",
+        "Eyespot": "Y",
+        "Size": "M"
+    },
+    {
+        "Species": "Argema mimosae",
+        "Common Name": "African Moon Moth",
+        "Primary Color": "Green",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 5.0,
+        "Pattern": "Veination",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Ascia limona",
+        "Common Name": "Creamy White",
+        "Primary Color": "White",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Attacus atlas",
+        "Common Name": "Atlas Moth",
+        "Primary Color": "Red",
+        "Secondary Color": "Brown",
+        "Wing Shape": 5.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Battus belus",
+        "Common Name": "Belus Swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 3.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Battus philenor",
+        "Common Name": "Pipevine Swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Caligo atreus",
+        "Common Name": "Giant Owl Butterfly",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Caligo eurilochus",
+        "Common Name": "Forest Owl Butterfly",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Caligo memnon",
+        "Common Name": "Owl Butterfly",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Catenophele mexicana",
+        "Common Name": "Mexican Shoemaker",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Catonephele numilia",
+        "Common Name": "Grecian Shoemaker",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Catopsilia scylla",
+        "Common Name": "Orange Emigrant",
+        "Primary Color": "Yellow",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Cethosia cyane",
+        "Common Name": "Leopard Lacewing",
+        "Primary Color": "Orange",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Charaxes brutus",
+        "Common Name": "White Barred Emperor",
+        "Primary Color": "Red",
+        "Secondary Color": "White",
+        "Wing Shape": 2.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Charaxes candiope",
+        "Common Name": "Green-veined emperor",
+        "Primary Color": "Orange",
+        "Secondary Color": "Green",
+        "Wing Shape": 2.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Charaxes castor",
+        "Common Name": "Giant Emperor",
+        "Primary Color": "Blue",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 2.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Charaxes cithaeron",
+        "Common Name": "Blue spotted emperor",
+        "Primary Color": "Blue",
+        "Secondary Color": "Black",
+        "Wing Shape": 2.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Charaxes lasti",
+        "Common Name": "Silver Striped charaxes",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 2.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Charaxes protoclea",
+        "Common Name": "Flame bordered emperor",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 2.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Chilasa clytia",
+        "Common Name": "Common Mime",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Colobura dirce",
+        "Common Name": "Zebra Mosaic",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Danaus plexxipus",
+        "Common Name": "Monarch Butterfly",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Dione juno",
+        "Common Name": "Juno silverspot",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 1.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Doleschallia bisaltidae",
+        "Common Name": "Autumn Leaf",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Striped",
+        "Eyespot": "Y",
+        "Size": "S"
+    },
+    {
+        "Species": "Dryadula phaetusa",
+        "Common Name": "Halloween Butterfly",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Dryas iulia",
+        "Common Name": "Julia Butterfly",
+        "Primary Color": "Orange",
+        "Secondary Color": "Orange",
+        "Wing Shape": 1.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Eryphanis polyxena",
+        "Common Name": "Bamboo Butterfly",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 2.0,
+        "Pattern": "Stripes",
+        "Eyespot": "Y",
+        "Size": "M"
+    },
+    {
+        "Species": "Eueides isabella",
+        "Common Name": "Isabella butterfly",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Euxanthe wakefieldi",
+        "Common Name": "Forest Queen",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Graphium agamemnon",
+        "Common Name": "Tailed Jay",
+        "Primary Color": "Green",
+        "Secondary Color": "Black",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Graphium angolanus",
+        "Common Name": "Angola White Lady",
+        "Primary Color": "White",
+        "Secondary Color": "Orange",
+        "Wing Shape": 3.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Graphium antheus",
+        "Common Name": "Larger striped swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Graphium policenes",
+        "Common Name": "Common Swordtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Greta oto",
+        "Common Name": "Glasswing",
+        "Primary Color": "Black",
+        "Secondary Color": "Clear",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Hamadryas amphinome",
+        "Common Name": "Red Cracker",
+        "Primary Color": "Blue",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "S"
+    },
+    {
+        "Species": "Hamadryas februa",
+        "Common Name": "Grey Cracker",
+        "Primary Color": "Black",
+        "Secondary Color": "Grey",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "S"
+    },
+    {
+        "Species": "Hamadryas feronia",
+        "Common Name": "Blue Cracker",
+        "Primary Color": "Black",
+        "Secondary Color": "Grey",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "S"
+    },
+    {
+        "Species": "Hamadryas fornax",
+        "Common Name": "Orange Cracker",
+        "Primary Color": "Blue",
+        "Secondary Color": "White",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "S"
+    },
+    {
+        "Species": "Hamadryas laodamia",
+        "Common Name": "Starry Night Cracker",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 4.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Hebomoia glaucippe",
+        "Common Name": "Great Orange Tip",
+        "Primary Color": "White",
+        "Secondary Color": "Orange",
+        "Wing Shape": 4.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Heliconius charitonius",
+        "Common Name": "Zebra Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius cydno",
+        "Common Name": "Cydno Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius doris",
+        "Common Name": "Doris Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 1.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius erato/melpomene",
+        "Common Name": "Postman Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius hecale",
+        "Common Name": "Tiger Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius hewitsoni",
+        "Common Name": "Hewitsoni's Longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius ismenius",
+        "Common Name": "Ismenius Tiger",
+        "Primary Color": "Black",
+        "Secondary Color": "Orange",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Heliconius sara",
+        "Common Name": "Sara longwing",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 1.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Hypna clytemnestra",
+        "Common Name": "Jazzy Leafwing",
+        "Primary Color": "Brown",
+        "Secondary Color": "White",
+        "Wing Shape": 3.0,
+        "Pattern": "Mottled",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Idea leuconoe",
+        "Common Name": "Paperkite",
+        "Primary Color": "White",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Mechanitis polymnia",
+        "Common Name": "Orange Spotted Tiger Clearwing",
+        "Primary Color": "Orange",
+        "Secondary Color": "Black",
+        "Wing Shape": 1.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Memphis eurypyle",
+        "Common Name": "Pointed Leafwing",
+        "Primary Color": "Brown",
+        "Secondary Color": "Orange",
+        "Wing Shape": 3.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Memphis nobilis",
+        "Common Name": "Noble Leafwing",
+        "Primary Color": "Brown",
+        "Secondary Color": "Purple",
+        "Wing Shape": 3.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Morpho peleides",
+        "Common Name": "Morpho butterflies",
+        "Primary Color": "Blue",
+        "Secondary Color": "Brown",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Morpho polyphemus",
+        "Common Name": "White morpho",
+        "Primary Color": "White",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Myselia ethusa",
+        "Common Name": "Mexican Bluewing",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 4.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Opsiphanes tamarindi",
+        "Common Name": "Large Owlet",
+        "Primary Color": "Brown",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Ornithoptera priamus",
+        "Common Name": "New Guinea Birdwing",
+        "Primary Color": "Green",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 1.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Pachliopta aristolochiae",
+        "Common Name": "Coomon Rose",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 3.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Pachliopta kotzebuea",
+        "Common Name": "Pink Rose",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio constantinus",
+        "Common Name": "Constatine's Swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio dardanus",
+        "Common Name": "Mocker Swallowtail",
+        "Primary Color": "Yellow",
+        "Secondary Color": "Black",
+        "Wing Shape": 3.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio demodocus",
+        "Common Name": "Citrus Swallowtail",
+        "Primary Color": "Yellow",
+        "Secondary Color": "Black",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio lowii",
+        "Common Name": "Great Yellow Mormon",
+        "Primary Color": "Black",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 3.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Papilio memnon",
+        "Common Name": "Great Mormon",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 3.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Papilio nephelus",
+        "Common Name": "Yellow Helen",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Papilio nireus",
+        "Common Name": "Blue Banded Swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Blue",
+        "Wing Shape": 3.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio ophidicephalus",
+        "Common Name": "Emperor Swallowtail",
+        "Primary Color": "Black",
+        "Secondary Color": "Yellow",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "Y",
+        "Size": "L"
+    },
+    {
+        "Species": "Papilio palinurus",
+        "Common Name": "Emerald Swallowtail",
+        "Primary Color": "Green",
+        "Secondary Color": "Black",
+        "Wing Shape": 3.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Papilio rumanzovia",
+        "Common Name": "Scarlet Mormon",
+        "Primary Color": "Black",
+        "Secondary Color": "Red",
+        "Wing Shape": 3.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "L"
+    },
+    {
+        "Species": "Papilio thoas",
+        "Common Name": "Thoas Swallowtail",
+        "Primary Color": "Yellow",
+        "Secondary Color": "Black",
+        "Wing Shape": 3.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Parides arcas/iphidamas",
+        "Common Name": "Cattleheart Butterflies",
+        "Primary Color": "Black",
+        "Secondary Color": "White",
+        "Wing Shape": 3.0,
+        "Pattern": "Spots",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Parthenos sylvia",
+        "Common Name": "The Clipper",
+        "Primary Color": "Brown",
+        "Secondary Color": "Blue",
+        "Wing Shape": 2.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Philaethria dido",
+        "Common Name": "Bamboo Longwing",
+        "Primary Color": "Green",
+        "Secondary Color": "Black",
+        "Wing Shape": 1.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "S"
+    },
+    {
+        "Species": "Prepona omphale",
+        "Common Name": "Shaded Blue Leafwing",
+        "Primary Color": "Tan",
+        "Secondary Color": "Blue",
+        "Wing Shape": 2.0,
+        "Pattern": "Mottled",
+        "Eyespot": "Y",
+        "Size": "M"
+    },
+    {
+        "Species": "Salamis anacardii",
+        "Common Name": "Clouded Mother of Pearl",
+        "Primary Color": "White",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "None",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Siproeta epaphus",
+        "Common Name": "Rusty Tipped Page",
+        "Primary Color": "Red",
+        "Secondary Color": "Brown",
+        "Wing Shape": 4.0,
+        "Pattern": "Striped",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Siproeta stelenes",
+        "Common Name": "Malachite",
+        "Primary Color": "Green",
+        "Secondary Color": "Black",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "N",
+        "Size": "M"
+    },
+    {
+        "Species": "Vindula dejone",
+        "Common Name": "Malay cruiser",
+        "Primary Color": "Orange",
+        "Secondary Color": "Brown",
+        "Wing Shape": 4.0,
+        "Pattern": "Veination",
+        "Eyespot": "Y",
+        "Size": "M"
+    }
+]
