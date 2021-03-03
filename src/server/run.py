@@ -60,7 +60,11 @@ class PhotoHandler(tornado.web.RequestHandler):
                 f.write(img["body"])
         
         self.write({"filePath": filePath})
-        
+
+class StaffDashboardHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write({ 'staff_dashboard': 'Dashboard!' })
+              
 
 def make_app(bundle_path, debug):
     return tornado.web.Application(
@@ -74,6 +78,7 @@ def make_app(bundle_path, debug):
            (r".*/api/gallery", GalleryHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
+           (r".*/api/staff/dashboard", StaffDashboardHandler),
            ],
        )
 
