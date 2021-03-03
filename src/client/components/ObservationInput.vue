@@ -1,13 +1,22 @@
 <template>
   <div id="predictionForm">
-    <h1 class="predictionFormItem">What is your species prediction?</h1>
-      <br><br>
-      <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
-      <p></p>
-      <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
-      <br>
-      <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
-      <p class="predictionFormItem">{{message}}</p>
+
+    <div class="header-div">
+      <div class="header-text">
+        <div class="colored-line"></div>
+        <h1 class="predictionFormItem">Spot a butterfly?<br>Tell us what you see!</h1>
+      </div>
+      <div class="cover-photo">
+        <img class="img" src="/static/photos/catonephele-numilia.jpg" alt="catonephele-numilia"/>
+      </div>
+    </div>
+
+    <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
+    <p></p>
+    <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
+    <br>
+    <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
+    <p class="predictionFormItem">{{message}}</p>
     
   </div>
 </template>
@@ -76,13 +85,54 @@ export default {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #eeeeed;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .header-div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 400px;
+    padding: 0 40px 0 0;
+    position: relative;
+  }
+
+  .header-text {
+    margin-right: 60px;
+  }
+
+  .colored-line {
+    width: 140px;
+    height: 5px;
+    background-color: #fe4600;
+    margin-bottom: 20px;
+  }
+
+  .cover-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    display: block;
+    height: 100%;
+  }
+
+  .img {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
   }
 
   .predictionFormItem {
-    align-self: center;
-    flex-grow: 4;
-    max-width: 80%;
-    min-width: 60%;
+
   }
 
 </style>
