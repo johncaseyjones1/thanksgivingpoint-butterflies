@@ -8,7 +8,7 @@
       <br>
       <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
       <p class="predictionFormItem">{{message}}</p>
-    
+
   </div>
 </template>
 
