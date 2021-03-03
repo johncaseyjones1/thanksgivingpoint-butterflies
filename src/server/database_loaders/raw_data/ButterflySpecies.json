@@ -7,7 +7,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "North America",
+        "ImagePath": ""
     },
     {
         "Species": "Anteos clorinde",
@@ -17,17 +19,21 @@
         "Wing Shape": 4.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": "/static/icons/ascia-chlorinde.jpg"
     },
     {
-        "Species": "Archaeopropona demophon",
+        "Species": "Archaeoprepona demophon",
         "Common Name": "Banded King Shoemaker",
         "Primary Color": "Brown",
         "Secondary Color": "Blue",
         "Wing Shape": 2.0,
         "Pattern": "Striped",
         "Eyespot": "Y",
-        "Size": "M"
+        "Size": "M",
+        "Location": "North America",
+        "ImagePath": ""
     },
     {
         "Species": "Argema mimosae",
@@ -37,7 +43,9 @@
         "Wing Shape": 5.0,
         "Pattern": "Veination",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Ascia limona",
@@ -47,7 +55,9 @@
         "Wing Shape": 4.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": "/static/icons/ascia-limona.jpg"
     },
     {
         "Species": "Attacus atlas",
@@ -57,7 +67,9 @@
         "Wing Shape": 5.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": ""
     },
     {
         "Species": "Battus belus",
@@ -67,7 +79,9 @@
         "Wing Shape": 3.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Battus philenor",
@@ -77,7 +91,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "North America",
+        "ImagePath": ""
     },
     {
         "Species": "Caligo atreus",
@@ -87,7 +103,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Caligo eurilochus",
@@ -97,7 +115,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "South America",
+        "ImagePath": "/static/icons/caligo-eurilochus.jpg"
     },
     {
         "Species": "Caligo memnon",
@@ -107,17 +127,21 @@
         "Wing Shape": 4.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "South America",
+        "ImagePath": "/static/icons/caligo-memnon.jpg"
     },
     {
-        "Species": "Catenophele mexicana",
+        "Species": "Catonephele mexicana",
         "Common Name": "Mexican Shoemaker",
         "Primary Color": "Black",
         "Secondary Color": "Orange",
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Catonephele numilia",
@@ -127,7 +151,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/catonephele-numilia.jpg"
     },
     {
         "Species": "Catopsilia scylla",
@@ -137,7 +163,9 @@
         "Wing Shape": 4.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": ""
     },
     {
         "Species": "Cethosia cyane",
@@ -147,7 +175,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/cethiosa-cyane.jpg"
     },
     {
         "Species": "Charaxes brutus",
@@ -157,7 +187,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/charaxes-brutus.jpg"
     },
     {
         "Species": "Charaxes candiope",
@@ -167,7 +199,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Charaxes castor",
@@ -177,7 +211,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/charaxes-castor.jpg"
     },
     {
         "Species": "Charaxes cithaeron",
@@ -187,7 +223,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/charaxes-cithaeron.jpg"
     },
     {
         "Species": "Charaxes lasti",
@@ -197,7 +235,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Charaxes protoclea",
@@ -207,7 +247,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Chilasa clytia",
@@ -217,7 +259,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/chilasa-clytia.jpg"
     },
     {
         "Species": "Colobura dirce",
@@ -227,7 +271,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/colobura-dirce.jpg"
     },
     {
         "Species": "Danaus plexxipus",
@@ -237,7 +283,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "North America",
+        "ImagePath": "/static/icons/danaus-plexippus.jpg"
     },
     {
         "Species": "Dione juno",
@@ -247,7 +295,9 @@
         "Wing Shape": 1.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "North America",
+        "ImagePath": "/static/icons/dione-juno.jpg"
     },
     {
         "Species": "Doleschallia bisaltidae",
@@ -257,7 +307,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Striped",
         "Eyespot": "Y",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/doleschallia-bisaltide.jpg"
     },
     {
         "Species": "Dryadula phaetusa",
@@ -267,7 +319,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/dryadula-phaetusa.jpg"
     },
     {
         "Species": "Dryas iulia",
@@ -277,7 +331,9 @@
         "Wing Shape": 1.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "North America",
+        "ImagePath": "/static/icons/dryas-iulia.jpg"
     },
     {
         "Species": "Eryphanis polyxena",
@@ -287,7 +343,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Stripes",
         "Eyespot": "Y",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": "/static/icons/eryphanis-polyxena.jpg"
     },
     {
         "Species": "Eueides isabella",
@@ -297,7 +355,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Euxanthe wakefieldi",
@@ -307,7 +367,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/euxanthe-wakefieldi.jpg"
     },
     {
         "Species": "Graphium agamemnon",
@@ -317,7 +379,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/graphium-agamemnon.jpg"
     },
     {
         "Species": "Graphium angolanus",
@@ -327,7 +391,9 @@
         "Wing Shape": 3.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/graphium-angolanus.jpg"
     },
     {
         "Species": "Graphium antheus",
@@ -337,7 +403,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Graphium policenes",
@@ -347,7 +415,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Greta oto",
@@ -357,7 +427,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/greta-oto.jpg"
     },
     {
         "Species": "Hamadryas amphinome",
@@ -367,7 +439,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/hamadryas-amphinome.jpg"
     },
     {
         "Species": "Hamadryas februa",
@@ -377,7 +451,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/hamadryas-februa.jpg"
     },
     {
         "Species": "Hamadryas feronia",
@@ -387,7 +463,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/hamadryas-feronia.jpg"
     },
     {
         "Species": "Hamadryas fornax",
@@ -397,7 +475,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Hamadryas laodamia",
@@ -407,7 +487,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/hamadryas-laodamia.jpg"
     },
     {
         "Species": "Hebomoia glaucippe",
@@ -417,7 +499,9 @@
         "Wing Shape": 4.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/hebomoia-glaucippe.jpg"
     },
     {
         "Species": "Heliconius charitonius",
@@ -427,7 +511,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-charitonius.jpg"
     },
     {
         "Species": "Heliconius cydno",
@@ -437,7 +523,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-cydno.jpg"
     },
     {
         "Species": "Heliconius doris",
@@ -447,17 +535,21 @@
         "Wing Shape": 1.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-doris.jpg"
     },
     {
-        "Species": "Heliconius erato/melpomene",
+        "Species": "Heliconius erato",
         "Common Name": "Postman Longwing",
         "Primary Color": "Black",
         "Secondary Color": "Red",
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Heliconius hecale",
@@ -467,7 +559,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-hecale.jpg"
     },
     {
         "Species": "Heliconius hewitsoni",
@@ -477,7 +571,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-hewitsoni.jpg"
     },
     {
         "Species": "Heliconius ismenius",
@@ -487,7 +583,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-ismenius.jpg"
     },
     {
         "Species": "Heliconius sara",
@@ -497,7 +595,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/heliconius-sara.jpg"
     },
     {
         "Species": "Hypna clytemnestra",
@@ -507,7 +607,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Mottled",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "North America",
+        "ImagePath": "/static/icons/hypna-clytemnestra.jpg"
     },
     {
         "Species": "Idea leuconoe",
@@ -517,7 +619,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/idea-leuconoe.jpg"
     },
     {
         "Species": "Mechanitis polymnia",
@@ -527,7 +631,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Memphis eurypyle",
@@ -537,7 +643,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": "/static/icons/memphis-eurypyle.jpg"
     },
     {
         "Species": "Memphis nobilis",
@@ -547,7 +655,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Morpho peleides",
@@ -557,7 +667,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "North America",
+        "ImagePath": "/static/icons/morpho-peleides.jpg"
     },
     {
         "Species": "Morpho polyphemus",
@@ -567,7 +679,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "North America",
+        "ImagePath": ""
     },
     {
         "Species": "Myselia ethusa",
@@ -577,7 +691,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "North America",
+        "ImagePath": "/static/icons/myselia.ethusa.jpg"
     },
     {
         "Species": "Opsiphanes tamarindi",
@@ -587,7 +703,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "North America",
+        "ImagePath": "/static/icons/ospiphanes-tamarindi.jpg"
     },
     {
         "Species": "Ornithoptera priamus",
@@ -597,7 +715,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Australia",
+        "ImagePath": ""
     },
     {
         "Species": "Pachliopta aristolochiae",
@@ -607,7 +727,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": ""
     },
     {
         "Species": "Pachliopta kotzebuea",
@@ -617,7 +739,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/pachliopta-kotzebuea.jpg"
     },
     {
         "Species": "Papilio constantinus",
@@ -627,7 +751,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/papilio-constantinus.jpg"
     },
     {
         "Species": "Papilio dardanus",
@@ -637,7 +763,9 @@
         "Wing Shape": 3.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/papilio-dardanus.jpg"
     },
     {
         "Species": "Papilio demodocus",
@@ -647,7 +775,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": "/static/icons/papilio-demodocus.jpg"
     },
     {
         "Species": "Papilio lowii",
@@ -657,7 +787,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/papilio-lowii.jpg"
     },
     {
         "Species": "Papilio memnon",
@@ -667,7 +799,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/papilio-memnon.jpg"
     },
     {
         "Species": "Papilio nephelus",
@@ -677,7 +811,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/papilio-nephelus.jpg"
     },
     {
         "Species": "Papilio nireus",
@@ -687,7 +823,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Papilio ophidicephalus",
@@ -697,7 +835,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "Y",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Papilio palinurus",
@@ -707,7 +847,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/papilio-palinurus.jpg"
     },
     {
         "Species": "Papilio rumanzovia",
@@ -717,7 +859,9 @@
         "Wing Shape": 3.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "L"
+        "Size": "L",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/papilio-rumanzovia.jpg"
     },
     {
         "Species": "Papilio thoas",
@@ -727,17 +871,21 @@
         "Wing Shape": 3.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "North America",
+        "ImagePath": "/static/icons/papilio-thoas.jpg"
     },
     {
-        "Species": "Parides arcas/iphidamas",
+        "Species": "Parides iphidamas",
         "Common Name": "Cattleheart Butterflies",
         "Primary Color": "Black",
         "Secondary Color": "White",
         "Wing Shape": 3.0,
         "Pattern": "Spots",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": "/static/icons/parides-iphidamas.jpg"
     },
     {
         "Species": "Parthenos sylvia",
@@ -747,7 +895,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": "/static/icons/parthenos-sylvia.jpg"
     },
     {
         "Species": "Philaethria dido",
@@ -757,7 +907,9 @@
         "Wing Shape": 1.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "S"
+        "Size": "S",
+        "Location": "South America",
+        "ImagePath": ""
     },
     {
         "Species": "Prepona omphale",
@@ -767,7 +919,9 @@
         "Wing Shape": 2.0,
         "Pattern": "Mottled",
         "Eyespot": "Y",
-        "Size": "M"
+        "Size": "M",
+        "Location": "South America",
+        "ImagePath": "/static/icons/prepona-omphale.jpg"
     },
     {
         "Species": "Salamis anacardii",
@@ -777,7 +931,9 @@
         "Wing Shape": 4.0,
         "Pattern": "None",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Africa",
+        "ImagePath": ""
     },
     {
         "Species": "Siproeta epaphus",
@@ -787,7 +943,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Striped",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "North America",
+        "ImagePath": "/static/icons/siproeta-epaphus.jpg"
     },
     {
         "Species": "Siproeta stelenes",
@@ -797,7 +955,9 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "N",
-        "Size": "M"
+        "Size": "M",
+        "Location": "North America",
+        "ImagePath": "/static/icons/siproeta-stelenes.jpg"
     },
     {
         "Species": "Vindula dejone",
@@ -807,6 +967,8 @@
         "Wing Shape": 4.0,
         "Pattern": "Veination",
         "Eyespot": "Y",
-        "Size": "M"
+        "Size": "M",
+        "Location": "Asia",
+        "ImagePath": ""
     }
 ]
