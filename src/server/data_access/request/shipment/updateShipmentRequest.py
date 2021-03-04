@@ -1,4 +1,4 @@
-class ShipmentDataModel():
+class GetObservationRequest:
 
     def __init__(shipmentID, numGlued, percentEmergence, susNumReleased):
         self.shipmentID = shipmentID
@@ -17,16 +17,3 @@ class ShipmentDataModel():
 
     def getSusNumReleased():
         return self.susNumReleased
-        
-
-    def setShipmentID(shipmentID):
-        self.shipmentID = shipmentID
-
-    def setNumGlued(numGlued):
-        self.numGlued = numGlued
-
-    def setPercentEmergence(percentEmergence):
-        self.percentEmergence = percentEmergence
-
-    def setSusNumReleased(susNumReleased):
-        self.susNumReleased = susNumReleased
