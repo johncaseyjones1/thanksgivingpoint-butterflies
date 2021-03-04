@@ -4,19 +4,21 @@
     <div class="header-div">
       <div class="header-text">
         <div class="colored-line"></div>
-        <h1 class="predictionFormItem">Spot a butterfly?<br>Tell us what you see!</h1>
+        <h1>Spot a butterfly?<br>Tell us what you see!</h1>
       </div>
       <div class="cover-photo">
         <img class="img" src="/static/photos/catonephele-numilia.jpg" alt="catonephele-numilia"/>
       </div>
     </div>
 
-    <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
-    <p></p>
-    <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
-    <br>
-    <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
-    <p class="predictionFormItem">{{message}}</p>
+    <div class="make-prediction">
+      <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
+      <p></p>
+      <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
+      <br>
+      <button class="predictionFormItem btn btn-dark" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
+      <p class="predictionFormItem">{{message}}</p>
+    </div>
     
   </div>
 </template>
@@ -85,9 +87,6 @@ export default {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #eeeeed;
-    padding-top: 40px;
-    padding-bottom: 40px;
   }
 
   .header-div {
@@ -97,12 +96,12 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     height: 400px;
-    padding: 0 40px 0 0;
     position: relative;
+    background-color: #eeeeed;
   }
 
   .header-text {
-    margin-right: 60px;
+    margin-right: 100px;
   }
 
   .colored-line {
@@ -113,12 +112,7 @@ export default {
   }
 
   .cover-photo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
     width: 60%;
-    display: block;
     height: 100%;
   }
 
@@ -131,7 +125,44 @@ export default {
     vertical-align: middle;
   }
 
+  .make-prediction {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 40px 10px 20px 10px;
+  }
+
   .predictionFormItem {
+    width: 60%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .cover-photo {
+      width: 80%;
+      height: 300px;
+      margin-top: 20px;
+    }
+
+    .header-div {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 500px;
+      padding-top: 40px;
+    }
+
+    .header-text { 
+      margin-right: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+      .predictionFormItem {
+        width: 80%;
+      }
 
   }
 
