@@ -1,13 +1,5 @@
 <template>
   <div id="predictionForm">
-    <h1 class="predictionFormItem">What is your species prediction?</h1>
-      <br><br>
-      <input class="predictionFormItem" v-model="speciesPrediction" placeholder="Prediction goes here"> <br>
-      <p></p>
-      <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
-      <br>
-      <button class="predictionFormItem" v-on:click="addObservation(speciesPrediction, file)">Send Observation</button>
-      <p class="predictionFormItem">{{message}}</p>
 
     <div class="header-div">
       <div class="header-text">
