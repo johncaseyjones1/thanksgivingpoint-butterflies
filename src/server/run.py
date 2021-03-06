@@ -1,3 +1,4 @@
+from json.encoder import JSONEncoder
 import sys
 sys.path.append('../')
 
@@ -9,15 +10,26 @@ import uuid
 import tornado.ioloop
 import tornado.web
 import tornado.escape
+from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
+from service.ButterflySpeciesService import GetPotentialSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
 
 # from tornado import template
 # from pyjade.ext.tornado import patch_tornado
 
 # patch_tornado()
+
+from bson import ObjectId
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
 
 class MainHandler(tornado.web.RequestHandler):
     def initialize(self, bundle_path):
@@ -65,6 +77,16 @@ class StaffDashboardHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'staff_dashboard': 'Dashboard!' })
               
+class GetPotentialPredictions(tornado.web.RequestHandler):
+    # I'm doing a post request so that way I can still send a body even though I'm not posting
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        request = GetButterflySpeciesRequest(requestBody)
+        response = GetPotentialSpecies.getPotentialSpecies(request)
+        #json_response = JSONEncoder().encode(response.getResponse())
+        #json_response = json.dumps([ob for ob in json_response])
+        self.write({"speciesPrediction": response.getResponse()})
+
 
 def make_app(bundle_path, debug):
     return tornado.web.Application(
@@ -79,10 +101,12 @@ def make_app(bundle_path, debug):
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
+           (r".*/api/prediction/get", GetPotentialPredictions),
            ],
        )
 
 if __name__ == "__main__":
+    enable_pretty_logging()
     bundle_path = '/static/javascripts/bundle.js'
     debug = False
     if len(sys.argv) > 1 and sys.argv[1] == 'dev':
