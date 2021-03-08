@@ -18,15 +18,8 @@ class ButterflySpeciesDAO:
         col = db["butterflySpecies"]
 
         greaterThan = "$gt"
-        lessThan = "$lt"
 
-        #GET RID OF THE LESS THAN QUERY HERE???
-        query = {
-                "$and": [
-                    {"date": { greaterThan : request.getDate1()}},
-                    {"date": { lessThan : request.getDate2()}}
-                ]
-            }
+        query = {"date": { greaterThan : request.getDate1()}}
 
         butterflies = col.find(query)
 
