@@ -1,12 +1,10 @@
 <template>
   <div>
     <ul>
-        <li  v-for="species in allButterflies" :key="species.CommonName">
-          <div @click="setSpeciesPrediction(species)">
-            {{species.CommonName}}
-          </div>
-        </li>
-      </ul>
+      <li v-for="species in allButterflies" :key="species.CommonName">
+          {{species.CommonName}}
+      </li>
+    </ul>
   </div>
 </template>
 
