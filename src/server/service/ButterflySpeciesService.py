@@ -13,3 +13,10 @@ class GetPotentialSpecies:
     def getPotentialSpecies(request):
         butterflySpeciesDAO = ButterflySpeciesDAO()
         return butterflySpeciesDAO.getManySpecies(request)
+
+class GetAllSpecies:
+
+    @staticmethod
+    def getAllSpecies():
+        butterflySpeciesDAO = ButterflySpeciesDAO
+        return butterflySpeciesDAO.getAllSpecies()

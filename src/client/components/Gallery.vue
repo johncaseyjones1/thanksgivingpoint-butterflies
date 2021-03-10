@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <ul>
+        <li  v-for="species in allButterflies" :key="species.CommonName">
+          <div @click="setSpeciesPrediction(species)">
+            {{species.CommonName}}
+          </div>
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -10,23 +16,24 @@ import request from 'superagent-bluebird-promise'
 export default {
   data () {
     return {
-      msg: 'Bye World!',
-      listOfData:[]
+      collectingData: false,
+      allButterflies: null
     }
   },
 
   methods: {
-    fetchData() {
+    getAllButterflies() {
+      this.collectingData = true;
       request
-        .get('/api/gallery')
+        .get('/api/butterfly_species')
         .then((res) => {
-          this.msg = res.body.gallery
+          this.allButterflies = JSON.parse(res.body.allButterflies)
         })
     }
   },
 
   created() {
-    this.fetchData()
+    this.getAllButterflies()
   }
 }
 </script>
