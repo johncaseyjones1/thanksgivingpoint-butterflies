@@ -1,57 +1,58 @@
 <template>
-  <div class="app full-height">
-    <div id="top_bar">
-      <h1>{{ message }}</h1>
-      <div id="router">
-        <router-link class="router_item" :to="{ name: 'Dashboard' }">Dashboard</router-link>
-        <router-link class="router_item" :to="{ name: 'Activities' }">Activities</router-link>
-        <router-link class="router_item" :to="{ name: 'Gallery' }">Gallery</router-link>
-      </div>
-    </div>
-    <router-view ></router-view>
+  <div id="app">
+    <Navbar />
   </div>
 </template>
 
 <script>
+import Navbar from './TopNavBar';
+
 export default {
   data () {
     return {
       message: 'Butterflies!'
     }
+  },
+  components: {
+    Navbar,
   }
 }
 </script>
 
 <style>
-html {
-  height: 100%;
-}
+  /* This style code will affect EVERY page on the website. Please don't change unless you're sure you want to*/
 
-body {
-  display: flex;
-  align-items: top;
-  justify-content: start;
-  height: 100%;
-}
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
 
-#top_bar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+  h1 {
+    font-size: 5vh;
+  }
 
-#router {
-  display: flex;
-  align-items: center;
-  margin: 10%;
-}
+  p {
+    font-size: 14px;
+  }
 
-.router_item {
-  margin: 10%;
-  color:black;
-  text-decoration: none;
-}
+  .navbar-light {
+    background-color: white !important;
+  }
 
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .active {
+    color: #fe4600 !important;
+  }
+
+  .shadow-box {
+    box-shadow: 3px 3px 6px lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 30px;
+  }
 
 
 

@@ -1,4 +1,5 @@
 {
     "python.linting.enabled": false,
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/home/caseyjones/miniconda3/envs/thanksgivingpoint/bin/python"
 }

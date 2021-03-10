@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
+  <div id="screen">
+    <div id="location_box">
+      
+    </div>
   </div>
 </template>
 
