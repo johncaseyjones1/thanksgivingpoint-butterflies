@@ -8,7 +8,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item exact-active-class="active" class="nav-link" v-for="routes in links" 
+          <b-nav-item exact-active-class="active-link" class="nav-link" v-for="routes in links" 
             :key="routes.id" :to="routes.path" >
             {{ routes.name }} 
           </b-nav-item>
