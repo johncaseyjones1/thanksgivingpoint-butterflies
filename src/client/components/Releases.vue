@@ -27,8 +27,24 @@ export default {
   name: 'Releases',
   data() {
     return {
+      collectingData: false,
       releases: [],
     }
+  },
+
+  methods: {
+    getAllReleases() {
+      this.collectingData = true;
+      request
+        .get('/api/')
+        .then((res) => {
+          this.releases = JSON.parse(res.body.allReleases)
+        })
+    }
+  },
+
+  created() {
+    this.getAllReleases()
   }
 }
 

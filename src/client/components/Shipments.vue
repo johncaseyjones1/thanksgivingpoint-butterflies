@@ -41,8 +41,24 @@ export default {
   name: 'Shipments',
   data() {
     return {
+      collectingData: false,
       shipments: [],
     }
+  },
+
+  methods: {
+    getAllShipments() {
+      this.collectingData = true;
+      request
+        .get('/api/')
+        .then((res) => {
+          this.shipments = JSON.parse(res.body.allShipments)
+        })
+    }
+  },
+
+  created() {
+    this.getAllShipments()
   }
 }
 
