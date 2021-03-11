@@ -36,7 +36,7 @@
         <div class="row-div">
           <div class="field-item" id="primaryColor">
             <h5>Primary Color:</h5>
-            <select v-model="primaryColor">
+            <select class="custom-select" v-model="primaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
               <option>Orange</option>
@@ -53,7 +53,7 @@
 
           <div class="field-item" id="secondaryColor">
             <h5>Secondary Color:</h5>
-            <select v-model="secondaryColor">
+            <select class="custom-select" v-model="secondaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
               <option>Orange</option>
@@ -72,11 +72,11 @@
         <div class="row-div">
           <div class="field-item" id="pattern">
             <h5>Pattern:</h5>
-            <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success" type="button" value="Striped">
-            <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success" type="button" value="Veination">
-            <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success" type="button" value="Mottled">
-            <input v-on:click="setPattern('Spots')" id="Spots" class="btn btn-outline-success" type="button" value="Spotted">
-            <input v-on:click="setPattern('None')" id="None" class="btn btn-outline-success" type="button" value="None">
+            <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success pattern-button" type="button" value="Striped">
+            <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success pattern-button" type="button" value="Veination">
+            <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success pattern-button" type="button" value="Mottled">
+            <input v-on:click="setPattern('Spots')" id="Spots" class="btn btn-outline-success pattern-button" type="button" value="Spotted">
+            <input v-on:click="setPattern('None')" id="None" class="btn btn-outline-success pattern-button" type="button" value="None">
           </div>
         </div>
 
@@ -96,18 +96,14 @@
       </div>
     </div>
 
-    <div class="field-item" id="potential-species">
-      <ul>
-        <li  v-for="species in potentialSpecies" :key="species.CommonName">
-          <div @click="setSpeciesPrediction(species)">
-            {{species.CommonName}}
-            <img class="speciesOptionImage" :src=species.ImagePath alt="">
-          </div>
-        </li>
-      </ul>
+    <div id="potential-species">
+        <div v-for="species in potentialSpecies" :key="species.CommonName" @click="setSpeciesPrediction(species)" class="single-potential">
+          <img class="speciesOptionImage" :src=species.ImagePath alt="">
+          {{species.CommonName}}
+        </div>
     </div>
 
-    <div class="make-prediction field-item">
+    <div id="make-prediction-div" class="make-prediction" style="display: none;">
       {{speciesPrediction.CommonName}}
       <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
       <br>
@@ -160,8 +156,11 @@ export default {
         .type('json')
         .send(predictionRequest)
         .then((res) => {
-          this.potentialSpecies = JSON.parse(res.body.speciesPrediction)
+          this.potentialSpecies = JSON.parse(res.body.speciesPrediction);
+          this.scroll();
         })
+      var make_prediction_div = document.getElementById("make-prediction-div");
+      make_prediction_div.style.display = "flex";
     },
 
     async addObservation(speciesPrediction, file) {
@@ -176,9 +175,14 @@ export default {
         .then((res) => {
           this.message = res.body.message
         })
-      })
-      
+      })     
     },
+
+    scroll() {
+      var scroll_div = document.getElementById("make-prediction-div");
+      scroll_div.scrollIntoView({behavior: "smooth"});
+    },
+
     setSpeciesPrediction(species) {
       this.speciesPrediction = species
     },
@@ -223,7 +227,7 @@ export default {
                 document.getElementById(patterns[i]).classList.remove("active");
             }
         }
-    }
+    },
   },
   created() {
     
@@ -235,7 +239,6 @@ export default {
   #predictionForm {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
   }
   .header-div {
@@ -305,9 +308,24 @@ export default {
   .predictionFormItem {
     width: 60%;
   }
+  #potential-species {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .single-potential {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
   .speciesOptionImage {
     max-width: 20%;
   }
+
+
   @media only screen and (max-width: 600px) {
     .cover-photo {
       width: 80%;
@@ -326,8 +344,22 @@ export default {
     h1 {
       font-size: 28px;
     }
+    h5 {
+      font-size: 16px;
+    }
+    #predictionField {
+      border: none;
+      margin-top: 20px;
+    }
     .predictionFormItem {
       width: 80%;
+    }
+    .field-item {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    .pattern-button {
+      margin-bottom: 5px !important;
     }
   }
 </style>
