@@ -43,3 +43,16 @@ class ButterflySpeciesDAO:
 
         response.setResponse(dumps(speciesList))
         return response
+
+    def getAllSpecies():
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["butterfly_species"]
+
+        allSpecies = col.find({})
+        speciesList = list(allSpecies)
+
+        response = GetButterflySpeciesResponse.GetButterflySpeciesResponse()
+        response.setResponse(dumps(speciesList))
+
+        return response

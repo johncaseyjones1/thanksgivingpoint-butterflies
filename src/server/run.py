@@ -14,6 +14,7 @@ from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
 from service.ButterflySpeciesService import GetPotentialSpecies
+from service.ButterflySpeciesService import GetAllSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
@@ -47,9 +48,12 @@ class ActivitiesHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'activities': 'Activities!' })
 
-class GalleryHandler(tornado.web.RequestHandler):
+class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write({ 'gallery': 'Gallery!' })
+        response = GetAllSpecies.getAllSpecies()
+        #json_response = JSONEncoder().encode(response.getResponse())
+        #json_response = json.dumps([ob for ob in json_response])
+        self.write({"allButterflies": response.getResponse()})
 
 class ObservationHandler(tornado.web.RequestHandler):
     def post(self):
@@ -97,7 +101,7 @@ def make_app(bundle_path, debug):
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/activities", ActivitiesHandler),
-           (r".*/api/gallery", GalleryHandler),
+           (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
