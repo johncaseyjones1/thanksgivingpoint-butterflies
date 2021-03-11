@@ -86,10 +86,16 @@ class ShipmentDAO:
         db = client["observatory"]
         col = db["shipment"]
 
-        data = { $set: {"numGlued": request.getNumGlued(),
-                "percentEmergence": request.getPercentEmergence(),
-                "susNumReleased": request.getSusNumReleased()
-                }}
+        data = { $set: {"speciesID": request.getSpeciesID(),
+                        "dateEntered": request.getDateEntered(),
+                        "origin": request.getOrigin(),
+                        "quantity": request.getQuantity(),
+                        "supplier": request.getSupplier(),
+                        "emergedEarly": request.getEmergedEarly(),
+                        "deadOnArrival": request.getDeadOnArrival(),
+                        "failedToEmerge": request.getFailedToEmerge(),
+                        "parasitized": request.getParasitized()}
+                }
 
         filter = {"_id": request.getShipmentID()}
         result = col.update_one(filter, data)
