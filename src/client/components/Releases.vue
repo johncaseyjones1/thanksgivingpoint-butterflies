@@ -1,5 +1,5 @@
 <template>
-  <div class="shipment-container">
+  <div class="releases-container">
     <div class="center-div">
       <table class="table">
         <thead class="thead-dark">
@@ -10,10 +10,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mar 16, 2021</td>
-            <td>Catonephele-numilia</td>
-            <td>23</td>
+          <tr v-for="release in releases" :key="release.releaseID">
+            <td>{{ release.releaseDate }}</td>
+            <td>{{ release.species }}</td>
+            <td>{{ release.count }}</td>
           </tr>
         </tbody>
       </table>
@@ -26,7 +26,9 @@
 export default {
   name: 'Releases',
   data() {
-
+    return {
+      releases: [],
+    }
   }
 }
 

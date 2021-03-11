@@ -11,23 +11,23 @@
             <th scope="col">Origin</th>
             <th scope="col">Qty</th>
             <th scope="col">Emerged early</th>
-            <th scope="col">Failed to emerge</th>
             <th scope="col">DOA</th>
+            <th scope="col">Failed to emerge</th>
             <th scope="col">Parasitized</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mar 8, 2021</td>
-            <td>Costa Rica Butterflies</td>
-            <td>Catonephele-numilia</td>
-            <td>Costa Rica</td>
-            <td>35</td>
-            <td>3</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
+          <tr v-for="shipment in shipments" :key="shipment.shipmentID">
+            <td>{{ shipment.shipmentID }}</td>
+            <td>{{ shipment.dateEntered }}</td>
+            <td>{{ shipment.supplier }}</td>
+            <td>{{ shipment.species }}</td>
+            <td>{{ shipment.origin }}</td>
+            <td>{{ shipment.quantity }}</td>
+            <td>{{ shipment.emergedEarly }}</td>
+            <td>{{ shipment.deadOnArrival }}</td>
+            <td>{{ shipment.failedToEmerge }}</td>
+            <td>{{ shipment.parasitized }}</td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +40,9 @@
 export default {
   name: 'Shipments',
   data() {
-
+    return {
+      shipments: [],
+    }
   }
 }
 
