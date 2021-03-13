@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import request from 'superagent-bluebird-promise'
 
 export default {
   name: 'Releases',
@@ -35,8 +36,7 @@ export default {
   methods: {
     getAllReleases() {
       this.collectingData = true;
-      request
-        .get('/api/')
+      request.get('/api/release')
         .then((res) => {
           this.releases = JSON.parse(res.body.allReleases)
         })

@@ -13,10 +13,11 @@ import tornado.escape
 from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
+from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
-from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
+#from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
 
@@ -45,9 +46,10 @@ class DashboardHandler(tornado.web.RequestHandler):
         #acces mongodb
         self.write({ 'dashboard': 'Dashboard!' })
 
-class ActivitiesHandler(tornado.web.RequestHandler):
+class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write({ 'activities': 'Activities!' })
+        response = GetAllShipments.getAllShipments()
+        self.write({ 'allShipments': response.getShipment() })
 
 class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
@@ -110,7 +112,7 @@ def make_app(bundle_path, debug):
        handlers=[
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
-           (r".*/api/activities", ActivitiesHandler),
+           (r".*/api/shipment", GetShipmentsHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),

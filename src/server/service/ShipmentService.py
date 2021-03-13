@@ -14,3 +14,10 @@ class InsertShipment:
     def insertOneShipment(request):
         shipmentDAO = ShipmentDAO()
         return shipmentDAO.insertOneShipment(request)
+
+class GetAllShipments:
+
+    @staticmethod
+    def getAllShipments():
+        shipmentDAO = ShipmentDAO()
+        return shipmentDAO.getAllShipments()

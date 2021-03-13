@@ -17,17 +17,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="shipment in shipments" :key="shipment.shipmentID">
-            <td>{{ shipment.shipmentID }}</td>
-            <td>{{ shipment.dateEntered }}</td>
-            <td>{{ shipment.supplier }}</td>
-            <td>{{ shipment.species }}</td>
-            <td>{{ shipment.origin }}</td>
-            <td>{{ shipment.quantity }}</td>
-            <td>{{ shipment.emergedEarly }}</td>
-            <td>{{ shipment.deadOnArrival }}</td>
-            <td>{{ shipment.failedToEmerge }}</td>
-            <td>{{ shipment.parasitized }}</td>
+          <tr v-for="shipment in shipments" :key="shipment._id.$oid">
+            <td>{{ shipment._id.$oid }}</td>
+            <td>{{ shipment.formattedDate }}</td>
+            <td>{{ shipment.Supplier }}</td>
+            <td>{{ shipment.Species }}</td>
+            <td>{{ shipment.Origin }}</td>
+            <td>{{ shipment.Quantity }}</td>
+            <td>{{ shipment.EmergedEarly }}</td>
+            <td>{{ shipment.DOA }}</td>
+            <td>{{ shipment.FTE }}</td>
+            <td>{{ shipment.Parasite }}</td>
           </tr>
         </tbody>
       </table>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import request from 'superagent-bluebird-promise'
 
 export default {
   name: 'Shipments',
@@ -50,9 +51,13 @@ export default {
     getAllShipments() {
       this.collectingData = true;
       request
-        .get('/api/')
+        .get('/api/shipment')
         .then((res) => {
           this.shipments = JSON.parse(res.body.allShipments)
+          var ind
+          for (ind in this.shipments) {
+            this.shipments[ind].formattedDate = new Date(this.shipments[ind].Date.$date).toISOString()
+          }
         })
     }
   },
