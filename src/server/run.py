@@ -16,6 +16,7 @@ from service.ObservationService import InsertObservation
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
 
@@ -91,6 +92,15 @@ class GetPotentialPredictions(tornado.web.RequestHandler):
         #json_response = json.dumps([ob for ob in json_response])
         self.write({"speciesPrediction": response.getResponse()})
 
+class GetObservationsOneWeek(tornado.web.RequestHandler):
+    # I'm doing a post request so that way I can still send a body even though I'm not posting
+    def get(self):
+        request = GetButterflySpeciesRequest(requestBody)
+        response = GetPotentialSpecies.getPotentialSpecies(request)
+        #json_response = JSONEncoder().encode(response.getResponse())
+        #json_response = json.dumps([ob for ob in json_response])
+        self.write({"speciesPrediction": response.getResponse()})
+
 
 def make_app(bundle_path, debug):
     return tornado.web.Application(
@@ -106,6 +116,7 @@ def make_app(bundle_path, debug):
            (r".*/api/photos", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
            (r".*/api/prediction/get", GetPotentialPredictions),
+           (r".*/api/observations/week", GetObservationsOneWeek)
            ],
        )
 
