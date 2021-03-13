@@ -42,7 +42,7 @@ export default {
     font-size: 16px;
   }
 
-  .active {
+  .active-link {
     color: #fe4600 !important;
   }
 

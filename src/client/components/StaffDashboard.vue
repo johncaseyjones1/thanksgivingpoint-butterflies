@@ -1,32 +1,48 @@
 <template>
-  <div>
+  <div id="main">
     <div class="header-div">
       <div class="header-text">Welcome Staff Member</div>
       <div>This is where the magic happens</div>
     </div>
     <div class="page-buttons">
-      <button class="btn btn-outline-dark">Releases</button>
-      <button class="btn btn-outline-dark">Shipments</button>
+      <button class="btn btn-outline-dark" @click="showReleases()">Releases</button>
+      <button class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
     </div>
+    <Shipments v-show="shipments"/>
+    <Releases v-show="releases"/>
   </div>
 </template>
 
 
 
 <script>
+import Shipments from "./Shipments"
+import Releases from "./Releases"
 //import request from 'superagent-bluebird-promise'
 //import axios from 'axios'
 
 export default {
   data () {
     return {
-      message: 'Please use the best photo you can',
-      speciesPrediction: '',
-      file: null
+      shipments: false,
+      releases: false,
     }
   },
 
+  components: {
+    Shipments,
+    Releases
+  },
+
   methods: {
+    showShipments() {
+      this.shipments = true;
+      this.releases = false;
+    },
+    showReleases() {
+      this.shipments = false;
+      this.releases = true;
+    },
     /*submitEntry() {
       request.post('/api/staff/dashboard')
       .attach('image', file)
@@ -47,6 +63,7 @@ export default {
     
   }
 }
+
 </script>
 
 <style scoped>
@@ -71,6 +88,7 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   .btn {
@@ -99,6 +117,4 @@ export default {
     }
 
   }
-
-
 </style>
