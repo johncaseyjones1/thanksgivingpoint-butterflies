@@ -1,4 +1,5 @@
 from json.encoder import JSONEncoder
+import re
 import sys
 sys.path.append('../')
 
@@ -13,10 +14,12 @@ import tornado.escape
 from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
+from service.ObservationService import GetOneWeek
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
@@ -63,7 +66,8 @@ class ObservationHandler(tornado.web.RequestHandler):
         requestBody = tornado.escape.json_decode(self.request.body)
         speciesPrediction = requestBody["speciesPrediction"]
         filePath = requestBody['filePath']
-        request = InsertObservationRequest('1', filePath, speciesPrediction)
+        commonName = requestBody['commonName']
+        request = InsertObservationRequest('1', filePath, speciesPrediction, commonName)
         responseMessage = InsertObservation.insertOneObservation(request).getMessage()
         
         self.write({"message": responseMessage})
@@ -90,18 +94,13 @@ class GetPotentialPredictions(tornado.web.RequestHandler):
         requestBody = tornado.escape.json_decode(self.request.body)
         request = GetButterflySpeciesRequest(requestBody)
         response = GetPotentialSpecies.getPotentialSpecies(request)
-        #json_response = JSONEncoder().encode(response.getResponse())
-        #json_response = json.dumps([ob for ob in json_response])
         self.write({"speciesPrediction": response.getResponse()})
 
 class GetObservationsOneWeek(tornado.web.RequestHandler):
     # I'm doing a post request so that way I can still send a body even though I'm not posting
     def get(self):
-        request = GetButterflySpeciesRequest(requestBody)
-        response = GetPotentialSpecies.getPotentialSpecies(request)
-        #json_response = JSONEncoder().encode(response.getResponse())
-        #json_response = json.dumps([ob for ob in json_response])
-        self.write({"speciesPrediction": response.getResponse()})
+        response = GetOneWeek.getOneWeek()
+        self.write({"observations": response.getObservations()})
 
 
 def make_app(bundle_path, debug):

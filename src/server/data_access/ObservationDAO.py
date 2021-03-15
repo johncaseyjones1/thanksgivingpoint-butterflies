@@ -1,8 +1,10 @@
 import pymongo
 import unittest
-import json
+from bson.json_util import dumps
 
-from datetime import datetime
+
+from datetime import datetime as DT
+from datetime import timedelta
 
 from request.observation import getObservationRequest
 from response.observation import getObservationResponse
@@ -45,6 +47,30 @@ class ObservationDAO:
 
         return getObservationsInRangeResponse.GetObservationsInRangeResponse(observation)
 
+    # This function is for finding and returning a list of observations from the MongoDB Database from the past week
+    def getObservationsOneWeek(request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["observation"]
+
+        greaterThanOrEqual = "$gte"
+        lessThan = "$lt"
+
+        today = DT.utcnow().now()
+        weekAgo = today - timedelta(days = 7)
+
+        query = {
+            "dateTime": { greaterThanOrEqual :  weekAgo }
+        }
+
+        observations = col.find(query)
+        observationList = list(observations)
+
+        response = getObservationsInRangeResponse.GetObservationsInRangeResponse(dumps(observationList))
+
+
+        return response
+
 
     # This function is for finding and returning one observation from the MongoDB Database
     def getOneObservation(request):
@@ -68,7 +94,8 @@ class ObservationDAO:
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
         observation = {"dateTime": request.dateTime,
                         "picture": request.picturePath,
-                        "speciesPrediction": request.speciesPrediction}
+                        "speciesPrediction": request.speciesPrediction,
+                        "commonName": request.commonName}
 
         ID = col.insert_one(observation).inserted_id
         resp = "Successfully inserted {}!".format(request.speciesPrediction)

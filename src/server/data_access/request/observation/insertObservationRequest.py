@@ -1,10 +1,11 @@
 
 
 class InsertObservationRequest:
-    def __init__(self, dateTime, picturePath, speciesPrediction):
+    def __init__(self, dateTime, picturePath, speciesPrediction, commonName):
         self.dateTime = dateTime
         self.picturePath = picturePath
         self.speciesPrediction = speciesPrediction
+        self.commonName = commonName
 
     def getDateTime(self):
         return self.dateTime
@@ -17,3 +18,6 @@ class InsertObservationRequest:
     
     def getSpeciesPrediction(self):
         return self.speciesPrediction
+
+    def getCommonName(self):
+        return self.commonName

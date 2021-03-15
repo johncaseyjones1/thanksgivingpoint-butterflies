@@ -171,6 +171,7 @@ export default {
         .post('/api/observations')
         .type('json')
         .send({speciesPrediction: speciesPrediction.Species,
+              commonName: speciesPrediction.CommonName,
               filePath: res.body.filePath})
         .then((res) => {
           this.message = res.body.message

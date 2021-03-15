@@ -1,6 +1,5 @@
 import pymongo
 import unittest
-import json
 from bson.json_util import dumps
 
 from request.butterfly_species import GetButterflySpeciesRequest
