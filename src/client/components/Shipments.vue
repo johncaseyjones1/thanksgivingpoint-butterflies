@@ -1,36 +1,9 @@
 <template>
   <div class="shipment-container">
     <div class="center-div">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Date</th>
-            <th scope="col">Supplier</th>
-            <th scope="col">Species</th>
-            <th scope="col">Origin</th>
-            <th scope="col">Qty</th>
-            <th scope="col">Emerged early</th>
-            <th scope="col">DOA</th>
-            <th scope="col">Failed to emerge</th>
-            <th scope="col">Parasitized</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="shipment in shipments" :key="shipment._id.$oid">
-            <td>{{ shipment._id.$oid }}</td>
-            <td>{{ shipment.formattedDate }}</td>
-            <td>{{ shipment.Supplier }}</td>
-            <td>{{ shipment.Species }}</td>
-            <td>{{ shipment.Origin }}</td>
-            <td>{{ shipment.Quantity }}</td>
-            <td>{{ shipment.EmergedEarly }}</td>
-            <td>{{ shipment.DOA }}</td>
-            <td>{{ shipment.FTE }}</td>
-            <td>{{ shipment.Parasite }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <v-client-table v-model="shipments" :columns="columns" :options="options">
+        <input type="number" slot="FTE" slot-scope="{row, update}" v-model="row.FTE" @input="update">
+      </v-client-table>
     </div>
   </div>
 </template>
@@ -44,6 +17,23 @@ export default {
     return {
       collectingData: false,
       shipments: [],
+      columns: ["id","formattedDate","Supplier","Species","Origin","Quantity","EmergedEarly","DOA","FTE","W","Parasite"],
+      options: {
+        headings: {
+          id: 'ID',
+          formattedDate: 'Date',
+          Supplier: 'Supplier',
+          Species: 'Species',
+          Origin: 'Origin',
+          Quantity: 'Qty',
+          EmergedEarly: 'Emerged early',
+          DOA: 'DOA',
+          FTE: 'FTE',
+          W: 'Wings',
+          Parasite: 'Parasite'
+        },
+        editableColumns:['FTE','Parasite']
+      }
     }
   },
 
@@ -57,6 +47,7 @@ export default {
           var ind
           for (ind in this.shipments) {
             this.shipments[ind].formattedDate = new Date(this.shipments[ind].Date.$date).toISOString()
+            this.shipments[ind].id = this.shipments[ind]._id.$oid
           }
         })
     }
