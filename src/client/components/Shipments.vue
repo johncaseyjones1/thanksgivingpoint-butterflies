@@ -71,8 +71,8 @@ export default {
         customSorting: {
           formattedDate: function (ascending) {
             return function (a, b) {
-              var dateA = a.formattedDate;
-              var dateB = b.formattedDate;
+              var dateA = a.Date.$date;
+              var dateB = b.Date.$date;
 
               if (ascending)
                 return dateA >= dateB ? 1 : -1;

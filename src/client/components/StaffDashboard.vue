@@ -5,8 +5,8 @@
       <div>This is where the magic happens</div>
     </div>
     <div class="page-buttons">
-      <button class="btn btn-outline-dark" @click="showReleases()">Releases</button>
-      <button class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
+      <button v-on:click="setPage('releases')" id="release-button" class="btn btn-outline-dark" @click="showReleases()">Releases</button>
+      <button v-on:click="setPage('shipments')" id="shipment-button" class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
     </div>
     <Shipments v-show="shipments"/>
     <Releases v-show="releases"/>
@@ -43,19 +43,16 @@ export default {
       this.shipments = false;
       this.releases = true;
     },
-    /*submitEntry() {
-      request.post('/api/staff/dashboard')
-      .attach('image', file)
-      .then((res) => {
-        request
-        .post('/api/observations')
-        .type('json')
-        .send({speciesPrediction: speciesPrediction,
-              filePath: res.body.filePath})
-        .then((res) => {
-          this.message = res.body.message
-        })
-      })*/
+    setPage(page) {
+      if (page == "releases") {
+        document.getElementById("release-button").classList.add("active");
+        document.getElementById("shipment-button").classList.remove("active");
+      }
+      else {
+        document.getElementById("release-button").classList.remove("active");
+        document.getElementById("shipment-button").classList.add("active");
+      }
+    }
       
   },
 
