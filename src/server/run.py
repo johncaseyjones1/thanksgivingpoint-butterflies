@@ -15,6 +15,7 @@ from tornado.log import enable_pretty_logging
 from service.ObservationService import InsertObservation
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
+from service.LocationService import GetLocations
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
@@ -44,6 +45,15 @@ class DashboardHandler(tornado.web.RequestHandler):
         #acces mongodb
         self.write({ 'dashboard': 'Dashboard!' })
 
+class LocationHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        location = requestBody["location"]
+        request = getLocationRequest(location)
+        #responseMessage = GetLocations.getAllLocations(request).getMessage
+
+        #self.write({"message": responseMessage})
+        
 class ActivitiesHandler(tornado.web.RequestHandler):
     def get(self):
         self.write({ 'activities': 'Activities!' })
@@ -100,6 +110,9 @@ def make_app(bundle_path, debug):
        handlers=[
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
+           (r".*/api/location", LocationHandler),
+           (r".*/api/longevity", LongevityHandler),
+           (r".*/api/longevity/data", LongevityDataHandler),
            (r".*/api/activities", ActivitiesHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
