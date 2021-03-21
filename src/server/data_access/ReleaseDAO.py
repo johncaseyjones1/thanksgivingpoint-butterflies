@@ -2,13 +2,13 @@ import pymongo
 import unittest
 import json
 
-from request.release import GetReleaseRequest
-from request.release import InsertReleaseRequest
-from request.release import UpdateReleaseRequest
+from request.release import getReleaseRequest
+from request.release import insertReleaseRequest
+from request.release import updateReleaseRequest
 
-from response.release import GetReleaseResponse
-from response.release import InsertReleaseResponse
-from response.release import UpdateReleaseResponse
+from response.release import getReleaseResponse
+from response.release import insertReleaseResponse
+from response.release import updateReleaseResponse
 
 
 class ReleaseDAO:
@@ -18,7 +18,7 @@ class ReleaseDAO:
         db = client["observatory"]
         col = db["release"]
         
-        releases = col.find()
+        releases = col.find({})
 
         return releases
 
@@ -51,7 +51,7 @@ class ReleaseDAO:
         db = client["observatory"]
         col = db["release"]
 
-        data = { $set: {"speciesID": request.getSpeciesID(),
+        data = { "$set": {"speciesID": request.getSpeciesID(),
                 "count": request.getCount(),
                 "releaseDate": request.getReleaseDate()
                 }}
