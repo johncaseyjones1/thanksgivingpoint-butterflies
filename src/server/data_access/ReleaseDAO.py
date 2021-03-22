@@ -1,6 +1,5 @@
 import pymongo
-import unittest
-import json
+from bson.json_util import dumps
 
 from request.release import getReleaseRequest
 from request.release import insertReleaseRequest
@@ -18,9 +17,13 @@ class ReleaseDAO:
         db = client["observatory"]
         col = db["release"]
         
-        releases = col.find({})
+        releases = col.find({})        
+        releaseList = list(releases)
 
-        return releases
+        response = getReleaseResponse.GetReleaseResponse(dumps(releaseList))
+
+        return response
+
 
     def getOneRelease(request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
