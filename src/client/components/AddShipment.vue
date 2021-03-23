@@ -4,7 +4,7 @@
       <div class="heading">Add a new shipment</div>
       <div class="input-group mb-3">
         <div class="subheading">Date:</div>
-        <v-date-picker color="orange" v-model="date" />
+        <v-date-picker color="orange" is-inline v-model="date" />
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Supplier:</div>
@@ -50,8 +50,8 @@
         <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
       </div>
 
-      <div>
-        <button class="btn" @click="submitShipment()"></button>
+      <div class="button-div"> 
+        <button class="btn btn-dark" @click="submitShipment()">Submit</button>
       </div>
     </div>
   </div>  
@@ -133,6 +133,7 @@ export default {
   align-items: center;
   margin: 0 5px 0 5px;
   width: 100%;
+  margin-bottom: 40px;
 }
 .center-div {
   display: flex;
@@ -179,6 +180,9 @@ input, select {
   background-color: white;
   border: none;
   border-radius: 15px !important;
+}
+.button-div {
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 600px) {
