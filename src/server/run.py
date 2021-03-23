@@ -16,6 +16,7 @@ from service.ObservationService import InsertObservation
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from service.LocationService import GetLocations
+from response.butterfly_species.GetLocationResponse import *
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
@@ -46,13 +47,18 @@ class DashboardHandler(tornado.web.RequestHandler):
         self.write({ 'dashboard': 'Dashboard!' })
 
 class LocationHandler(tornado.web.RequestHandler):
-    def post(self):
+    def get(self):
         requestBody = tornado.escape.json_decode(self.request.body)
         location = requestBody["location"]
         request = getLocationRequest(location)
-        #responseMessage = GetLocations.getAllLocations(request).getMessage
-
-        #self.write({"message": responseMessage})
+        responseMessage = GetLocations.getAllLocations(request)
+        #Make graph here with request returned above?? Or just:
+        #getLocationResponse
+        self.write({"message": responseMessage})
+        #writes to body of http response and sends to front end, can access json from response body
+        #when generate the graph, can either save it to a file location and send the path of that location to front end
+        #or theres a better way for rendering that in the browser
+        #Create a getlocationmap method and call it in the created method
         
 class ActivitiesHandler(tornado.web.RequestHandler):
     def get(self):
