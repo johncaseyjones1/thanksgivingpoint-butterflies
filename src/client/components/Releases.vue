@@ -1,22 +1,8 @@
 <template>
   <div class="releases-container">
     <div class="center-div">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Species</th>
-            <th scope="col">Qty</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="release in releases" :key="release.releaseID">
-            <td>{{ release.Date.$date }}</td>
-            <td>{{ release.species }}</td>
-            <td>{{ release.Sum }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <v-client-table v-model="releases" :columns="columns" :options="options">
+      </v-client-table>
     </div>
   </div>   
 </template>
@@ -30,6 +16,14 @@ export default {
     return {
       collectingData: false,
       releases: [],
+      columns: ["formattedDate","species","Sum"],
+      options: {
+        headings: {
+          formattedDate: 'Date',
+          species: 'Species',
+          Sum: 'Qty'
+        },
+      }
     }
   },
 
@@ -39,6 +33,10 @@ export default {
       request.get('/api/release')
         .then((res) => {
           this.releases = JSON.parse(res.body.allReleases)
+          var ind
+          for (ind in this.releases) {
+            this.releases[ind].formattedDate = new Date(this.releases[ind].Date.$date).toDateString()
+          }
         })
     }
   },
