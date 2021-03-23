@@ -1,10 +1,9 @@
 
 import sys, os
-parent_dir = os.getcwd() # find the path to module a
-# Then go up one level to the common parent directory
-path = os.path.dirname(parent_dir)
+lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data_access'))
+sys.path.append(lib_path)
 # Add the parent to sys.pah
-sys.path.insert(1, "/Users/emmepratt/Downloads/Butterfly_Biosphere/thanksgivingpoint-butterflies/src/server/data_access/")
+#sys.path.insert(1, "/Users/emmepratt/Downloads/Butterfly_Biosphere/thanksgivingpoint-butterflies/src/server/data_access/")
 from ShipmentDAO import ShipmentDAO
 
 

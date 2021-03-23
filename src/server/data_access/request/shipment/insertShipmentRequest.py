@@ -1,25 +1,19 @@
 class InsertShipmentRequest:
     
-    def __init__(self, shipmentID, speciesID, dateEntered, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge, parasitized):
-        self.shipmentID = shipmentID
-        self.speciesID = speciesID
-        self.dateEntered = dateEntered
+    def __init__(self, date, species, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge=0, parasitized=0):
+        self.date = date
+        self.species = species
         self.origin = origin
         self.quantity = quantity
         self.supplier = supplier
         self.emergedEarly = emergedEarly
         self.deadOnArrival = deadOnArrival
-        self.failedToEmerge = failedToEmerge
-        self.parasitized = parasitized
 
-    def getShipmentID():
-        return self.shipmentID
-
-    def getSpeciesID():
-        return self.speciesID
-
-    def getDateEntered():
+    def getDate():
         return self.dateEntered
+
+    def getSpecies():
+        return self.species
 
     def getOrigin():
         return self.origin
