@@ -1,17 +1,10 @@
 <template>
-  <div class="add-shipment-container">
+  <div class="add-release-container">
     <div class="center-div">
-      <div class="heading">Add a new shipment</div>
+      <div class="heading">Add a new release</div>
       <div class="input-group mb-3">
         <div class="subheading">Date:</div>
         <v-date-picker color="orange" is-inline v-model="date" />
-      </div>
-      <div class="input-group mb-3">
-        <div class="subheading">Supplier:</div>
-        <select class="custom-select" v-model="supplier">
-          <option>CRES</option>
-          <option>LPS</option>
-        </select>
       </div>
       <div class="column-div">
         <div class="input-group mb-3">
@@ -25,33 +18,12 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <div class="subheading">Origin:</div>
-        <select class="custom-select" v-model="origin">
-          <option>BELIZE</option>
-          <option>COLOMBIA</option>
-          <option>COSTA RICA</option>
-          <option>KENYA</option>
-          <option>MALAYSIA</option>
-          <option>PHILIPPINES</option>
-          <option>THAILAND</option>
-          <option>USA</option>
-        </select>
-      </div>
-      <div class="input-group mb-3">
         <div class="subheading">Quantity:</div>
         <input type="text" class="form-control short-input" v-model="quantity"/>
       </div>
-      <div class="input-group mb-3">
-        <div class="subheading">Emerged early:</div>
-        <input type="text" class="form-control short-input" v-model="emergedEarly"/>
-      </div>
-      <div class="input-group mb-3">
-        <div class="subheading">Dead on arrival:</div>
-        <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
-      </div>
 
       <div class="button-div"> 
-        <button class="btn btn-dark" @click="submitShipment()">Submit</button>
+        <button class="btn btn-dark" @click="submitRelease()">Submit</button>
       </div>
     </div>
   </div>  
@@ -61,18 +33,14 @@
 import request from 'superagent-bluebird-promise'
 
 export default {
-  name: 'AddShipment',
+  name: 'AddRelease',
   data() {
     return {
-      allButterflies: "",
-      searchText: "",
-      selected: false,
-      date: null,
-      supplier: "",
-      origin: "",
-      quantity: "",
-      emergedEarly: "",
-      deadOnArrival: ""
+        allButterflies: "",
+        searchText: "",
+        selected: false,
+        date: null,
+        quantity: ""
     }
   },
 
@@ -96,16 +64,12 @@ export default {
       this.selected = true;
     },
 
-    async submitShipment() {
-      request.post('/api/shipment/post')
+    async submitRelease() {
+      request.post('/api/release/post')
         .type('json')
         .send({date: this.date,
-              supplier: this.supplier,
               species: this.searchText,
-              origin: this.origin,
-              quantity: this.quantity,
-              emergedEarly: this.emergedEarly,
-              deadOnArrival: this.deadOnArrival})
+              quantity: this.quantity})
         .then((res) => {
           this.message = res.body.message
       })
@@ -127,7 +91,7 @@ export default {
 </script>
 
 <style scoped>
-.add-shipment-container {
+.add-release-container {
   display: flex;
   justify-content: center;
   align-items: center;

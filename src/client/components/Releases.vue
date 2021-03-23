@@ -1,19 +1,25 @@
 <template>
   <div class="releases-container">
     <div class="center-div">
-      <v-client-table v-model="releases" :columns="columns" :options="options">
+      <button class="btn btn-dark add-release-btn" v-show="showTable" @click="showAddRelease()">Add new release</button>
+      <button class="btn btn-dark add-release-btn" v-show="addRelease" @click="hideAddRelease()">Cancel</button>
+      <v-client-table v-show="showTable" v-model="releases" :columns="columns" :options="options">
       </v-client-table>
     </div>
+    <AddRelease v-show="addRelease"/>
   </div>   
 </template>
 
 <script>
 import request from 'superagent-bluebird-promise'
+import AddRelease from './AddRelease'
 
 export default {
   name: 'Releases',
   data() {
     return {
+      addRelease: false,
+      showTable: true,
       collectingData: false,
       releases: [],
       columns: ["formattedDate","species","Sum"],
@@ -27,6 +33,10 @@ export default {
     }
   },
 
+  components: {
+    AddRelease
+  },
+
   methods: {
     getAllReleases() {
       this.collectingData = true;
@@ -38,6 +48,14 @@ export default {
             this.releases[ind].formattedDate = new Date(this.releases[ind].Date.$date).toDateString()
           }
         })
+    },
+    showAddRelease() {
+      this.addRelease = true;
+      this.showTable = false;
+    },
+    hideAddRelease() {
+      this.addRelease = false;
+      this.showTable = true;
     }
   },
 
@@ -51,6 +69,7 @@ export default {
 <style scoped>
 .releases-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 5px 0 5px;
@@ -60,5 +79,8 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.add-release-btn {
+  margin-bottom: 30px;
 }
 </style>
