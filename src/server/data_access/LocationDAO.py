@@ -1,7 +1,7 @@
 import pymongo
 
-from request.GetLocationRequest import getLocation
-from response.GetLocationResponse import *
+from request.butterfly_species.GetLocationRequest import getLocationRequest
+from response.butterfly_species.GetLocationResponse import *
 
 
 class LocationDAO:
