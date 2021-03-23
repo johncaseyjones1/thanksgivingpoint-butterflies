@@ -1,19 +1,43 @@
 class GetObservationRequest:
 
-    def __init__(shipmentID, numGlued, percentEmergence, susNumReleased):
+    def __init__(self, shipmentID, speciesID, dateEntered, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge, parasitized):
         self.shipmentID = shipmentID
-        self.numGlued = numGlued
-        self.percentEmergence = percentEmergence
-        self.susNumReleased = susNumReleased
+        self.speciesID = speciesID
+        self.dateEntered = dateEntered
+        self.origin = origin
+        self.quantity = quantity
+        self.supplier = supplier
+        self.emergedEarly = emergedEarly
+        self.deadOnArrival = deadOnArrival
+        self.failedToEmerge = failedToEmerge
+        self.parasitized = parasitized
 
     def getShipmentID():
         return self.shipmentID
 
-    def getNumGlued():
-        return self.numGlued
+    def getSpeciesID():
+        return self.speciesID
 
-    def getPercentEmergence():
-        return self.percentEmergence
+    def getDateEntered():
+        return self.dateEntered
 
-    def getSusNumReleased():
-        return self.susNumReleased
+    def getOrigin():
+        return self.origin
+
+    def getQuantity():
+        return self.quantity
+
+    def getSupplier():
+        return self.supplier
+
+    def getEmergedEarly():
+        return self.emergedEarly
+
+    def getDeadOnArrival():
+        return self.deadOnArrival
+
+    def getFailedToEmerge():
+        return self.failedToEmerge
+
+    def getParasitized():
+        return self.parasitized

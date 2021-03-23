@@ -18,5 +18,5 @@ class GetAllSpecies:
 
     @staticmethod
     def getAllSpecies():
-        butterflySpeciesDAO = ButterflySpeciesDAO
+        butterflySpeciesDAO = ButterflySpeciesDAO()
         return butterflySpeciesDAO.getAllSpecies()

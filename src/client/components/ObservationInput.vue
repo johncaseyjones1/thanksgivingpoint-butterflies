@@ -11,116 +11,99 @@
       </div>
     </div>
 
-    <div id="predictionField">
-      <div id="size">
-        <h4>Size:</h4>
-        <input type="radio" id="small" value="S" v-model="size">
-        <label for="one">Small</label>
-        <br>
-        <input type="radio" id="medium" value="M" v-model="size">
-        <label for="two">Medium</label>
-        <br>
-        <input type="radio" id="large" value="L" v-model="size">
-        <label for="two">Large</label>
-        <br>
-      </div>
+    <div class="center-div">
+      <div id="predictionField">
+        <div class="row-div">
+          <div class="field-item" id="size">
+            <h5>Size:</h5>
+            <button v-on:click="setSize('S')" id="S" class="btn btn-outline-success" data-toggle="button">Small</button>
+            <button v-on:click="setSize('M')" id="M" class="btn btn-outline-success" data-toggle="button">Medium</button>
+            <button v-on:click="setSize('L')" id="L" class="btn btn-outline-success" data-toggle="button">Large</button>
+          </div>
+        </div>
 
-      <div id="primaryColor">
-        <h4>Primary Color:</h4>
-        <select v-model="primaryColor">
-          <option disabled value="">Please select one</option>
-          <option>Red</option>
-          <option>Orange</option>
-          <option>Yellow</option>
-          <option>Green</option>
-          <option>Blue</option>
-          <option>Purple</option>
-          <option>Brown</option>
-          <option>White</option>
-          <option>Black</option>
-          <option>Tan</option>
-        </select>
-      </div>
+        <div class="row-div">
+          <div class="field-item" id="wingShape">
+            <h5>Wing Shape:</h5>
+            <input v-on:click="setWingShape(1)" id="wingShape1" class="btn btn-outline-success" type="button" value="1">
+            <input v-on:click="setWingShape(2)" id="wingShape2" class="btn btn-outline-success" type="button" value="2">
+            <input v-on:click="setWingShape(3)" id="wingShape3" class="btn btn-outline-success" type="button" value="3">
+            <input v-on:click="setWingShape(4)" id="wingShape4" class="btn btn-outline-success" type="button" value="4">
+            <input v-on:click="setWingShape(5)" id="wingShape5" class="btn btn-outline-success" type="button" value="5">
+          </div>
+        </div>
 
-      <div id="secondaryColor">
-        <h4>Secondary Color:</h4>
-        <select v-model="secondaryColor">
-          <option disabled value="">Please select one</option>
-          <option>Red</option>
-          <option>Orange</option>
-          <option>Yellow</option>
-          <option>Green</option>
-          <option>Blue</option>
-          <option>Purple</option>
-          <option>Brown</option>
-          <option>White</option>
-          <option>Black</option>
-          <option>Tan</option>
-        </select>
-      </div>
+        <div class="row-div">
+          <div class="field-item" id="primaryColor">
+            <h5>Primary Color:</h5>
+            <select class="custom-select" v-model="primaryColor">
+              <option disabled value="">Please select one</option>
+              <option>Red</option>
+              <option>Orange</option>
+              <option>Yellow</option>
+              <option>Green</option>
+              <option>Blue</option>
+              <option>Purple</option>
+              <option>Brown</option>
+              <option>White</option>
+              <option>Black</option>
+              <option>Tan</option>
+            </select>
+          </div>
 
-      <div id="pattern">
-        <h4>Pattern:</h4>
-        <input type="radio" id="striped" value="Stiped" v-model="pattern">
-        <label for="striped">Striped</label>
-        <br>
-        <input type="radio" id="veination" value="Veination" v-model="pattern">
-        <label for="veination">Veination</label>
-        <br>
-        <input type="radio" id="mottled" value="Mottled" v-model="pattern">
-        <label for="mottled">Mottled</label>
-        <br>
-        <input type="radio" id="spotted" value="Spots" v-model="pattern">
-        <label for="spotted">Spotted</label>
-        <br>
-        <input type="radio" id="none" value="None" v-model="pattern">
-        <label for="none">None (solid color)</label>
-        <br>
-      </div>
+          <div class="field-item" id="secondaryColor">
+            <h5>Secondary Color:</h5>
+            <select class="custom-select" v-model="secondaryColor">
+              <option disabled value="">Please select one</option>
+              <option>Red</option>
+              <option>Orange</option>
+              <option>Yellow</option>
+              <option>Green</option>
+              <option>Blue</option>
+              <option>Purple</option>
+              <option>Brown</option>
+              <option>White</option>
+              <option>Black</option>
+              <option>Tan</option>
+            </select>
+          </div>
+        </div>
 
-      <div id="wingShape">
-        <h4>Wing Shape:</h4>
-        <input type="radio" id="one" value="1" v-model="wingShape">
-        <label for="one">One</label>
-        <br>
-        <input type="radio" id="two" value="2" v-model="wingShape">
-        <label for="two">Two</label>
-        <br>
-        <input type="radio" id="three" value="3" v-model="wingShape">
-        <label for="three">Three</label>
-        <br>
-        <input type="radio" id="four" value="4" v-model="wingShape">
-        <label for="four">Four</label>
-        <br>
-        <input type="radio" id="five" value="5" v-model="wingShape">
-        <label for="five">Five</label>
-        <br>
-      </div>
+        <div class="row-div">
+          <div class="field-item" id="pattern">
+            <h5>Pattern:</h5>
+            <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success pattern-button" type="button" value="Striped">
+            <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success pattern-button" type="button" value="Veination">
+            <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success pattern-button" type="button" value="Mottled">
+            <input v-on:click="setPattern('Spots')" id="Spots" class="btn btn-outline-success pattern-button" type="button" value="Spotted">
+            <input v-on:click="setPattern('None')" id="None" class="btn btn-outline-success pattern-button" type="button" value="None">
+          </div>
+        </div>
 
-      <div id="eyespot">
-        <h4>Eyespot:</h4>
-        <input type="radio" id="yes" value="Y" v-model="eyespot">
-        <label for="yes">Yes</label>
-        <br>
-        <input type="radio" id="no" value="N" v-model="eyespot">
-        <label for="no">No</label>
-        <br>
+        <div class="row-div">
+          <div class="field-item" id="eyespot">
+            <h5>Eyespot:</h5>
+            <input type="radio" id="yes" value="Y" v-model="eyespot">
+            <label for="yes">Yes</label>
+            <br>
+            <input type="radio" id="no" value="N" v-model="eyespot">
+            <label for="no">No</label>
+            <br>
+          </div>
+        </div>
+
+        <button class="predictionFormItem btn btn-dark" v-on:click="getObservationOptions(size, eyespot, pattern, wingShape, primaryColor, secondaryColor, predictionRequest)">Get Options</button>
       </div>
-      <button class="predictionFormItem btn btn-dark" v-on:click="getObservationOptions(size, eyespot, pattern, wingShape, primaryColor, secondaryColor, predictionRequest)">Get Options</button>
     </div>
 
     <div id="potential-species">
-      <ul>
-        <li  v-for="species in potentialSpecies" :key="species.CommonName">
-          <div @click="setSpeciesPrediction(species)">
-            {{species.CommonName}}
-            <img class="speciesOptionImage" :src=species.ImagePath alt="">
-          </div>
-        </li>
-      </ul>
+        <div v-for="species in potentialSpecies" :key="species.CommonName" @click="setSpeciesPrediction(species)" class="single-potential">
+          <img class="speciesOptionImage" :src=species.ImagePath alt="">
+          {{species.CommonName}}
+        </div>
     </div>
 
-    <div class="make-prediction">
+    <div id="make-prediction-div" class="make-prediction" style="display: none;">
       {{speciesPrediction.CommonName}}
       <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
       <br>
@@ -139,22 +122,22 @@ import request from 'superagent-bluebird-promise'
 export default {
   data () {
     return {
-      message: 'Please use the best photo you can',
-      speciesPrediction: '',
-      file: null,
       size: "",
-      eyespot:0,
-      pattern: "",
       wingShape: 0,
       primaryColor: "",
-      secondaryColor: "",    
+      secondaryColor: "", 
+      pattern: "", 
+      eyespot: 0,  
+      message: "Please use the best photo you can",
+      speciesPrediction: "",
+      file: null,
       predictionRequest: {
         size: "",
         eyespot:0,
         pattern: "",
         wingShape: 0,
         primaryColor: "",
-        secondaryColor: "",  
+        secondaryColor: "", 
       },
       potentialSpecies: [],
     }
@@ -173,8 +156,11 @@ export default {
         .type('json')
         .send(predictionRequest)
         .then((res) => {
-          this.potentialSpecies = JSON.parse(res.body.speciesPrediction)
+          this.potentialSpecies = JSON.parse(res.body.speciesPrediction);
+          this.scroll();
         })
+      var make_prediction_div = document.getElementById("make-prediction-div");
+      make_prediction_div.style.display = "flex";
     },
 
     async addObservation(speciesPrediction, file) {
@@ -185,20 +171,63 @@ export default {
         .post('/api/observations')
         .type('json')
         .send({speciesPrediction: speciesPrediction.Species,
+              commonName: speciesPrediction.CommonName,
               filePath: res.body.filePath})
         .then((res) => {
           this.message = res.body.message
         })
-      })
-      
+      })     
     },
+
+    scroll() {
+      var scroll_div = document.getElementById("make-prediction-div");
+      scroll_div.scrollIntoView({behavior: "smooth"});
+    },
+
     setSpeciesPrediction(species) {
       this.speciesPrediction = species
     },
 
-
     fileChanged(event) {
       this.file = event.target.files[0]
+    },
+
+    setSize(size) {
+        this.size = size;
+        var sizes = ["S","M","L"];
+        for (let i = 0; i < sizes.length; i++) {
+            if (sizes[i] == size) {
+                document.getElementById(size).classList.add("active");
+            }
+            else {
+                document.getElementById(sizes[i]).classList.remove("active");
+            }
+        }
+    },
+
+    setWingShape(wingShape) {
+        this.wingShape = wingShape;
+        for (let i = 1; i < 6; i++) {
+            if (i == wingShape) {
+                document.getElementById("wingShape" + i).classList.add("active");
+            }
+            else {
+                document.getElementById("wingShape" + i).classList.remove("active");
+            }
+        }
+    },
+
+    setPattern(pattern) {
+        this.pattern = pattern;
+        var patterns = ["Striped","Veination","Mottled","Spots","None"];
+        for (let i = 0; i < patterns.length; i++) {
+            if (patterns[i] == pattern) {
+                document.getElementById(pattern).classList.add("active");
+            }
+            else {
+                document.getElementById(patterns[i]).classList.remove("active");
+            }
+        }
     },
   },
   created() {
@@ -211,7 +240,6 @@ export default {
   #predictionForm {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
   }
   .header-div {
@@ -245,6 +273,31 @@ export default {
     object-fit: cover;
     vertical-align: middle;
   }
+  .center-div {
+    display: flex;
+    justify-content: center;
+  }
+  .row-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  #predictionField {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+    border: 3px solid #eeeeed;
+    border-radius: 15px;
+    padding: 30px;
+  }
+  .field-item {
+    margin-right: 80px;
+    margin-bottom: 30px;
+  }
   .make-prediction {
     display: flex;
     flex-direction: column;
@@ -256,9 +309,24 @@ export default {
   .predictionFormItem {
     width: 60%;
   }
+  #potential-species {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .single-potential {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
   .speciesOptionImage {
     max-width: 20%;
   }
+
+
   @media only screen and (max-width: 600px) {
     .cover-photo {
       width: 80%;
@@ -277,8 +345,22 @@ export default {
     h1 {
       font-size: 28px;
     }
-      .predictionFormItem {
-        width: 80%;
-      }
+    h5 {
+      font-size: 16px;
+    }
+    #predictionField {
+      border: none;
+      margin-top: 20px;
+    }
+    .predictionFormItem {
+      width: 80%;
+    }
+    .field-item {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    .pattern-button {
+      margin-bottom: 5px !important;
+    }
   }
 </style>

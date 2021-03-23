@@ -1,13 +1,12 @@
 import pymongo
-import unittest
-import json
+from bson.json_util import dumps
 
 from request.shipment import getShipmentRequest
 from request.shipment import getShipmentsInRangeRequest
 from request.shipment import insertShipmentRequest
 from request.shipment import updateShipmentRequest
 
-from response.shipment import getShipmentResponse
+from response.shipment.getShipmentResponse import GetShipmentResponse
 from response.shipment import getShipmentsInRangeResponse
 from response.shipment import insertShipmentResponse
 from response.shipment import updateShipmentResponse
@@ -20,9 +19,13 @@ class ShipmentDAO:
         db = client["observatory"]
         col = db["shipment"]
 
-        shipments = col.find()
+        shipments = col.find({})        
+        shipmentList = list(shipments)
 
-        return shipments
+        response = GetShipmentResponse(dumps(shipmentList))
+        #response.setResponse(dumps(shipmentList))
+
+        return response
 
     # This function is for finding and returning a list of shipments from the MongoDB Database that
     # fit within the range given  
@@ -86,10 +89,16 @@ class ShipmentDAO:
         db = client["observatory"]
         col = db["shipment"]
 
-        data = { $set: {"numGlued": request.getNumGlued(),
-                "percentEmergence": request.getPercentEmergence(),
-                "susNumReleased": request.getSusNumReleased()
-                }}
+        data = { "$set" : {"speciesID": request.getSpeciesID(),
+                        "dateEntered": request.getDateEntered(),
+                        "origin": request.getOrigin(),
+                        "quantity": request.getQuantity(),
+                        "supplier": request.getSupplier(),
+                        "emergedEarly": request.getEmergedEarly(),
+                        "deadOnArrival": request.getDeadOnArrival(),
+                        "failedToEmerge": request.getFailedToEmerge(),
+                        "parasitized": request.getParasitized()}
+                }
 
         filter = {"_id": request.getShipmentID()}
         result = col.update_one(filter, data)

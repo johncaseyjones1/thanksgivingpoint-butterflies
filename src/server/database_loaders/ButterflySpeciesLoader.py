@@ -1,6 +1,11 @@
 from excel2json import convert_from_file
 import json
 import pymongo
+import os
+
+dirname = os.path.dirname(__file__)
+raw_data = os.path.join(dirname, 'raw_data/ButterflyMatrix.xls')
+json_data = os.path.join(dirname, 'raw_data/ButterflySpecies.json')
 
 # Change to the absolute path of this file on your machine
 convert_from_file('/Users/bradyneeley/Bio465/thanksgivingpoint-butterflies/src/server/database_loaders/raw_data/ButterflyMatrix.xls')

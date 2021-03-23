@@ -1,4 +1,5 @@
 from json.encoder import JSONEncoder
+import re
 import sys
 sys.path.append('../')
 
@@ -13,11 +14,16 @@ import tornado.escape
 from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
+from service.ObservationService import GetOneWeek
+from service.ReleaseService import GetAllReleases
+from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from service.LocationService import GetLocations
 from response.butterfly_species.GetLocationResponse import *
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
+#from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 
 
@@ -61,8 +67,15 @@ class LocationHandler(tornado.web.RequestHandler):
         #Create a getlocationmap method and call it in the created method
         
 class ActivitiesHandler(tornado.web.RequestHandler):
+class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write({ 'activities': 'Activities!' })
+        response = GetAllShipments.getAllShipments()
+        self.write({ 'allShipments': response.getShipment() })
+
+class GetReleasesHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = GetAllReleases.getAllReleases()
+        self.write({ 'allReleases': response.getRelease() })
 
 class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
@@ -76,7 +89,8 @@ class ObservationHandler(tornado.web.RequestHandler):
         requestBody = tornado.escape.json_decode(self.request.body)
         speciesPrediction = requestBody["speciesPrediction"]
         filePath = requestBody['filePath']
-        request = InsertObservationRequest('1', filePath, speciesPrediction)
+        commonName = requestBody['commonName']
+        request = InsertObservationRequest('1', filePath, speciesPrediction, commonName)
         responseMessage = InsertObservation.insertOneObservation(request).getMessage()
         
         self.write({"message": responseMessage})
@@ -103,9 +117,13 @@ class GetPotentialPredictions(tornado.web.RequestHandler):
         requestBody = tornado.escape.json_decode(self.request.body)
         request = GetButterflySpeciesRequest(requestBody)
         response = GetPotentialSpecies.getPotentialSpecies(request)
-        #json_response = JSONEncoder().encode(response.getResponse())
-        #json_response = json.dumps([ob for ob in json_response])
         self.write({"speciesPrediction": response.getResponse()})
+
+class GetObservationsOneWeek(tornado.web.RequestHandler):
+    # I'm doing a post request so that way I can still send a body even though I'm not posting
+    def get(self):
+        response = GetOneWeek.getOneWeek()
+        self.write({"observations": response.getObservations()})
 
 
 def make_app(bundle_path, debug):
@@ -120,11 +138,14 @@ def make_app(bundle_path, debug):
            #(r".*/api/longevity", LongevityHandler),
            #(r".*/api/longevity/data", LongevityDataHandler),
            (r".*/api/activities", ActivitiesHandler),
+           (r".*/api/shipment", GetShipmentsHandler),
+           (r".*/api/release", GetReleasesHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
            (r".*/api/prediction/get", GetPotentialPredictions),
+           (r".*/api/observations/week", GetObservationsOneWeek)
            ],
        )
 

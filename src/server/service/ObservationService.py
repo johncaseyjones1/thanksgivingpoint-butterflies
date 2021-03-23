@@ -17,3 +17,10 @@ class InsertObservation:
         request.setDateTime(now)
         observationDAO = ObservationDAO()
         return observationDAO.insertOneObservation(request)
+
+class GetOneWeek:
+
+    @staticmethod
+    def getOneWeek():
+        observationDAO = ObservationDAO()
+        return observationDAO.getObservationsOneWeek()
