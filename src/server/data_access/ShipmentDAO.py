@@ -68,15 +68,16 @@ class ShipmentDAO:
         col = db["shipment"]
 
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
-        shipment = {"speciesID": request.getSpeciesID(),
-                    "dateEntered": request.getDateEntered(),
-                    "origin": request.getOrigin(),
-                    "quantity": request.getQuantity(),
-                    "supplier": request.getSupplier(),
-                    "emergedEarly": request.getEmergedEarly(),
-                    "deadOnArrival": request.getDeadOnArrival(),
-                    "failedToEmerge": request.getFailedToEmerge(),
-                    "parasitized": request.getParasitized()}
+        shipment = {
+                    "Date": request.getDate(),
+                    "Species": request.getSpecies(),
+                    "Origin": request.getOrigin(),
+                    "Quantity": request.getQuantity(),
+                    "Supplier": request.getSupplier(),
+                    "EmergedEarly": request.getEmergedEarly(),
+                    "DOA": request.getDeadOnArrival(),
+                    "FTE": request.getFailedToEmerge(),
+                    "Parasite": request.getParasitized()}
 
         ID = col.insert_one(shipment).inserted_id
 

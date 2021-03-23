@@ -97,7 +97,7 @@ export default {
     },
 
     async submitShipment() {
-      request.post('/api/observations')
+      request.post('/api/shipment/post')
         .type('json')
         .send({date: this.date,
               supplier: this.supplier,
