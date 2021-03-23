@@ -1,37 +1,57 @@
 <template>
   <div class="add-shipment-container">
     <div class="center-div">
-      <div>
-        Date:
-
+      <div class="heading">Add a new shipment</div>
+      <div class="input-group mb-3">
+        <div class="subheading">Date:</div>
+        <v-date-picker color="orange" v-model="date" />
       </div>
-      <div class="row-div">
-        Supplier:
+      <div class="input-group mb-3">
+        <div class="subheading">Supplier:</div>
         <select class="custom-select" v-model="supplier">
           <option>CRES</option>
           <option>LPS</option>
         </select>
       </div>
-      <div class="input-group mb-3">
-        Species:
-        <input type="text" class="form-control" v-model="searchText"/>
-        <div class="options" v-if="searchText.length > 0 && speciesList.length > 0">
+      <div class="column-div">
+        <div class="input-group mb-3">
+          <div class="subheading">Species:</div>
+          <input type="text" class="form-control" v-model="searchText"/>
+        </div>
+        <div class="options" v-if="searchText.length > 0 && speciesList.length > 0 && !selected">
           <div v-for="option in speciesList" v-bind:key="option.Species">
-            <button @click="selectSpecies(option.Species)">{{ option.Species }}</button>
+            <button class="btn btn-outline-dark" @click="selectSpecies(option.Species)">{{ option.Species }}</button>
           </div>
         </div>
       </div>
-      <div>
-        Origin:
+      <div class="input-group mb-3">
+        <div class="subheading">Origin:</div>
+        <select class="custom-select" v-model="supplier">
+          <option>BELIZE</option>
+          <option>COLOMBIA</option>
+          <option>COSTA RICA</option>
+          <option>KENYA</option>
+          <option>MALAYSIA</option>
+          <option>PHILIPPINES</option>
+          <option>THAILAND</option>
+          <option>USA</option>
+        </select>
       </div>
-      <div>
-        Quantity:
+      <div class="input-group mb-3">
+        <div class="subheading">Quantity:</div>
+        <input type="text" class="form-control short-input" v-model="quantity"/>
       </div>
-      <div>
-        Emerged early:
+      <div class="input-group mb-3">
+        <div class="subheading">Emerged early:</div>
+        <input type="text" class="form-control short-input" v-model="emergedEarly"/>
       </div>
+      <div class="input-group mb-3">
+        <div class="subheading">Dead on arrival:</div>
+        <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
+      </div>
+
       <div>
-        Dead on arrival:
+        <button class="btn" @click="submitShipment()"></button>
       </div>
     </div>
   </div>  
@@ -44,9 +64,15 @@ export default {
   name: 'AddShipment',
   data() {
     return {
-      supplier: "",
       allButterflies: "",
-      searchText: ""
+      searchText: "",
+      selected: false,
+      date: null,
+      supplier: "",
+      origin: "",
+      quantity: "",
+      emergedEarly: "",
+      deadOnArrival: ""
     }
   },
 
@@ -67,11 +93,34 @@ export default {
 
     selectSpecies(species) {
       this.searchText = species;
+      this.selected = true;
+    },
+
+    async submitShipment() {
+      request.post('/api/observations')
+        .type('json')
+        .send({date: this.date,
+              supplier: this.supplier,
+              species: this.searchText,
+              origin: this.origin,
+              quantity: this.quantity,
+              emergedEarly: this.emergedEarly,
+              deadOnArrival: this.deadOnArrival})
+        .then((res) => {
+          this.message = res.body.message
+      })
+    }
+  },
+
+  watch: {
+    searchText: function() {
+      this.selected = false;
     }
   },
 
   created() {
     this.getAllButterflies()
+    this.date = new Date()
   }
 }
 
@@ -96,11 +145,45 @@ export default {
   width: 80%;
   padding: 40px;
 }
+.heading {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.subheading {
+  padding: 15px 15px 0 0;
+  width: 15%;
+  text-align: right;
+}
+.input-group {
+  margin: 10px 0 10px 0;
+}
 .row-div {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
+}
+.column-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.short-input {
+  width: 30%;
+}
+input, select {
+  background-color: white;
+  border: none;
+  border-radius: 15px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .center-div {
+    padding: 15px;
+  }
 }
 </style>
