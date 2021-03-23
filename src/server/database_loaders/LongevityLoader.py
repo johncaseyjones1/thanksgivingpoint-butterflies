@@ -4,15 +4,15 @@ import pymongo
 import os
 
 dirname = os.path.dirname(__file__)
-raw_data = os.path.join(dirname, 'raw_data/ButterflyMatrix.xls')
-json_data = os.path.join(dirname, 'raw_data/ButterflySpecies.json')
+raw_data = os.path.join(dirname, 'raw_data/longevity.xls')
+json_data = os.path.join(dirname, 'raw_data/longevity.json')
 
 # Change to the absolute path of this file on your machine
 convert_from_file(raw_data)
 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["observatory"]
-col = db["butterfly_species"]
+col = db["longevity"]
 
 # Clear database to prevent duplicates
 col.delete_many({})

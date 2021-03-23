@@ -15,6 +15,7 @@ from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
 from service.ObservationService import GetOneWeek
+from service.ReleaseService import GetAllReleases
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
@@ -53,6 +54,11 @@ class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
         response = GetAllShipments.getAllShipments()
         self.write({ 'allShipments': response.getShipment() })
+
+class GetReleasesHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = GetAllReleases.getAllReleases()
+        self.write({ 'allReleases': response.getRelease() })
 
 class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
@@ -112,6 +118,7 @@ def make_app(bundle_path, debug):
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/shipment", GetShipmentsHandler),
+           (r".*/api/release", GetReleasesHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),

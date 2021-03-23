@@ -6,12 +6,12 @@ from bson.json_util import dumps
 from datetime import datetime as DT
 from datetime import timedelta
 
-from request.observation import getObservationRequest
-from response.observation import getObservationResponse
-from request.observation import getObservationsInRangeRequest
-from response.observation import getObservationsInRangeResponse
-from response.observation import insertObservationResponse
-from request.observation import insertObservationRequest
+from .request.observation import getObservationRequest
+from .response.observation import getObservationResponse
+from .request.observation import getObservationsInRangeRequest
+from .response.observation import getObservationsInRangeResponse
+from .response.observation import insertObservationResponse
+from .request.observation import insertObservationRequest
 
 class ObservationDAO:
 

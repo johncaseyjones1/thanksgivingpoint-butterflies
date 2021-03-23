@@ -11,9 +11,9 @@
         </thead>
         <tbody>
           <tr v-for="release in releases" :key="release.releaseID">
-            <td>{{ release.releaseDate }}</td>
+            <td>{{ release.Date.$date }}</td>
             <td>{{ release.species }}</td>
-            <td>{{ release.count }}</td>
+            <td>{{ release.Sum }}</td>
           </tr>
         </tbody>
       </table>

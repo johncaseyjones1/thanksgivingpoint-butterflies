@@ -1,14 +1,13 @@
 import pymongo
-import unittest
-import json
+from bson.json_util import dumps
 
-from request.release import GetReleaseRequest
-from request.release import InsertReleaseRequest
-from request.release import UpdateReleaseRequest
+from request.release import getReleaseRequest
+from request.release import insertReleaseRequest
+from request.release import updateReleaseRequest
 
-from response.release import GetReleaseResponse
-from response.release import InsertReleaseResponse
-from response.release import UpdateReleaseResponse
+from response.release import getReleaseResponse
+from response.release import insertReleaseResponse
+from response.release import updateReleaseResponse
 
 
 class ReleaseDAO:
@@ -18,9 +17,13 @@ class ReleaseDAO:
         db = client["observatory"]
         col = db["release"]
         
-        releases = col.find()
+        releases = col.find({})        
+        releaseList = list(releases)
 
-        return releases
+        response = getReleaseResponse.GetReleaseResponse(dumps(releaseList))
+
+        return response
+
 
     def getOneRelease(request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -51,7 +54,7 @@ class ReleaseDAO:
         db = client["observatory"]
         col = db["release"]
 
-        data = { $set: {"speciesID": request.getSpeciesID(),
+        data = { "$set": {"speciesID": request.getSpeciesID(),
                 "count": request.getCount(),
                 "releaseDate": request.getReleaseDate()
                 }}

@@ -1,6 +1,4 @@
 import pymongo
-import unittest
-import json
 from bson.json_util import dumps
 
 from request.shipment import getShipmentRequest
