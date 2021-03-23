@@ -1,5 +1,6 @@
 import pymongo
 from bson.json_util import dumps
+import dateutil.parser as parser
 
 from request.shipment import getShipmentRequest
 from request.shipment import getShipmentsInRangeRequest
@@ -62,26 +63,27 @@ class ShipmentDAO:
 
 
     # This function is for inserting one observation into the MongoDB Database
-    def insertOneShipment(request):
+    def insertOneShipment(self, request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["shipment"]
+        date = parser.parse(request.getDate())
 
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
         shipment = {
-                    "Date": request.getDate(),
+                    "Date": date,
                     "Species": request.getSpecies(),
                     "Origin": request.getOrigin(),
-                    "Quantity": request.getQuantity(),
+                    "Quantity": int(request.getQuantity()),
                     "Supplier": request.getSupplier(),
-                    "EmergedEarly": request.getEmergedEarly(),
-                    "DOA": request.getDeadOnArrival(),
-                    "FTE": request.getFailedToEmerge(),
-                    "Parasite": request.getParasitized()}
+                    "EmergedEarly": int(request.getEmergedEarly()),
+                    "DOA": int(request.getDeadOnArrival()),
+                    "FTE": int(request.getFailedToEmerge()),
+                    "Parasite": int(request.getParasitized())}
 
         ID = col.insert_one(shipment).inserted_id
 
-        return insertShipmentResponse.InsertShipmentResponse(ID)
+        return insertShipmentResponse.InsertShipmentResponse("successfully submitted shipment")
 
     # This function updates a shipment that has already been entered to change previously
     # entered values or to add values contained in the ShipmentDataModel class

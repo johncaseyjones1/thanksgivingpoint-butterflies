@@ -88,10 +88,10 @@ class PostShipmentHandler(tornado.web.RequestHandler):
         origin = requestBody['origin']
         quantity = requestBody['quantity']
         supplier = requestBody["supplier"]
-        emergedEarly = requestBody['emergedEarl']
+        emergedEarly = requestBody['emergedEarly']
         deadOnArrival = requestBody['deadOnArrival']
         request = InsertShipmentRequest(date, species, origin, quantity, supplier, emergedEarly, deadOnArrival)
-        responseMessage = InsertShipment.insertOneObservation(request).getMessage()
+        responseMessage = InsertShipment.insertOneShipment(request).getMessage()
         
         self.write({"message": responseMessage})
 
