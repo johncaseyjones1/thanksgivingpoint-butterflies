@@ -80,7 +80,8 @@ export default {
               return dateA <= dateB ? 1 : -1;
             }
           }
-        }
+        },
+        orderBy: {column: "formattedDate", ascending: false}
       }
     }
   },
