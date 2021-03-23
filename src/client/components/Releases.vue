@@ -29,6 +29,7 @@ export default {
           species: 'Species',
           Sum: 'Qty'
         },
+        orderBy: {column: "formattedDate", ascending: false}
       }
     }
   },
