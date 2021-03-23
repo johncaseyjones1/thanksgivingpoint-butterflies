@@ -8,30 +8,32 @@ class InsertShipmentRequest:
         self.supplier = supplier
         self.emergedEarly = emergedEarly
         self.deadOnArrival = deadOnArrival
+        self.failedToEmerge = failedToEmerge
+        self.parasitized = parasitized
 
-    def getDate():
-        return self.dateEntered
+    def getDate(self):
+        return self.date
 
-    def getSpecies():
+    def getSpecies(self):
         return self.species
 
-    def getOrigin():
+    def getOrigin(self):
         return self.origin
 
-    def getQuantity():
+    def getQuantity(self):
         return self.quantity
 
-    def getSupplier():
+    def getSupplier(self):
         return self.supplier
 
-    def getEmergedEarly():
+    def getEmergedEarly(self):
         return self.emergedEarly
 
-    def getDeadOnArrival():
+    def getDeadOnArrival(self):
         return self.deadOnArrival
 
-    def getFailedToEmerge():
+    def getFailedToEmerge(self):
         return self.failedToEmerge
 
-    def getParasitized():
+    def getParasitized(self):
         return self.parasitized

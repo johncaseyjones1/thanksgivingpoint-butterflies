@@ -26,7 +26,7 @@
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Origin:</div>
-        <select class="custom-select" v-model="supplier">
+        <select class="custom-select" v-model="origin">
           <option>BELIZE</option>
           <option>COLOMBIA</option>
           <option>COSTA RICA</option>
