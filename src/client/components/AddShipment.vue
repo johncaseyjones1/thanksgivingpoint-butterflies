@@ -51,7 +51,7 @@
       </div>
 
       <div>
-        <button class="btn"></button>
+        <button class="btn" @click="submitShipment()"></button>
       </div>
     </div>
   </div>  
@@ -94,6 +94,21 @@ export default {
     selectSpecies(species) {
       this.searchText = species;
       this.selected = true;
+    },
+
+    async submitShipment() {
+      request.post('/api/observations')
+        .type('json')
+        .send({date: this.date,
+              supplier: this.supplier,
+              species: this.searchText,
+              origin: this.origin,
+              quantity: this.quantity,
+              emergedEarly: this.emergedEarly,
+              deadOnArrival: this.deadOnArrival})
+        .then((res) => {
+          this.message = res.body.message
+      })
     }
   },
 
