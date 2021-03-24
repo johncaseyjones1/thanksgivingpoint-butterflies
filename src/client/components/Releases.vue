@@ -16,7 +16,7 @@ export default {
     return {
       collectingData: false,
       releases: [],
-      columns: ["formattedDate","species","Sum"],
+      columns: ["formattedDate","Species","Quantity"],
       options: {
         headings: {
           formattedDate: 'Date',
