@@ -1,16 +1,32 @@
 <template>
-  <div id="screen">
-    <div id="location_box">
-      <div id="location_image"></div>
-      <div id="location_text">
-        <p>There are {{numFromAsia}} buterfly species from Asia!</p>
+  <div class="main-container">
+    <div class="column-div">
+      <div class="heading">
+        Daily Stats
+      </div>
+      <div>
+
       </div>
     </div>
-
-    <div id="observation_box">
-      <div id="observation_box_text">
-        <p>The {{mostCommonSpecies}} buterfly has been seen {{mostCommonSpeciesNum}} times by guests this week!</p>
-        <p>The {{leastCommonSpecies}} buterfly has only been seen {{leastCommonSpeciesNum}} times! See if you can spot it!</p>
+    <div class="center-div">
+      <div class="daily-notification">
+        Can you spot this rare butterfly?
+      </div>
+      <div class="main-column">
+        <div class="figure-1">
+          place holder
+        </div>
+        <div class="figure-1">
+          place holder
+        </div>
+      </div>
+      <div class="main-column">
+        <div class="figure-1">
+          place holder
+        </div>
+        <div class="figure-1">
+          place holder
+        </div>
       </div>
     </div>
   </div>
@@ -112,3 +128,57 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.column-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 91vh;
+  width:  25%;
+  background-color: #eeeeed;
+}
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 91vh;
+  width: 75%;
+}
+.heading {
+  padding-top: 30px;
+}
+.main-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 100%;
+}
+.daily-notification {
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fff7ef;
+  margin: 0 20px 20px 20px;
+  padding: 15px;
+}
+.figure-1 {
+  width: 80%;
+  height: 200px;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: #fff7ef;
+}
+</style>
