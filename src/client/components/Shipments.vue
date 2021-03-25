@@ -152,12 +152,6 @@ export default {
           const index = this.shipments.findIndex(item => item.id === row.id);
 
           if (index !== undefined) this.shipments.splice(index, 1);
-          //delete this.allShipments[row];
-          //for(item in this.allShipments) {
-          // if (item.id == row.id) {
-          //    delete this.allShipments[row]
-          //  }
-          //}
 
       })
     }
