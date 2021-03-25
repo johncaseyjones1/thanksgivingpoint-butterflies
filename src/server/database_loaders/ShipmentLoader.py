@@ -12,6 +12,8 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["observatory"]
 col = db["shipment"]
 
+convert_from_file(raw_data)
+
 # Clear database to prevent duplicates
 col.delete_many({})
 

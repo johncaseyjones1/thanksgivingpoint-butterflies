@@ -1,6 +1,6 @@
 class InsertShipmentRequest:
     
-    def __init__(self, date, species, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge=0, parasitized=0):
+    def __init__(self, date, species, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge=0, wings=0, parasitized=0):
         self.date = date
         self.species = species
         self.origin = origin
@@ -8,6 +8,7 @@ class InsertShipmentRequest:
         self.supplier = supplier
         self.emergedEarly = emergedEarly
         self.deadOnArrival = deadOnArrival
+        self.wings = wings
         self.failedToEmerge = failedToEmerge
         self.parasitized = parasitized
 
@@ -31,6 +32,9 @@ class InsertShipmentRequest:
 
     def getDeadOnArrival(self):
         return self.deadOnArrival
+
+    def getWings(self):
+        return self.wings
 
     def getFailedToEmerge(self):
         return self.failedToEmerge

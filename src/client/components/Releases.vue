@@ -22,7 +22,7 @@ export default {
       showTable: true,
       collectingData: false,
       releases: [],
-      columns: ["formattedDate","species","Sum"],
+      columns: ["formattedDate","Species","Quantity"],
       options: {
         headings: {
           formattedDate: 'Date',
