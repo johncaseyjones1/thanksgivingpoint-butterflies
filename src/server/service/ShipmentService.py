@@ -6,6 +6,12 @@ sys.path.append(lib_path)
 #sys.path.insert(1, "/Users/emmepratt/Downloads/Butterfly_Biosphere/thanksgivingpoint-butterflies/src/server/data_access/")
 from ShipmentDAO import ShipmentDAO
 
+class EditShipment:
+    
+    @staticmethod
+    def editOneShipment(request):
+        shipmentDAO = ShipmentDAO()
+        return shipmentDAO.updateShipment(request)
 
 class InsertShipment:
 
