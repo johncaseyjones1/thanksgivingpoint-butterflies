@@ -27,7 +27,7 @@ export default {
         headings: {
           formattedDate: 'Date',
           species: 'Species',
-          Sum: 'Qty'
+          Quantity: 'Qty'
         },
         orderBy: {column: "formattedDate", ascending: false}
       }

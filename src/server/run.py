@@ -130,6 +130,21 @@ class DeleteShipmentHandler(tornado.web.RequestHandler):
         
         self.write({"message": responseMessage})
 
+class PostReleaseHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        date = requestBody["date"]
+        species = requestBody['species']
+        origin = requestBody['origin']
+        quantity = requestBody['quantity']
+        supplier = requestBody["supplier"]
+        emergedEarly = requestBody['emergedEarly']
+        deadOnArrival = requestBody['deadOnArrival']
+        request = InsertShipmentRequest(date, species, origin, quantity, supplier, emergedEarly, deadOnArrival)
+        responseMessage = InsertShipment.insertOneShipment(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
 class PhotoHandler(tornado.web.RequestHandler):
     def post(self):
         hex = uuid.uuid4().hex
@@ -174,6 +189,7 @@ def make_app(bundle_path, debug):
            (r".*/api/shipment/edit", EditShipmentHandler),
            (r".*/api/shipment/delete", DeleteShipmentHandler),
            (r".*/api/release", GetReleasesHandler),
+           (r".*/api/release/post", PostReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
