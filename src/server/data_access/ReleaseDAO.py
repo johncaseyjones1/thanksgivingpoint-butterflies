@@ -1,5 +1,8 @@
 import pymongo
 from bson.json_util import dumps
+from bson.objectid import ObjectId
+import dateutil.parser as parser
+from datetime import datetime
 
 from request.release import getReleaseRequest
 from request.release import insertReleaseRequest
@@ -36,18 +39,19 @@ class ReleaseDAO:
 
         return getReleaseResponse.GetReleaseResponse(release)
 
-    def insertOneRelease(request):
+    def insertOneRelease(self, request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["release"]
+        date = parser.parse(request.getDate())
 
-        release = {"speciesID": request.getSpeciesID(),
-                    "count": request.getCount(),
-                    "releaseDate": request.getReleaseDate()}
+        release = { "Date": date,
+                    "Species": request.getSpecies(),
+                    "Quantity": int(request.getCount())}
         
         ID = col.insert_one(release).inserted_id
 
-        return insertReleaseResponse.InsertReleaseResponse(ID)
+        return insertReleaseResponse.InsertReleaseResponse("successfully submitted release")
 
     def updateRelease(request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")

@@ -1,17 +1,17 @@
 class InsertReleaseRequest:
 
-    def __init__(self, speciesID, count, releaseDate):
-        self.speciesID = speciesID
+    def __init__(self, species, count, date):
+        self.species = species
         self.count = count
-        self.releaseDate = releaseDate
+        self.date = date
 
-    def getSpeciesID(self):
-        return self.speciesID
+    def getSpecies(self):
+        return self.species
 
     def getCount(self):
-        return self.count()
+        return self.count
 
-    def getReleaseDate(self):
-        return self.releaseDate
+    def getDate(self):
+        return self.date
 
     

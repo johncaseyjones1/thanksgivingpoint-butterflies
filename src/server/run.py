@@ -19,6 +19,7 @@ from service.ShipmentService import EditShipment
 from service.ShipmentService import DeleteShipment
 from service.ObservationService import GetOneWeek
 from service.ReleaseService import GetAllReleases
+from service.ReleaseService import InsertRelease
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
@@ -26,6 +27,7 @@ from data_access.request.observation.insertObservationRequest import InsertObser
 from data_access.request.shipment.insertShipmentRequest import InsertShipmentRequest
 from data_access.request.shipment.updateShipmentRequest import UpdateShipmentRequest
 from data_access.request.shipment.deleteShipmentRequest import DeleteShipmentRequest
+from data_access.request.release.insertReleaseRequest import InsertReleaseRequest
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
@@ -135,13 +137,9 @@ class PostReleaseHandler(tornado.web.RequestHandler):
         requestBody = tornado.escape.json_decode(self.request.body)
         date = requestBody["date"]
         species = requestBody['species']
-        origin = requestBody['origin']
         quantity = requestBody['quantity']
-        supplier = requestBody["supplier"]
-        emergedEarly = requestBody['emergedEarly']
-        deadOnArrival = requestBody['deadOnArrival']
-        request = InsertShipmentRequest(date, species, origin, quantity, supplier, emergedEarly, deadOnArrival)
-        responseMessage = InsertShipment.insertOneShipment(request).getMessage()
+        request = InsertReleaseRequest(species, quantity, date)
+        responseMessage = InsertRelease.insertOneRelease(request).getMessage()
         
         self.write({"message": responseMessage})
 
