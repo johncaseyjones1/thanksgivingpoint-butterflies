@@ -29,6 +29,19 @@ export default {
           species: 'Species',
           Quantity: 'Qty'
         },
+        customSorting: {
+          formattedDate: function (ascending) {
+            return function (a, b) {
+              var dateA = a.Date.$date;
+              var dateB = b.Date.$date;
+
+              if (ascending)
+                return dateA >= dateB ? 1 : -1;
+
+              return dateA <= dateB ? 1 : -1;
+            }
+          }
+        },
         orderBy: {column: "formattedDate", ascending: false}
       }
     }
