@@ -34,6 +34,11 @@
             <button type="button" class="btn btn-sm" @click="revertValue(); setEditing(false)">Cancel</button>        
           </span>  
         </div> 
+        <div slot="Delete" slot-scope="{row}">
+          <span>
+            <button type="button" class="btn btn-dark btn-sm" @click="deleteShipment(row)">Delete</button>
+          </span>  
+        </div> 
       </v-client-table>
     </div>
     <AddShipment v-show="addShipment"/>
@@ -53,7 +58,7 @@ export default {
       collectingData: false,
       editMessage: "",
       shipments: [],
-      columns: ["id","formattedDate","Supplier","Species","Origin","Quantity","EmergedEarly","DOA","FTE","W","Parasite"],
+      columns: ["id","formattedDate","Supplier","Species","Origin","Quantity","EmergedEarly","DOA","FTE","W","Parasite","Delete"],
       options: {
         headings: {
           id: 'ID',
@@ -131,6 +136,29 @@ export default {
         .then((res) => {
           this.editMessage = res.body.message
           console.log(this.editMessage)
+      })
+    },
+    deleteShipment(row) {
+      console.log("delete " + row)
+      console.log(row._id)
+      request.post('/api/shipment/delete')
+        .type('json')
+        .send({
+              _id: row._id.$oid,
+              })
+        .then((res) => {
+          this.editMessage = res.body.message
+          console.log(this.editMessage)
+          const index = this.shipments.findIndex(item => item.id === row.id);
+
+          if (index !== undefined) this.shipments.splice(index, 1);
+          //delete this.allShipments[row];
+          //for(item in this.allShipments) {
+          // if (item.id == row.id) {
+          //    delete this.allShipments[row]
+          //  }
+          //}
+
       })
     }
   },

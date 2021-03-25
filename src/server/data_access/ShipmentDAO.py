@@ -116,3 +116,22 @@ class ShipmentDAO:
             message = "error, modified {} shipment(s) using data {}".format(result.modified_count, data)
 
         return updateShipmentResponse.UpdateShipmentResponse(message)
+
+
+
+    def deleteShipment(self, request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["shipment"]
+
+        # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
+        objectID = ObjectId(request.getShipmentID())
+        filter = {"_id": objectID}
+
+        resp = col.delete_one(filter)
+
+        if resp.acknowledged == True:
+            return insertShipmentResponse.InsertShipmentResponse("successfully deleted shipment")
+        
+        else:
+            return insertShipmentResponse.InsertShipmentResponse("Could not delete shipment")

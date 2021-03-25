@@ -16,6 +16,7 @@ from tornado.log import enable_pretty_logging
 from service.ObservationService import InsertObservation
 from service.ShipmentService import InsertShipment
 from service.ShipmentService import EditShipment
+from service.ShipmentService import DeleteShipment
 from service.ObservationService import GetOneWeek
 from service.ReleaseService import GetAllReleases
 from service.ShipmentService import GetAllShipments
@@ -24,6 +25,7 @@ from service.ButterflySpeciesService import GetAllSpecies
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.shipment.insertShipmentRequest import InsertShipmentRequest
 from data_access.request.shipment.updateShipmentRequest import UpdateShipmentRequest
+from data_access.request.shipment.deleteShipmentRequest import DeleteShipmentRequest
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
@@ -118,6 +120,16 @@ class EditShipmentHandler(tornado.web.RequestHandler):
         
         self.write({"message": responseMessage})
 
+class DeleteShipmentHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+
+        request = DeleteShipmentRequest(ID)
+        responseMessage = DeleteShipment.deleteOneShipment(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
 class PhotoHandler(tornado.web.RequestHandler):
     def post(self):
         hex = uuid.uuid4().hex
@@ -160,6 +172,7 @@ def make_app(bundle_path, debug):
            (r".*/api/shipment", GetShipmentsHandler),
            (r".*/api/shipment/post", PostShipmentHandler),
            (r".*/api/shipment/edit", EditShipmentHandler),
+           (r".*/api/shipment/delete", DeleteShipmentHandler),
            (r".*/api/release", GetReleasesHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),

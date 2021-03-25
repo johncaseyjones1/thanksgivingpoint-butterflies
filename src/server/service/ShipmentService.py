@@ -13,6 +13,13 @@ class EditShipment:
         shipmentDAO = ShipmentDAO()
         return shipmentDAO.updateShipment(request)
 
+class DeleteShipment:
+    
+    @staticmethod
+    def deleteOneShipment(request):
+        shipmentDAO = ShipmentDAO()
+        return shipmentDAO.deleteShipment(request)
+
 class InsertShipment:
 
     @staticmethod
