@@ -22,8 +22,19 @@
         <input type="text" class="form-control short-input" v-model="quantity"/>
       </div>
 
-      <div class="button-div"> 
-        <button class="btn btn-dark" @click="submitRelease()">Submit</button>
+      <div>
+        <div class="button-div"> 
+          <button class="btn btn-dark" @click="submitRelease()">Submit</button>
+        </div>
+        <b-alert
+          :show="dismissCountDown"
+          dismissible
+          variant="success"
+          @dismissed="dismissCountDown=0"
+          @dismiss-count-down="countDownChanged"
+        >
+          <p>Shipment added succesfully!</p>
+        </b-alert>
       </div>
     </div>
   </div>  
@@ -40,7 +51,9 @@ export default {
         searchText: "",
         selected: false,
         date: null,
-        quantity: ""
+        quantity: "",
+        dismissSecs: 3,
+        dismissCountDown: 0,
     }
   },
 
@@ -72,6 +85,9 @@ export default {
               quantity: this.quantity})
         .then((res) => {
           this.message = res.body.message
+          this.dismissCountDown = this.dismissSecs
+          this.searchText = ""
+          this.quantity = ""
       })
     }
   },
@@ -147,6 +163,7 @@ input, select {
 }
 .button-div {
   margin-top: 20px;
+  margin-right: 40px;
 }
 
 @media only screen and (max-width: 600px) {

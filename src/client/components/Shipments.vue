@@ -67,7 +67,7 @@ export default {
           Species: 'Species',
           Origin: 'Origin',
           Quantity: 'Qty',
-          EmergedEarly: 'Emerged early',
+          EmergedEarly: 'EE',
           DOA: 'DOA',
           FTE: 'FTE',
           W: 'Wings',
