@@ -2,15 +2,24 @@
   <div class="main-container">
     <div class="column-div">
       <div class="heading">
-        Daily Stats
+        <p style="font-size: 18px; font-weight: 700; color: #fe4600;">Daily Stats</p>
       </div>
-      <div>
-
+      <div class="daily-item">
+        <p>There are currently about <span style="color: #fe4600">217</span> butterflies flying in the Biosphere.</p>
+      </div>
+      <div class="daily-item">
+        <p><span style="color: #fe4600">89</span> new butterflies have been added to the Butterfly Biosphere this week!</p>
       </div>
     </div>
     <div class="center-div">
       <div class="daily-notification">
-        Can you spot this rare butterfly?
+        <div class="notification-text notification-item">
+          <p style="font-size: 18px;">This butterfly has been spotted <span style="color: #fe4600">12</span> times this week. See if you can spot it!</p>
+          <p>This species is Cethiosa-cyane.</p>
+        </div>
+        <div class="notification-item">
+          <img class="notification-img" src="/static/photos/cethiosa-cyane.jpg" alt="">
+        </div>
       </div>
       <div class="main-column">
         <div class="figure-1">
@@ -150,13 +159,16 @@ export default {
 .center-div {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   height: 91vh;
   width: 75%;
 }
 .heading {
   padding-top: 30px;
+}
+.daily-item {
+  padding: 20px;
 }
 .main-column {
   display: flex;
@@ -165,9 +177,11 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   width: 50%;
-  height: 100%;
 }
 .daily-notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border-radius: 15px;
   background-color: #fff7ef;
@@ -175,10 +189,20 @@ export default {
   padding: 15px;
 }
 .figure-1 {
-  width: 80%;
+  width: 90%;
   height: 200px;
   border-radius: 15px;
   margin: 10px;
   background-color: #fff7ef;
+}
+.notification-text {
+  padding: 10px;
+}
+.notification-img {
+  width: 200px;
+  border-radius: 15px;
+}
+.notification-item {
+  padding: 0 40px 0 40px;
 }
 </style>
