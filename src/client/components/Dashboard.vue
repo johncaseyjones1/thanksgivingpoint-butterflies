@@ -2,13 +2,15 @@
   <div class="main-container">
     <div class="column-div">
       <div class="heading">
-        <p style="font-size: 18px; font-weight: 700; color: #fe4600;">Daily Stats</p>
+        <p style="font-size: 26px; color: white;">Daily Stats</p>
       </div>
-      <div class="daily-item">
-        <p>There are currently about <span style="color: #fe4600">217</span> butterflies flying in the Biosphere.</p>
+      <div class="daily-item item-1">
+        <p><span style="color: #fe4600; font-size: 50px;">217</span></p>
+        <p style="font-size: 18px;">butterflies in the Biosphere</p>
       </div>
-      <div class="daily-item">
-        <p><span style="color: #fe4600">89</span> new butterflies have been added to the Butterfly Biosphere this week!</p>
+      <div class="daily-item item-2">
+        <p><span style="color: #fe4600; font-size: 50px;">89</span></p>
+        <p style="font-size: 18px;">new butterflies this week</p>
       </div>
     </div>
     <div class="center-div">
@@ -23,18 +25,18 @@
       </div>
       <div class="main-column">
         <div class="figure-1">
-          place holder
+
         </div>
         <div class="figure-1">
-          place holder
+
         </div>
       </div>
       <div class="main-column">
         <div class="figure-1">
-          place holder
+
         </div>
         <div class="figure-1">
-          place holder
+
         </div>
       </div>
     </div>
@@ -152,23 +154,36 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 91vh;
+  height: 91.2vh;
   width:  25%;
-  background-color: #eeeeed;
+  background-color: #606977;
+  color: white;
 }
 .center-div {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  height: 91vh;
+  height: 91.2vh;
   width: 75%;
+  background-image: linear-gradient(#eeeeed, #fff7ef);
 }
 .heading {
   padding-top: 30px;
 }
 .daily-item {
   padding: 20px;
+  margin-bottom: 40px;
+}
+.item-1 {
+  width: 70%;
+  background-image: linear-gradient(to bottom right, #bbc0c7, #ffc5aa);
+  border-radius: 20px;
+}
+.item-2 {
+  width: 70%;
+  background-image: linear-gradient(to bottom right, #ffc5aa, #b7c796);
+  border-radius: 20px;
 }
 .main-column {
   display: flex;
@@ -184,8 +199,8 @@ export default {
   align-items: center;
   width: 100%;
   border-radius: 15px;
-  background-color: #fff7ef;
-  margin: 0 20px 20px 20px;
+  background-color: white;
+  margin: 20px 20px 20px 20px;
   padding: 15px;
 }
 .figure-1 {
@@ -193,7 +208,7 @@ export default {
   height: 200px;
   border-radius: 15px;
   margin: 10px;
-  background-color: #fff7ef;
+  background-color: white;
 }
 .notification-text {
   padding: 10px;
