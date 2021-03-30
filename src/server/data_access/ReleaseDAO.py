@@ -70,4 +70,19 @@ class ReleaseDAO:
         
         return updateReleaseResponse.updateReleaseResponse(message)
 
-    
+    def deleteRelease(self, request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["release"]
+
+        # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
+        objectID = ObjectId(request.getReleaseID())
+        filter = {"_id": objectID}
+
+        resp = col.delete_one(filter)
+
+        if resp.acknowledged == True:
+            return insertReleaseResponse.InsertReleaseResponse("successfully deleted release")
+        
+        else:
+            return insertReleaseResponse.InsertReleaseResponse("Could not delete release")

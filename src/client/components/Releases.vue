@@ -7,6 +7,11 @@
       </div>
       <button class="btn btn-dark add-release-btn" v-show="addRelease" @click="hideAddRelease()">Cancel</button>
       <v-client-table v-show="showTable" v-model="releases" :columns="columns" :options="options">
+        <div slot="Delete" slot-scope="{row}">
+          <span>
+            <button type="button" class="btn btn-outline-dark btn-sm" @click="deleteRelease(row)">Delete</button>
+          </span>  
+        </div> 
       </v-client-table>
     </div>
     <AddRelease v-show="addRelease"/>
@@ -24,8 +29,9 @@ export default {
       addRelease: false,
       showTable: true,
       collectingData: false,
+      editMessage: "",
       releases: [],
-      columns: ["formattedDate","Species","Quantity"],
+      columns: ["formattedDate","Species","Quantity","Delete"],
       options: {
         headings: {
           formattedDate: 'Date',
@@ -63,6 +69,7 @@ export default {
           var ind
           for (ind in this.releases) {
             this.releases[ind].formattedDate = new Date(this.releases[ind].Date.$date).toDateString()
+            this.releases[ind].id = this.releases[ind]._id.$oid
           }
         })
     },
@@ -73,6 +80,23 @@ export default {
     hideAddRelease() {
       this.addRelease = false;
       this.showTable = true;
+    },
+    deleteRelease(row) {
+      console.log("delete " + row)
+      console.log(row._id)
+      request.post('/api/release/delete')
+        .type('json')
+        .send({
+              _id: row._id.$oid,
+              })
+        .then((res) => {
+          this.editMessage = res.body.message
+          console.log(this.editMessage)
+          const index = this.releases.findIndex(item => item.id === row.id);
+
+          if (index !== undefined) this.releases.splice(index, 1);
+
+      })
     }
   },
 
