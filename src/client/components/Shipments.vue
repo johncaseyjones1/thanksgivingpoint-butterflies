@@ -1,7 +1,10 @@
 <template>
   <div class="shipment-container">
     <div class="center-div">
-      <button class="btn btn-dark add-shipment-btn" v-show="showTable" @click="showAddShipment()">Add new shipment</button>
+      <div class="buttons" v-show="showTable">
+          <button class="btn btn-outline-success option-btn" @click="showAddShipment()">Add new shipment</button>
+        <a class="btn btn-outline-success option-btn" href="/static/shipments/shipments.csv" download="shipments.csv">Download shipment data</a>
+      </div>
       <button class="btn btn-dark add-shipment-btn" v-show="addShipment" @click="hideAddShipment()">Cancel</button>
       <v-client-table v-show="showTable" v-model="shipments" :columns="columns" :options="options">
         <div slot="FTE" slot-scope="{row, update, setEditing, isEditing, revertValue}">
@@ -9,8 +12,8 @@
               {{row.FTE}}
           </span>
           <span v-else>
-            <input type="text" class="form-control" v-model="row.FTE">
-            <button type="button" class="btn btn-dark btn-sm" @click="update(row.FTE); setEditing(false)">Submit</button>
+            <input type="number" class="form-control" v-model="row.FTE">
+            <button type="button" class="btn btn-dark btn-sm" @click="update(row.FTE); setEditing(false); updateShipment(row)">Submit</button>
             <button type="button" class="btn btn-sm" @click="revertValue(); setEditing(false)">Cancel</button>        
           </span>  
         </div>
@@ -19,8 +22,8 @@
               {{row.W}}
           </span>
           <span v-else>
-            <input type="text" class="form-control" v-model="row.W">
-            <button type="button" class="btn btn-dark btn-sm" @click="update(row.W); setEditing(false)">Submit</button>
+            <input type="number" class="form-control" v-model="row.W">
+            <button type="button" class="btn btn-dark btn-sm" @click="update(row.W); setEditing(false); updateShipment(row)">Submit</button>
             <button type="button" class="btn btn-sm" @click="revertValue(); setEditing(false)">Cancel</button>        
           </span>  
         </div>
@@ -29,9 +32,14 @@
               {{row.Parasite}}
           </span>
           <span v-else>
-            <input type="text" class="form-control" v-model="row.Parasite">
-            <button type="button" class="btn btn-dark btn-sm" @click="update(row.Parasite); setEditing(false)">Submit</button>
+            <input type="number" class="form-control" v-model="row.Parasite">
+            <button type="button" class="btn btn-dark btn-sm" @click="update(row.Parasite); setEditing(false); updateShipment(row)">Submit</button>
             <button type="button" class="btn btn-sm" @click="revertValue(); setEditing(false)">Cancel</button>        
+          </span>  
+        </div> 
+        <div slot="Delete" slot-scope="{row}">
+          <span>
+            <button type="button" class="btn btn-outline-dark btn-sm" @click="deleteShipment(row)">Delete</button>
           </span>  
         </div> 
       </v-client-table>
@@ -51,8 +59,9 @@ export default {
       addShipment: false,
       showTable: true,
       collectingData: false,
+      editMessage: "",
       shipments: [],
-      columns: ["id","formattedDate","Supplier","Species","Origin","Quantity","EmergedEarly","DOA","FTE","W","Parasite"],
+      columns: ["id","formattedDate","Supplier","Species","Origin","Quantity","EmergedEarly","DOA","FTE","W","Parasite","Delete"],
       options: {
         headings: {
           id: 'ID',
@@ -61,7 +70,7 @@ export default {
           Species: 'Species',
           Origin: 'Origin',
           Quantity: 'Qty',
-          EmergedEarly: 'Emerged early',
+          EmergedEarly: 'EE',
           DOA: 'DOA',
           FTE: 'FTE',
           W: 'Wings',
@@ -80,7 +89,8 @@ export default {
               return dateA <= dateB ? 1 : -1;
             }
           }
-        }
+        },
+        orderBy: {column: "formattedDate", ascending: false}
       }
     }
   },
@@ -110,6 +120,44 @@ export default {
     hideAddShipment() {
       this.addShipment = false;
       this.showTable = true;
+    },
+    updateShipment(row) {
+      console.log(row._id)
+      request.post('/api/shipment/edit')
+        .type('json')
+        .send({
+              _id: row._id.$oid,
+              date: row.Date.$date,
+              supplier: row.Supplier,
+              species: row.Species,
+              origin: row.Origin,
+              quantity: row.Quantity,
+              emergedEarly: row.EmergedEarly,
+              deadOnArrival: row.DOA,
+              FTE: row.FTE,
+              W: row.W,
+              Parasite: row.Parasite})
+        .then((res) => {
+          this.editMessage = res.body.message
+          console.log(this.editMessage)
+      })
+    },
+    deleteShipment(row) {
+      console.log("delete " + row)
+      console.log(row._id)
+      request.post('/api/shipment/delete')
+        .type('json')
+        .send({
+              _id: row._id.$oid,
+              })
+        .then((res) => {
+          this.editMessage = res.body.message
+          console.log(this.editMessage)
+          const index = this.shipments.findIndex(item => item.id === row.id);
+
+          if (index !== undefined) this.shipments.splice(index, 1);
+
+      })
     }
   },
 
@@ -133,6 +181,16 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+.option-btn {
+  margin-right: 20px;
 }
 .add-shipment-btn {
   margin-bottom: 30px;

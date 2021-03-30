@@ -4,7 +4,7 @@
       <div class="heading">Add a new shipment</div>
       <div class="input-group mb-3">
         <div class="subheading">Date:</div>
-        <v-date-picker color="orange" v-model="date" />
+        <v-date-picker color="orange" is-inline v-model="date" />
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Supplier:</div>
@@ -26,7 +26,7 @@
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Origin:</div>
-        <select class="custom-select" v-model="supplier">
+        <select class="custom-select" v-model="origin">
           <option>BELIZE</option>
           <option>COLOMBIA</option>
           <option>COSTA RICA</option>
@@ -50,8 +50,20 @@
         <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
       </div>
 
-      <div>
-        <button class="btn" @click="submitShipment()"></button>
+      <div class="row-div">
+        <div class="button-div"> 
+          <button class="btn btn-dark" @click="submitShipment()">Submit</button>
+        </div>
+
+        <b-alert
+          :show="dismissCountDown"
+          dismissible
+          variant="success"
+          @dismissed="dismissCountDown=0"
+          @dismiss-count-down="countDownChanged"
+        >
+          <p>Shipment added succesfully!</p>
+        </b-alert>
       </div>
     </div>
   </div>  
@@ -72,7 +84,9 @@ export default {
       origin: "",
       quantity: "",
       emergedEarly: "",
-      deadOnArrival: ""
+      deadOnArrival: "",
+      dismissSecs: 3,
+      dismissCountDown: 0,
     }
   },
 
@@ -97,7 +111,7 @@ export default {
     },
 
     async submitShipment() {
-      request.post('/api/observations')
+      request.post('/api/shipment/post')
         .type('json')
         .send({date: this.date,
               supplier: this.supplier,
@@ -108,6 +122,14 @@ export default {
               deadOnArrival: this.deadOnArrival})
         .then((res) => {
           this.message = res.body.message
+          this.dismissCountDown = this.dismissSecs
+          this.date = new Date()
+          this.supplier = ""
+          this.origin = ""
+          this.quantity = ""
+          this.emergedEarly = ""
+          this.deadOnArrival = ""
+          this.searchText = ""
       })
     }
   },
@@ -133,6 +155,7 @@ export default {
   align-items: center;
   margin: 0 5px 0 5px;
   width: 100%;
+  margin-bottom: 40px;
 }
 .center-div {
   display: flex;
@@ -179,6 +202,10 @@ input, select {
   background-color: white;
   border: none;
   border-radius: 15px !important;
+}
+.button-div {
+  margin-top: 20px;
+  margin-right: 40px;
 }
 
 @media only screen and (max-width: 600px) {

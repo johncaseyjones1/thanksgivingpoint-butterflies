@@ -1,5 +1,13 @@
+import os
+import sys
+sys.path.append('../../')
 import pymongo
 from bson.json_util import dumps
+import json
+import csv
+from bson.objectid import ObjectId
+import dateutil.parser as parser
+from datetime import datetime
 
 from request.shipment import getShipmentRequest
 from request.shipment import getShipmentsInRangeRequest
@@ -18,12 +26,41 @@ class ShipmentDAO:
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["shipment"]
+        static_path=os.path.join(os.path.dirname(__file__), "../public")
 
         shipments = col.find({})        
         shipmentList = list(shipments)
 
         response = GetShipmentResponse(dumps(shipmentList))
-        #response.setResponse(dumps(shipmentList))
+        
+        shipmentsNoID = col.find({},{"_id":0})   
+        jsonFile = open(static_path + "/shipments/shipments.json", 'w')
+        shipmentList = list(shipmentsNoID)
+
+        for shipment in shipmentList:
+            shipment["Date"] = shipment["Date"].strftime("%m/%d/%Y")
+
+        json.dump(shipmentList, jsonFile)
+        jsonFile.close()
+        with open(static_path + "/shipments/shipments.json", 'r') as jsonFile:
+            jsonData = json.load(jsonFile)
+
+        
+        csv_file = open(static_path + "/shipments/shipments.csv", 'w')
+
+        csv_writer = csv.writer(csv_file)
+
+        count = 0
+        for shipment in jsonData:
+            if count == 0:
+                header = shipment.keys()
+                csv_writer.writerow(header)
+                count += 1
+            
+            csv_writer.writerow(shipment.values())
+        
+        csv_file.close()
+        jsonFile.close()
 
         return response
 
@@ -62,48 +99,73 @@ class ShipmentDAO:
 
 
     # This function is for inserting one observation into the MongoDB Database
-    def insertOneShipment(request):
+    def insertOneShipment(self, request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["shipment"]
+        date = parser.parse(request.getDate())
+
+        # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
+        shipment = {
+                    "Date": date,
+                    "Species": request.getSpecies(),
+                    "Origin": request.getOrigin(),
+                    "Quantity": int(request.getQuantity()),
+                    "Supplier": request.getSupplier(),
+                    "EmergedEarly": int(request.getEmergedEarly()),
+                    "DOA": int(request.getDeadOnArrival()),
+                    "FTE": int(request.getFailedToEmerge()),
+                    "W": int(request.getWings()),
+                    "Parasite": int(request.getParasitized())}
+
+        ID = col.insert_one(shipment).inserted_id
+
+        return insertShipmentResponse.InsertShipmentResponse("successfully submitted shipment")
+
+    # This function updates a shipment that has already been entered to change previously
+    # entered values or to add values contained in the ShipmentDataModel class
+    def updateShipment(self, request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["shipment"]
+
+        data = { "$set" : {"Species": request.getSpecies(),
+                        "Date": datetime.utcfromtimestamp(int(request.getDate())/1000),
+                        "Origin": request.getOrigin(),
+                        "Quantity": int(request.getQuantity()),
+                        "Supplier": request.getSupplier(),
+                        "EmergedEarly": int(request.getEmergedEarly()),
+                        "DOA": int(request.getDeadOnArrival()),
+                        "FTE": int(request.getFailedToEmerge()),
+                        "W": int(request.getWings()),
+                        "Parasite": int(request.getParasitized())}
+                }
+
+        objectID = ObjectId(request.getShipmentID())
+        wrongFilter = {"Species": request.getSpecies}
+        filter = {"_id": objectID}
+        result = col.update_one(filter, data)
+        message = "success"
+        if result.modified_count != 1:
+            message = "error, modified {} shipment(s) using data {}".format(result.modified_count, data)
+
+        return updateShipmentResponse.UpdateShipmentResponse(message)
+
+
+
+    def deleteShipment(self, request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["shipment"]
 
         # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
-        shipment = {"speciesID": request.getSpeciesID(),
-                    "dateEntered": request.getDateEntered(),
-                    "origin": request.getOrigin(),
-                    "quantity": request.getQuantity(),
-                    "supplier": request.getSupplier(),
-                    "emergedEarly": request.getEmergedEarly(),
-                    "deadOnArrival": request.getDeadOnArrival(),
-                    "failedToEmerge": request.getFailedToEmerge(),
-                    "parasitized": request.getParasitized()}
+        objectID = ObjectId(request.getShipmentID())
+        filter = {"_id": objectID}
 
-        ID = col.insert_one(shipment).inserted_id
+        resp = col.delete_one(filter)
 
-        return insertShipmentResponse.InsertShipmentResponse(ID)
-
-    # This function updates a shipment that has already been entered to change previously
-    # entered values or to add values contained in the ShipmentDataModel class
-    def updateShipment(request):
-        client = pymongo.MongoClient("mongodb://localhost:27017/")
-        db = client["observatory"]
-        col = db["shipment"]
-
-        data = { "$set" : {"speciesID": request.getSpeciesID(),
-                        "dateEntered": request.getDateEntered(),
-                        "origin": request.getOrigin(),
-                        "quantity": request.getQuantity(),
-                        "supplier": request.getSupplier(),
-                        "emergedEarly": request.getEmergedEarly(),
-                        "deadOnArrival": request.getDeadOnArrival(),
-                        "failedToEmerge": request.getFailedToEmerge(),
-                        "parasitized": request.getParasitized()}
-                }
-
-        filter = {"_id": request.getShipmentID()}
-        result = col.update_one(filter, data)
-        message = "success"
-        if result.modified_count != 1:
-            message = "error"
-
-        return updateShipmentResponse.UpdateShipmentResponse(message)
+        if resp.acknowledged == True:
+            return insertShipmentResponse.InsertShipmentResponse("successfully deleted shipment")
+        
+        else:
+            return insertShipmentResponse.InsertShipmentResponse("Could not delete shipment")

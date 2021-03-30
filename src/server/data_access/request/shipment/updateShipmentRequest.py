@@ -1,43 +1,47 @@
-class GetObservationRequest:
+class UpdateShipmentRequest:
 
-    def __init__(self, shipmentID, speciesID, dateEntered, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge, parasitized):
+    def __init__(self, shipmentID, date, species, origin, quantity, supplier, emergedEarly, deadOnArrival, failedToEmerge, wings, parasitized):
         self.shipmentID = shipmentID
-        self.speciesID = speciesID
-        self.dateEntered = dateEntered
+        self.date = date
+        self.species = species
         self.origin = origin
         self.quantity = quantity
         self.supplier = supplier
         self.emergedEarly = emergedEarly
         self.deadOnArrival = deadOnArrival
         self.failedToEmerge = failedToEmerge
+        self.wings = wings
         self.parasitized = parasitized
 
-    def getShipmentID():
+    def getShipmentID(self):
         return self.shipmentID
 
-    def getSpeciesID():
-        return self.speciesID
+    def getDate(self):
+        return self.date
 
-    def getDateEntered():
-        return self.dateEntered
+    def getSpecies(self):
+        return self.species
 
-    def getOrigin():
+    def getOrigin(self):
         return self.origin
 
-    def getQuantity():
+    def getQuantity(self):
         return self.quantity
 
-    def getSupplier():
+    def getSupplier(self):
         return self.supplier
 
-    def getEmergedEarly():
+    def getEmergedEarly(self):
         return self.emergedEarly
 
-    def getDeadOnArrival():
+    def getDeadOnArrival(self):
         return self.deadOnArrival
 
-    def getFailedToEmerge():
+    def getFailedToEmerge(self):
         return self.failedToEmerge
 
-    def getParasitized():
+    def getWings(self):
+         return self.wings
+
+    def getParasitized(self):
         return self.parasitized

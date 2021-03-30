@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import {ClientTable} from 'vue-tables-2'
 import VCalendar from 'v-calendar'
 
+
 import { BootstrapVue } from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import App from './App'
 import Dashboard from './components/Dashboard'

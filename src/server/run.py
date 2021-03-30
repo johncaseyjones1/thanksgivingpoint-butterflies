@@ -14,14 +14,24 @@ import tornado.escape
 from tornado.log import enable_pretty_logging
 
 from service.ObservationService import InsertObservation
+from service.ShipmentService import InsertShipment
+from service.ShipmentService import EditShipment
+from service.ShipmentService import DeleteShipment
 from service.ObservationService import GetOneWeek
 from service.ReleaseService import GetAllReleases
+from service.ReleaseService import InsertRelease
+from service.ReleaseService import DeleteRelease
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from service.LocationService import GetLocations
 from response.butterfly_species.GetLocationResponse import *
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
+from data_access.request.shipment.insertShipmentRequest import InsertShipmentRequest
+from data_access.request.shipment.updateShipmentRequest import UpdateShipmentRequest
+from data_access.request.shipment.deleteShipmentRequest import DeleteShipmentRequest
+from data_access.request.release.insertReleaseRequest import InsertReleaseRequest
+from data_access.request.release.deleteReleaseRequest import DeleteReleaseRequest
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
@@ -96,6 +106,73 @@ class ObservationHandler(tornado.web.RequestHandler):
         
         self.write({"message": responseMessage})
 
+class PostShipmentHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        date = requestBody["date"]
+        species = requestBody['species']
+        origin = requestBody['origin']
+        quantity = requestBody['quantity']
+        supplier = requestBody["supplier"]
+        emergedEarly = requestBody['emergedEarly']
+        deadOnArrival = requestBody['deadOnArrival']
+        request = InsertShipmentRequest(date, species, origin, quantity, supplier, emergedEarly, deadOnArrival)
+        responseMessage = InsertShipment.insertOneShipment(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
+class EditShipmentHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+        date = requestBody["date"]
+        species = requestBody['species']
+        origin = requestBody['origin']
+        quantity = requestBody['quantity']
+        supplier = requestBody["supplier"]
+        emergedEarly = requestBody['emergedEarly']
+        deadOnArrival = requestBody['deadOnArrival']
+        failedToEmerge = requestBody["FTE"]
+        wings = requestBody["W"]
+        parasite = requestBody["Parasite"]
+
+        request = UpdateShipmentRequest(ID, date, species, origin, quantity, supplier,
+         emergedEarly, deadOnArrival, failedToEmerge, wings, parasite)
+        responseMessage = EditShipment.editOneShipment(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
+class DeleteShipmentHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+
+        request = DeleteShipmentRequest(ID)
+        responseMessage = DeleteShipment.deleteOneShipment(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
+class PostReleaseHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        date = requestBody["date"]
+        species = requestBody['species']
+        quantity = requestBody['quantity']
+        request = InsertReleaseRequest(species, quantity, date)
+        responseMessage = InsertRelease.insertOneRelease(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
+class DeleteReleaseHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+
+        request = DeleteReleaseRequest(ID)
+        responseMessage = DeleteRelease.deleteOneRelease(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
 class PhotoHandler(tornado.web.RequestHandler):
     def post(self):
         hex = uuid.uuid4().hex
@@ -128,6 +205,7 @@ class GetObservationsOneWeek(tornado.web.RequestHandler):
 
 
 def make_app(bundle_path, debug):
+    static_path=os.path.join(os.path.dirname(__file__), "public")
     return tornado.web.Application(
        template_path=os.path.join(os.path.dirname(__file__), "views"),
        static_path=os.path.join(os.path.dirname(__file__), "public"),
@@ -140,7 +218,12 @@ def make_app(bundle_path, debug):
            #(r".*/api/longevity/data", LongevityDataHandler),
            #(r".*/api/activities", ActivitiesHandler),
            (r".*/api/shipment", GetShipmentsHandler),
+           (r".*/api/shipment/post", PostShipmentHandler),
+           (r".*/api/shipment/edit", EditShipmentHandler),
+           (r".*/api/shipment/delete", DeleteShipmentHandler),
            (r".*/api/release", GetReleasesHandler),
+           (r".*/api/release/post", PostReleaseHandler),
+           (r".*/api/release/delete", DeleteReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
