@@ -29,7 +29,7 @@
       </div>
       <div class="main-column">
         <div class="figure-1">
-
+          <img class="notification-img" src="/static/graphs/worldMap.svg" alt="">
         </div>
         <div class="figure-1">
 
@@ -80,7 +80,8 @@ export default {
               request
               .get('/api/location')
               .then((res) => {
-                this.pathToMap = JSON.parse(res.body.pathToMap)
+                console.log("pathToMap: " + res.body.pathToMap)
+                this.pathToMap = res.body.pathToMap
               })
             })
         })
