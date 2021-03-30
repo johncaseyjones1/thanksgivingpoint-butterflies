@@ -39,15 +39,15 @@
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Quantity:</div>
-        <input type="text" class="form-control short-input" v-model="quantity"/>
+        <input type="text" class="form-control" v-model="quantity"/>
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Emerged early:</div>
-        <input type="text" class="form-control short-input" v-model="emergedEarly"/>
+        <input type="text" class="form-control" v-model="emergedEarly"/>
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Dead on arrival:</div>
-        <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
+        <input type="text" class="form-control" v-model="deadOnArrival"/>
       </div>
 
       <div class="row-div">
@@ -194,9 +194,6 @@ export default {
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-}
-.short-input {
-  width: 30%;
 }
 input, select {
   background-color: white;
