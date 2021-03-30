@@ -5,17 +5,17 @@
       <div class="column-div">
         <div class="input-group mb-3">
           <div class="subheading">Scientific name:</div>
-          <input type="text" class="form-control" v-model="scientificName"/>
+          <input type="text" class="form-control input-w" v-model="scientificName"/>
         </div>
 
         <div class="input-group mb-3">
           <div class="subheading">Common name:</div>
-          <input type="text" class="form-control" v-model="commonName"/>
+          <input type="text" class="form-control input-w" v-model="commonName"/>
         </div>
 
         <div class="row-div">
           <div class="field-item" id="size">
-            <h5>Size:</h5>
+            <h6>Size:</h6>
             <input v-on:click="setSize('S')" id="S" class="btn btn-outline-success" type="button" value="Small">
             <input v-on:click="setSize('M')" id="M" class="btn btn-outline-success" type="button" value="Medium">
             <input v-on:click="setSize('L')" id="L" class="btn btn-outline-success" type="button" value="Large">
@@ -24,7 +24,7 @@
 
         <div class="row-div">
           <div class="field-item" id="wingShape">
-            <h5>Wing Shape:</h5>
+            <h6>Wing Shape:</h6>
             <input v-on:click="setWingShape(1)" id="wingShape1" class="btn btn-outline-success" type="button" value="1">
             <input v-on:click="setWingShape(2)" id="wingShape2" class="btn btn-outline-success" type="button" value="2">
             <input v-on:click="setWingShape(3)" id="wingShape3" class="btn btn-outline-success" type="button" value="3">
@@ -35,8 +35,8 @@
 
         <div class="row-div">
           <div class="field-item" id="primaryColor">
-            <h5>Primary Color:</h5>
-            <select class="custom-select" v-model="primaryColor">
+            <h6>Primary Color:</h6>
+            <select class="custom-select input-w" v-model="primaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
               <option>Orange</option>
@@ -52,8 +52,8 @@
           </div>
 
           <div class="field-item" id="secondaryColor">
-            <h5>Secondary Color:</h5>
-            <select class="custom-select" v-model="secondaryColor">
+            <h6>Secondary Color:</h6>
+            <select class="custom-select input-w" v-model="secondaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
               <option>Orange</option>
@@ -71,7 +71,7 @@
 
         <div class="row-div">
           <div class="field-item" id="pattern">
-            <h5>Pattern:</h5>
+            <h6>Pattern:</h6>
             <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success pattern-button" type="button" value="Striped">
             <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success pattern-button" type="button" value="Veination">
             <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success pattern-button" type="button" value="Mottled">
@@ -82,7 +82,7 @@
 
         <div class="row-div">
           <div class="field-item" id="eyespot">
-            <h5>Eyespot:</h5>
+            <h6>Eyespot:</h6>
             <input type="radio" id="yes" value="Y" v-model="eyespot">
             <label for="yes">Yes</label>
             <br>
@@ -92,11 +92,16 @@
           </div>
         </div>
 
+        <div class="input-group mb-3">
+          <div class="subheading">Image:</div>
+          <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
+        </div>
+
       </div>
 
       <div class="row-div">
         <div class="button-div"> 
-          <button class="btn btn-dark" @click="submitShipment()">Submit</button>
+          <button class="btn btn-dark" @click="submitSpecies()">Submit</button>
         </div>
 
         <b-alert
@@ -106,7 +111,7 @@
           @dismissed="dismissCountDown=0"
           @dismiss-count-down="countDownChanged"
         >
-          <p>Shipment added succesfully!</p>
+          <p>Species added succesfully!</p>
         </b-alert>
       </div>
     </div>
@@ -161,6 +166,10 @@ export default {
           this.eyespot = 0
           this.image = null
       })
+    },
+
+    fileChanged(event) {
+      this.file = event.target.files[0]
     },
 
     setSize(size) {
@@ -256,7 +265,7 @@ export default {
   margin-right: 80px;
   margin-top: 30px;
 }
-input, select {
+.input-w {
   background-color: white;
   border: none;
   border-radius: 15px !important;
