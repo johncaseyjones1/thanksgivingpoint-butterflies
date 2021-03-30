@@ -12,6 +12,6 @@ from datetime import datetime
 class GetLocations:
 
     @staticmethod
-    def getAllLocations(request):
+    def getAllLocations():
         locationDAO = LocationDAO()
-        return locationDAO.getAllLocations(request)
+        return locationDAO.getAllLocations()
