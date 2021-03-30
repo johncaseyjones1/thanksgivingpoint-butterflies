@@ -5,12 +5,16 @@
         <p style="font-size: 26px; color: white;">Daily Stats</p>
       </div>
       <div class="daily-item item-1">
+        <p><span style="color: #fe4600; font-size: 50px;">89</span></p>
+        <p style="font-size: 18px;">new butterflies this week</p>
+      </div>
+      <div class="daily-item item-2">
         <p><span style="color: #fe4600; font-size: 50px;">217</span></p>
         <p style="font-size: 18px;">butterflies in the Biosphere</p>
       </div>
-      <div class="daily-item item-2">
-        <p><span style="color: #fe4600; font-size: 50px;">89</span></p>
-        <p style="font-size: 18px;">new butterflies this week</p>
+      <div class="daily-item item-3">
+        <p><span style="color: #fe4600; font-size: 50px;">17</span></p>
+        <p style="font-size: 18px;">different species in the Biosphere</p>
       </div>
     </div>
     <div class="center-div">
@@ -173,7 +177,7 @@ export default {
 }
 .daily-item {
   padding: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .item-1 {
   width: 70%;
@@ -183,6 +187,11 @@ export default {
 .item-2 {
   width: 70%;
   background-image: linear-gradient(to bottom right, #ffc5aa, #b7c796);
+  border-radius: 20px;
+}
+.item-3 {
+  width: 70%;
+  background-image: linear-gradient(to bottom right, #b7c796, #bbc0c7);
   border-radius: 20px;
 }
 .main-column {
@@ -219,5 +228,34 @@ export default {
 }
 .notification-item {
   padding: 0 40px 0 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .column-div {
+    width: 100%;
+    height: 740px;
+  }
+  .center-div {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .daily-notification {
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 30px;
+    border-radius: 0;
+    padding: 30px 0 30px 0;
+  }
+  .notification-img {
+    width: 300px;
+  }
+  .main-column {
+    width: 100%;
+  }
 }
 </style>

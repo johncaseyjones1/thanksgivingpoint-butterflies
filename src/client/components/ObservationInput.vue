@@ -290,6 +290,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 50px;
     border: 3px solid #eeeeed;
     border-radius: 15px;
     padding: 30px;
