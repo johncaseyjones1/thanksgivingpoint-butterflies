@@ -50,8 +50,20 @@
         <input type="text" class="form-control short-input" v-model="deadOnArrival"/>
       </div>
 
-      <div class="button-div"> 
-        <button class="btn btn-dark" @click="submitShipment()">Submit</button>
+      <div class="row-div">
+        <div class="button-div"> 
+          <button class="btn btn-dark" @click="submitShipment()">Submit</button>
+        </div>
+
+        <b-alert
+          :show="dismissCountDown"
+          dismissible
+          variant="success"
+          @dismissed="dismissCountDown=0"
+          @dismiss-count-down="countDownChanged"
+        >
+          <p>Shipment added succesfully!</p>
+        </b-alert>
       </div>
     </div>
   </div>  
@@ -72,7 +84,9 @@ export default {
       origin: "",
       quantity: "",
       emergedEarly: "",
-      deadOnArrival: ""
+      deadOnArrival: "",
+      dismissSecs: 3,
+      dismissCountDown: 0,
     }
   },
 
@@ -108,6 +122,14 @@ export default {
               deadOnArrival: this.deadOnArrival})
         .then((res) => {
           this.message = res.body.message
+          this.dismissCountDown = this.dismissSecs
+          this.date = new Date()
+          this.supplier = ""
+          this.origin = ""
+          this.quantity = ""
+          this.emergedEarly = ""
+          this.deadOnArrival = ""
+          this.searchText = ""
       })
     }
   },
@@ -183,6 +205,7 @@ input, select {
 }
 .button-div {
   margin-top: 20px;
+  margin-right: 40px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,7 +1,10 @@
 <template>
   <div class="shipment-container">
     <div class="center-div">
-      <button class="btn btn-dark add-shipment-btn" v-show="showTable" @click="showAddShipment()">Add new shipment</button>
+      <div class="buttons" v-show="showTable">
+          <button class="btn btn-outline-success option-btn" @click="showAddShipment()">Add new shipment</button>
+          <button class="btn btn-outline-success option-btn" @click="download()">Download shipment data</button>
+      </div>
       <button class="btn btn-dark add-shipment-btn" v-show="addShipment" @click="hideAddShipment()">Cancel</button>
       <v-client-table v-show="showTable" v-model="shipments" :columns="columns" :options="options">
         <div slot="FTE" slot-scope="{row, update, setEditing, isEditing, revertValue}">
@@ -36,7 +39,7 @@
         </div> 
         <div slot="Delete" slot-scope="{row}">
           <span>
-            <button type="button" class="btn btn-dark btn-sm" @click="deleteShipment(row)">Delete</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" @click="deleteShipment(row)">Delete</button>
           </span>  
         </div> 
       </v-client-table>
@@ -67,7 +70,7 @@ export default {
           Species: 'Species',
           Origin: 'Origin',
           Quantity: 'Qty',
-          EmergedEarly: 'Emerged early',
+          EmergedEarly: 'EE',
           DOA: 'DOA',
           FTE: 'FTE',
           W: 'Wings',
@@ -178,6 +181,16 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+.option-btn {
+  margin-right: 20px;
 }
 .add-shipment-btn {
   margin-bottom: 30px;
