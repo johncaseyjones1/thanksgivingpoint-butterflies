@@ -7,9 +7,11 @@
     <div class="page-buttons">
       <button v-on:click="setPage('releases')" id="release-button" class="btn btn-outline-dark" @click="showReleases()">Releases</button>
       <button v-on:click="setPage('shipments')" id="shipment-button" class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
+      <button v-on:click="setPage('species')" id="species-data-button" class="btn btn-outline-dark" @click="showSpeciesData()">Species data</button>   
     </div>
     <Shipments v-show="shipments"/>
     <Releases v-show="releases"/>
+    <SpeciesData v-show="species"/>
   </div>
 </template>
 
@@ -18,6 +20,7 @@
 <script>
 import Shipments from "./Shipments"
 import Releases from "./Releases"
+import SpeciesData from "./SpeciesData"
 //import request from 'superagent-bluebird-promise'
 //import axios from 'axios'
 
@@ -26,31 +29,47 @@ export default {
     return {
       shipments: false,
       releases: false,
+      species: false
     }
   },
 
   components: {
     Shipments,
-    Releases
+    Releases,
+    SpeciesData
   },
 
   methods: {
     showShipments() {
       this.shipments = true;
       this.releases = false;
+      this.species = false;
     },
     showReleases() {
       this.shipments = false;
       this.releases = true;
+      this.species = false;
+    },
+    showSpeciesData() {
+      this.shipments = false;
+      this.releases = false;
+      this.species = true;
     },
     setPage(page) {
       if (page == "releases") {
         document.getElementById("release-button").classList.add("active");
         document.getElementById("shipment-button").classList.remove("active");
+        document.getElementById("species-data-button").classList.remove("active");
+      }
+      else if (page == "shipments") {
+        document.getElementById("release-button").classList.remove("active");
+        document.getElementById("shipment-button").classList.add("active");
+        document.getElementById("species-data-button").classList.remove("active");
       }
       else {
         document.getElementById("release-button").classList.remove("active");
-        document.getElementById("shipment-button").classList.add("active");
+        document.getElementById("shipment-button").classList.remove("active");
+        document.getElementById("species-data-button").classList.add("active");
       }
     }
       

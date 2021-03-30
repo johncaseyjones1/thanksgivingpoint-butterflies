@@ -193,41 +193,41 @@ export default {
     },
 
     setSize(size) {
-        this.size = size;
-        var sizes = ["S","M","L"];
-        for (let i = 0; i < sizes.length; i++) {
-            if (sizes[i] == size) {
-                document.getElementById(size).classList.add("active");
-            }
-            else {
-                document.getElementById(sizes[i]).classList.remove("active");
-            }
-        }
+      this.size = size;
+      var sizes = ["S","M","L"];
+      for (let i = 0; i < sizes.length; i++) {
+          if (sizes[i] == size) {
+              document.getElementById(size).classList.add("active");
+          }
+          else {
+              document.getElementById(sizes[i]).classList.remove("active");
+          }
+      }
     },
 
     setWingShape(wingShape) {
-        this.wingShape = wingShape;
-        for (let i = 1; i < 6; i++) {
-            if (i == wingShape) {
-                document.getElementById("wingShape" + i).classList.add("active");
-            }
-            else {
-                document.getElementById("wingShape" + i).classList.remove("active");
-            }
-        }
+      this.wingShape = wingShape;
+      for (let i = 1; i < 6; i++) {
+          if (i == wingShape) {
+              document.getElementById("wingShape" + i).classList.add("active");
+          }
+          else {
+              document.getElementById("wingShape" + i).classList.remove("active");
+          }
+      }
     },
 
     setPattern(pattern) {
-        this.pattern = pattern;
-        var patterns = ["Striped","Veination","Mottled","Spots","None"];
-        for (let i = 0; i < patterns.length; i++) {
-            if (patterns[i] == pattern) {
-                document.getElementById(pattern).classList.add("active");
-            }
-            else {
-                document.getElementById(patterns[i]).classList.remove("active");
-            }
-        }
+      this.pattern = pattern;
+      var patterns = ["Striped","Veination","Mottled","Spots","None"];
+      for (let i = 0; i < patterns.length; i++) {
+          if (patterns[i] == pattern) {
+              document.getElementById(pattern).classList.add("active");
+          }
+          else {
+              document.getElementById(patterns[i]).classList.remove("active");
+          }
+      }
     },
   },
   created() {
