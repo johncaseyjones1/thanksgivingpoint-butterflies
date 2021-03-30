@@ -3,7 +3,7 @@
     <div class="center-div">
       <div class="buttons" v-show="showTable">
           <button class="btn btn-outline-success option-btn" @click="showAddShipment()">Add new shipment</button>
-          <button class="btn btn-outline-success option-btn" @click="download()">Download shipment data</button>
+        <a class="btn btn-outline-success option-btn" href="/static/shipments/shipments.csv" download="shipments.csv">Download shipment data</a>
       </div>
       <button class="btn btn-dark add-shipment-btn" v-show="addShipment" @click="hideAddShipment()">Cancel</button>
       <v-client-table v-show="showTable" v-model="shipments" :columns="columns" :options="options">

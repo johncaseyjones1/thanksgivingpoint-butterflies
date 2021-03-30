@@ -1,5 +1,10 @@
+import os
+import sys
+sys.path.append('../../')
 import pymongo
 from bson.json_util import dumps
+import json
+import csv
 from bson.objectid import ObjectId
 import dateutil.parser as parser
 from datetime import datetime
@@ -21,12 +26,41 @@ class ShipmentDAO:
         client = pymongo.MongoClient("mongodb://localhost:27017/")
         db = client["observatory"]
         col = db["shipment"]
+        static_path=os.path.join(os.path.dirname(__file__), "../public")
 
         shipments = col.find({})        
         shipmentList = list(shipments)
 
         response = GetShipmentResponse(dumps(shipmentList))
-        #response.setResponse(dumps(shipmentList))
+        
+        shipmentsNoID = col.find({},{"_id":0})   
+        jsonFile = open(static_path + "/shipments/shipments.json", 'w')
+        shipmentList = list(shipmentsNoID)
+
+        for shipment in shipmentList:
+            shipment["Date"] = shipment["Date"].strftime("%m/%d/%Y")
+
+        json.dump(shipmentList, jsonFile)
+        jsonFile.close()
+        with open(static_path + "/shipments/shipments.json", 'r') as jsonFile:
+            jsonData = json.load(jsonFile)
+
+        
+        csv_file = open(static_path + "/shipments/shipments.csv", 'w')
+
+        csv_writer = csv.writer(csv_file)
+
+        count = 0
+        for shipment in jsonData:
+            if count == 0:
+                header = shipment.keys()
+                csv_writer.writerow(header)
+                count += 1
+            
+            csv_writer.writerow(shipment.values())
+        
+        csv_file.close()
+        jsonFile.close()
 
         return response
 

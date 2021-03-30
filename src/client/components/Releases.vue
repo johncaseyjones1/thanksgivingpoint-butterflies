@@ -3,7 +3,7 @@
     <div class="center-div">
       <div class="buttons" v-show="showTable">
         <button class="btn btn-outline-success option-btn" @click="showAddRelease()">Add new release</button>
-        <button class="btn btn-outline-success option-btn" @click="download()">Download release data</button>
+        <a class="btn btn-outline-success option-btn" href="/static/releases/releases.csv" download="releases.csv">Download release data</a>
       </div>
       <button class="btn btn-dark add-release-btn" v-show="addRelease" @click="hideAddRelease()">Cancel</button>
       <v-client-table v-show="showTable" v-model="releases" :columns="columns" :options="options">

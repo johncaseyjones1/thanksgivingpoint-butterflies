@@ -19,6 +19,13 @@ class GetAllReleases:
         releaseDAO = ReleaseDAO()
         return releaseDAO.getAllReleases()
 
+class DownloadAllReleases:
+    
+    @staticmethod
+    def generateAllReleasesDownload():
+        releaseDAO = ReleaseDAO()
+        return releaseDAO.generateAllReleasesDownload()
+
 class DeleteRelease:
     
     @staticmethod

@@ -187,6 +187,7 @@ class GetObservationsOneWeek(tornado.web.RequestHandler):
 
 
 def make_app(bundle_path, debug):
+    static_path=os.path.join(os.path.dirname(__file__), "public")
     return tornado.web.Application(
        template_path=os.path.join(os.path.dirname(__file__), "views"),
        static_path=os.path.join(os.path.dirname(__file__), "public"),
