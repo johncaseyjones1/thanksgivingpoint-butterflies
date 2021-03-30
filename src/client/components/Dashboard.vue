@@ -55,7 +55,8 @@ export default {
       mostCommonSpeciesNum: 0,
       leastCommonSpecies: "",
       leastCommonSpeciesNum: 0,
-      numFromAsia: 0
+      numFromAsia: 0,
+      pathToMap: ""
     }
   },
 
@@ -72,6 +73,11 @@ export default {
               this.observations = JSON.parse(res.body.observations)
               this.getMostCommonObservation()
               this.getLeastCommonObservation()
+              request
+              .get('/api/location')
+              .then((res) => {
+                this.pathToMap = JSON.parse(res.body.pathToMap)
+              })
             })
         })
     },

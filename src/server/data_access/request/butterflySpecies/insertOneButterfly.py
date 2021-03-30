@@ -1,4 +1,4 @@
-class InsertObservationRequest:
+class InsertOneButterflyRequest:
     def __init__(self, id, tWingColor, bWingColor, size, location):
         self.speciesID = id
         self.topWingColor = tWingColor
