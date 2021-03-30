@@ -66,7 +66,8 @@ class LocationHandler(tornado.web.RequestHandler):
         #or theres a better way for rendering that in the browser
         #Create a getlocationmap method and call it in the created method
         
-class ActivitiesHandler(tornado.web.RequestHandler):
+#class ActivitiesHandler(tornado.web.RequestHandler):
+
 class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
         response = GetAllShipments.getAllShipments()
@@ -137,7 +138,7 @@ def make_app(bundle_path, debug):
            (r".*/api/location", LocationHandler),
            #(r".*/api/longevity", LongevityHandler),
            #(r".*/api/longevity/data", LongevityDataHandler),
-           (r".*/api/activities", ActivitiesHandler),
+           #(r".*/api/activities", ActivitiesHandler),
            (r".*/api/shipment", GetShipmentsHandler),
            (r".*/api/release", GetReleasesHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
