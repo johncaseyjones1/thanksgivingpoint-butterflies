@@ -1,7 +1,10 @@
 <template>
   <div class="releases-container">
     <div class="center-div">
-      <button class="btn btn-dark add-release-btn" v-show="showTable" @click="showAddRelease()">Add new release</button>
+      <div class="buttons" v-show="showTable">
+        <button class="btn btn-outline-success option-btn" @click="showAddRelease()">Add new release</button>
+        <button class="btn btn-outline-success option-btn" @click="download()">Download release data</button>
+      </div>
       <button class="btn btn-dark add-release-btn" v-show="addRelease" @click="hideAddRelease()">Cancel</button>
       <v-client-table v-show="showTable" v-model="releases" :columns="columns" :options="options">
       </v-client-table>
@@ -93,6 +96,16 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+.option-btn {
+  margin-right: 20px;
 }
 .add-release-btn {
   margin-bottom: 30px;
