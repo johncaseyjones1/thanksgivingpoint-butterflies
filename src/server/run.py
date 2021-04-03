@@ -21,10 +21,13 @@ from service.ObservationService import GetOneWeek
 from service.ReleaseService import GetAllReleases
 from service.ReleaseService import InsertRelease
 from service.ReleaseService import DeleteRelease
+from service.ReleaseService import GetReleasesInRange
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
+from service.ButterflySpeciesService import DeleteSpecies
 from service.LocationService import GetLocations
+from service.LongevityService import GetLongevity
 from response.butterfly_species.GetLocationResponse import *
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.shipment.insertShipmentRequest import InsertShipmentRequest
@@ -35,6 +38,7 @@ from data_access.request.release.deleteReleaseRequest import DeleteReleaseReques
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
+from data_access.request.butterfly_species.deleteButterflySpeciesRequest import DeleteButterflySpeciesRequest
 
 
 # from tornado import template
@@ -74,7 +78,10 @@ class LocationHandler(tornado.web.RequestHandler):
         #or theres a better way for rendering that in the browser
         #Create a getlocationmap method and call it in the created method
         
-#class ActivitiesHandler(tornado.web.RequestHandler):
+class LongevityStillFlyingHandler(tornado.web.RequestHandler):
+    def get(self):
+        responseMessage = GetLongevity.getLongevityStillFlying()
+        self.write({'stillFlying': responseMessage.getLongevity()})
 
 class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
@@ -86,12 +93,30 @@ class GetReleasesHandler(tornado.web.RequestHandler):
         response = GetAllReleases.getAllReleases()
         self.write({ 'allReleases': response.getRelease() })
 
+class GetReleasesInRangeHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        numDays = int(requestBody["numDays"])
+        response = GetReleasesInRange.getReleasesInRange(numDays)
+        self.write({ 'releasesInRange' : response.getRelease() })
+
+
 class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
         response = GetAllSpecies.getAllSpecies()
         #json_response = JSONEncoder().encode(response.getResponse())
         #json_response = json.dumps([ob for ob in json_response])
         self.write({"allButterflies": response.getResponse()})
+
+class DeleteButterflyHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+
+        request = DeleteButterflySpeciesRequest(ID)
+        responseMessage = DeleteSpecies.deleteOneSpecies(request).getMessage()
+        
+        self.write({"message": responseMessage})
 
 class ObservationHandler(tornado.web.RequestHandler):
     def post(self):
@@ -211,7 +236,7 @@ def make_app(bundle_path, debug):
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/location", LocationHandler),
-           #(r".*/api/longevity", LongevityHandler),
+           (r".*/api/longevity/stillflying", LongevityStillFlyingHandler),
            #(r".*/api/longevity/data", LongevityDataHandler),
            #(r".*/api/activities", ActivitiesHandler),
            (r".*/api/shipment", GetShipmentsHandler),
@@ -219,9 +244,11 @@ def make_app(bundle_path, debug):
            (r".*/api/shipment/edit", EditShipmentHandler),
            (r".*/api/shipment/delete", DeleteShipmentHandler),
            (r".*/api/release", GetReleasesHandler),
+           (r".*/api/release/inrange", GetReleasesInRangeHandler),
            (r".*/api/release/post", PostReleaseHandler),
            (r".*/api/release/delete", DeleteReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
+           (r".*/api/butterfly_species/delete", DeleteButterflyHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),

@@ -1,9 +1,17 @@
+import os
+import sys
+sys.path.append('../../')
 import pymongo
-import unittest
 from bson.json_util import dumps
+import json
+import csv
+from bson.objectid import ObjectId
+import dateutil.parser as parser
+from datetime import datetime
 
 from request.butterfly_species import GetButterflySpeciesRequest
 from response.butterfly_species import GetButterflySpeciesResponse
+from response.shipment import insertShipmentResponse
 
 class ButterflySpeciesDAO:
     def getManySpecies(self, request):
@@ -113,3 +121,21 @@ class ButterflySpeciesDAO:
         ID = col.insert_one(observation).inserted_id
 
         return insertOneButterflyResponse.InsertOneButterflyResponse(ID)
+
+
+    def deleteSpecies(self, request):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["butterfly_species"]
+
+        # I don't set an ID here becasue MongoDB will create one for us and handle any clashing.
+        objectID = ObjectId(request.getSpeciesID())
+        filter = {"_id": objectID}
+
+        resp = col.delete_one(filter)
+
+        if resp.acknowledged == True:
+            return insertShipmentResponse.InsertShipmentResponse("successfully deleted species")
+        
+        else:
+            return insertShipmentResponse.InsertShipmentResponse("Could not delete species")

@@ -20,3 +20,10 @@ class GetAllSpecies:
     def getAllSpecies():
         butterflySpeciesDAO = ButterflySpeciesDAO()
         return butterflySpeciesDAO.getAllSpecies()
+
+class DeleteSpecies:
+    
+    @staticmethod
+    def deleteOneSpecies(request):
+        butterflySpeciesDAO = ButterflySpeciesDAO()
+        return butterflySpeciesDAO.deleteSpecies(request)
