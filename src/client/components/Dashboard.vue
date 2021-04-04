@@ -31,7 +31,10 @@
           <img class="notification-img" src="/static/graphs/worldMap.svg" alt="">
         </div>
         <div class="figure-1">
-
+          <h5>{{numFromSouthAmerica}} of the butterfliy species in the Biosphere come from South America!
+             {{numFromAsia}} come from Asia, {{numFromAfrica}} come from Africa,
+              {{numFromNorthAmerica}} come from North America. Right now, {{numFromAustralia}}
+               species come from Australia and {{numFromEurope}} come from Europe.</h5>
         </div>
       </div>
       <div class="main-column">
@@ -60,6 +63,11 @@ export default {
       leastCommonSpeciesNum: 0,
       releasesInWeek: null,
       numFromAsia: 0,
+      numFromAfrica: 0,
+      numFromNorthAmerica: 0,
+      numFromSouthAmerica: 0,
+      numFromEurope: 0,
+      numFromAustralia: 0,
       pathToMap: "",
       stillFlying: null,
       totalButterfliesFlying: 0,
@@ -75,6 +83,11 @@ export default {
         .then((res) => {
           this.allButterflies = JSON.parse(res.body.allButterflies)
           this.calculateButterfliesFromAsia()
+          this.calculateButterfliesFromAustralia()
+          this.calculateButterfliesFromAfrica()
+          this.calculateButterfliesFromNorthAmerica()
+          this.calculateButterfliesFromSouthAmerica()
+          this.calculateButterfliesFromEurope()
           request
             .get('/api/observations/week')
             .then((res) => {
@@ -109,6 +122,46 @@ export default {
       for (ind in this.allButterflies) {
         if (this.allButterflies[ind].Location === "Asia") {
           this.numFromAsia += 1;
+        }
+      }
+    },
+    calculateButterfliesFromAustralia() {
+      var ind;
+      for (ind in this.allButterflies) {
+        if (this.allButterflies[ind].Location === "Australia") {
+          this.numFromAustralia += 1;
+        }
+      }
+    },
+    calculateButterfliesFromAfrica() {
+      var ind;
+      for (ind in this.allButterflies) {
+        if (this.allButterflies[ind].Location === "Africa") {
+          this.numFromAfrica += 1;
+        }
+      }
+    },
+    calculateButterfliesFromNorthAmerica() {
+      var ind;
+      for (ind in this.allButterflies) {
+        if (this.allButterflies[ind].Location === "North America") {
+          this.numFromNorthAmerica += 1;
+        }
+      }
+    },
+    calculateButterfliesFromSouthAmerica() {
+      var ind;
+      for (ind in this.allButterflies) {
+        if (this.allButterflies[ind].Location === "South America") {
+          this.numFromSouthAmerica += 1;
+        }
+      }
+    },
+    calculateButterfliesFromEurope() {
+      var ind;
+      for (ind in this.allButterflies) {
+        if (this.allButterflies[ind].Location === "Europe") {
+          this.numFromEurope += 1;
         }
       }
     },
