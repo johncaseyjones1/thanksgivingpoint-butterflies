@@ -26,6 +26,7 @@ from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from service.ButterflySpeciesService import DeleteSpecies
+from service.ButterflySpeciesService import InsertSpecies
 from service.LocationService import GetLocations
 from service.LongevityService import GetLongevity
 from response.butterfly_species.GetLocationResponse import *
@@ -38,6 +39,7 @@ from data_access.request.release.deleteReleaseRequest import DeleteReleaseReques
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
+from data_access.request.butterfly_species.insertSpeciesRequest import InsertSpeciesRequest
 from data_access.request.butterfly_species.deleteButterflySpeciesRequest import DeleteButterflySpeciesRequest
 
 
@@ -107,6 +109,29 @@ class GetAllButterfliesHandler(tornado.web.RequestHandler):
         #json_response = JSONEncoder().encode(response.getResponse())
         #json_response = json.dumps([ob for ob in json_response])
         self.write({"allButterflies": response.getResponse()})
+
+class PostButterflyHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        scientificName = requestBody["scientificName"]
+        commonName = requestBody["commonName"]
+        size = requestBody['size']
+        wingShape = requestBody['wingShape']
+        primaryColor = requestBody['primaryColor']
+        secondaryColor = requestBody["secondaryColor"]
+        location = requestBody['location']
+        pattern = requestBody['pattern']
+        eyespot = requestBody['eyespot']
+        hostPlant = requestBody['hostPlant']
+        quickFact = requestBody['quickFact']
+        imagePath = requestBody['imagePath']
+        sexuallyDimorphic = requestBody['sexuallyDimorphic']
+        request = InsertSpeciesRequest(scientificName, commonName, size, wingShape, 
+        primaryColor, secondaryColor, location, pattern, eyespot, hostPlant, 
+        quickFact, imagePath, sexuallyDimorphic)
+        responseMessage = InsertSpecies.insertOneSpecies(request).getMessage()
+        
+        self.write({"message": responseMessage})
 
 class DeleteButterflyHandler(tornado.web.RequestHandler):
     def post(self):
@@ -199,7 +224,21 @@ class DeleteReleaseHandler(tornado.web.RequestHandler):
 class PhotoHandler(tornado.web.RequestHandler):
     def post(self):
         hex = uuid.uuid4().hex
-        filePath = "/var/www/butterfly/static/uploads/" + hex + ".jpg"
+        static_path=os.path.join(os.path.dirname(__file__), "public")
+        filePath = static_path + "/observations/" + hex + ".jpg"
+        imgFile = self.request.files.get('image')
+        for img in imgFile:
+            img ['filename']
+            with open(filePath, "wb") as f:
+                f.write(img["body"])
+        
+        self.write({"filePath": filePath})
+
+class SpeciesPhotoHandler(tornado.web.RequestHandler):
+    def post(self):
+        hex = uuid.uuid4().hex
+        static_path=os.path.join(os.path.dirname(__file__), "public")
+        filePath = static_path + "/photos/" + hex + ".jpg"
         imgFile = self.request.files.get('image')
         for img in imgFile:
             img ['filename']
@@ -248,9 +287,12 @@ def make_app(bundle_path, debug):
            (r".*/api/release/post", PostReleaseHandler),
            (r".*/api/release/delete", DeleteReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
+           (r".*/api/butterfly_species/post", PostButterflyHandler),
            (r".*/api/butterfly_species/delete", DeleteButterflyHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
+           (r".*/api/photos/species", SpeciesPhotoHandler),
+           (r".*/api/photos/butterfly", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
            (r".*/api/prediction/get", GetPotentialPredictions),
            (r".*/api/observations/week", GetObservationsOneWeek)

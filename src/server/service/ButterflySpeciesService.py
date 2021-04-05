@@ -1,10 +1,8 @@
-
 import sys, os
 parent_dir = os.getcwd() # find the path to module a
 # Then go up one level to the common parent directory
 path = os.path.dirname(parent_dir)
-# Add the parent to sys.pah
-sys.path.insert(1, "/Users/bradyneeley/Bio465/thanksgivingpoint-butterflies/src/server/data_access/")
+
 from data_access.ButterflySpeciesDAO import ButterflySpeciesDAO
 
 class GetPotentialSpecies:
@@ -27,3 +25,16 @@ class DeleteSpecies:
     def deleteOneSpecies(request):
         butterflySpeciesDAO = ButterflySpeciesDAO()
         return butterflySpeciesDAO.deleteSpecies(request)
+
+class InsertSpecies:
+    
+    @staticmethod
+    def insertOneSpecies(request):
+        # Rename image to name of butterfly
+        static_path=os.path.join(os.path.dirname(__file__), "../public")
+        scientificName = request.getScientificName()
+        newFilePath = static_path + "/photos/" + scientificName.replace(" ", "") + ".jpg"
+        os.rename(request.getImagePath(), newFilePath)
+        request.setImagePath("/static/photos/" + scientificName.replace(" ", "") + ".jpg")
+        butterflySpeciesDAO = ButterflySpeciesDAO()
+        return butterflySpeciesDAO.insertOneSpecies(request)

@@ -32,7 +32,8 @@ export default {
       editMessage: "",
       speciesData: [],
       columns: ["Species", "CommonName", "Location", "Size", "Pattern", "PrimaryColor",
-       "SecondaryColor", "WingShape", "Eyespot", "ImagePath", "Delete"],
+       "SecondaryColor", "WingShape", "Eyespot", "ImagePath", "Quick Fact", 
+       "Caterpillar Host Plants", "Sexually Dimorphic", "Delete"],
       options: {
         headings: {
 
