@@ -7,7 +7,6 @@ import VCalendar from 'v-calendar'
 import { BootstrapVue } from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import App from './App'
 import Dashboard from './components/Dashboard'
-import Activities from './components/Activities'
 import Gallery from './components/Gallery'
 import ObservationInput from './components/ObservationInput'
 import StaffDashboard from './components/StaffDashboard'
@@ -25,7 +24,6 @@ Vue.use(VCalendar, {})
 const router = new Router({
   routes: [
     { name: 'Dashboard', path: '/', component: Dashboard },
-    { name: 'Activities', path: '/activities', component: Activities },
     { name: 'Gallery', path: '/gallery', component: Gallery },
     { name: 'ObservationInput', path: '/observationInput', component: ObservationInput },
     { name: 'StaffDashboard', path: '/staff/dashboard', component: StaffDashboard },
