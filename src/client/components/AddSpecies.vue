@@ -69,6 +69,20 @@
           </div>
         </div>
 
+        <div class="field-item" id="location">
+          <h6>Location:</h6>
+          <select class="custom-select input-w" v-model="location">
+            <option disabled value="">Please select one</option>
+            <option>Asia</option>
+            <option>Africa</option>
+            <option>North America</option>
+            <option>South America</option>
+            <option>Europe</option>
+            <option>Australia</option>
+            <option>Antarctica</option>
+          </select>
+        </div>
+
         <div class="row-div">
           <div class="field-item" id="pattern">
             <h6>Pattern:</h6>
@@ -87,6 +101,28 @@
             <label for="yes">Yes</label>
             <br>
             <input type="radio" id="no" value="N" v-model="eyespot">
+            <label for="no">No</label>
+            <br>
+          </div>
+        </div>
+
+        <div>
+          <p>Quick fact:</p>
+          <input type="text" class="form-control input-w" v-model="quickFact"/>
+        </div>
+
+        <div>
+          <p>Caterpillar Host Plant:</p>
+          <input type="text" class="form-control input-w" v-model="hostPlant"/>
+        </div>
+
+        <div>
+          <div class="field-item" id="eyespot">
+            <h6>Sexually Dimorphic:</h6>
+            <input type="radio" id="yes" value="Y" v-model="sexuallyDimorphic">
+            <label for="yes">Yes</label>
+            <br>
+            <input type="radio" id="no" value="N" v-model="sexuallyDimorphic">
             <label for="no">No</label>
             <br>
           </div>
@@ -131,9 +167,13 @@ export default {
       wingShape: 0,
       primaryColor: "",
       secondaryColor: "", 
+      location: "",
       pattern: "", 
       eyespot: 0,  
       image: null,
+      quickFact: "",
+      hostPlant: "",
+      sexuallyDimorphic: 0,
       message: "",
       dismissSecs: 3,
       dismissCountDown: 0
@@ -142,7 +182,10 @@ export default {
 
   methods: {
     async submitSpecies() {
-      request.post('/api/species/post')
+      request.post('/api/photos/species')
+      .attach('image', this.image)
+      .then((res) => {
+        request.post('/api/butterfly_species/post')
         .type('json')
         .send({scientificName: this.scientificName,
               commonName: this.commonName,
@@ -150,9 +193,13 @@ export default {
               wingShape: this.wingShape,
               primaryColor: this.primaryColor,
               secondaryColor: this.secondaryColor,
+              location: this.location,
               pattern: this.pattern,
               eyespot: this.eyespot,
-              image: this.image})
+              hostPlant: this.hostPlant,
+              quickFact: this.quickFact,
+              sexuallyDimorphic: this.sexuallyDimorphic,
+              imagePath: res.body.filePath})
         .then((res) => {
           this.message = res.body.message
           this.dismissCountDown = this.dismissSecs
@@ -162,14 +209,19 @@ export default {
           this.wingShape = 0
           this.primaryColor = ""
           this.secondaryColor = ""
+          this.location = ""
           this.pattern = ""
           this.eyespot = 0
+          this.quickFact = ""
+          this.hostPlant = ""
+          this.sexuallyDimorphic = ""
           this.image = null
+        })
       })
     },
 
     fileChanged(event) {
-      this.file = event.target.files[0]
+      this.image = event.target.files[0]
     },
 
     setSize(size) {

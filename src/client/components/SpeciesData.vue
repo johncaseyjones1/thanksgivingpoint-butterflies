@@ -7,7 +7,11 @@
       </div>
       <button class="btn btn-dark add-species-btn" v-show="addSpecies" @click="hideAddSpecies()">Cancel</button>
       <v-client-table v-show="showTable" v-model="speciesData" :columns="columns" :options="options">
-
+        <div slot="Delete" slot-scope="{row}">
+          <span>
+            <button type="button" class="btn btn-outline-dark btn-sm" @click="deleteSpecies(row)">Delete</button>
+          </span>  
+        </div> 
       </v-client-table>
     </div>
     <AddSpecies v-show="addSpecies"/>
@@ -27,14 +31,26 @@ export default {
       collectingData: false,
       editMessage: "",
       speciesData: [],
-      columns: [],
+      columns: ["Species", "CommonName", "Location", "Size", "Pattern", "PrimaryColor",
+       "SecondaryColor", "WingShape", "Eyespot", "ImagePath", "Quick Fact", 
+       "Caterpillar Host Plants", "Sexually Dimorphic", "Delete"],
       options: {
         headings: {
 
         },
         editableColumns:[],
         orderBy: {column: "formattedDate", ascending: false}
-      }
+      },
+      speciesToAdd: {
+        scientificName: "",
+        commonName: "",
+        size: "",
+        eyespot:0,
+        pattern: "",
+        wingShape: 0,
+        primaryColor: "",
+        secondaryColor: "", 
+      },
     }
   },
 
@@ -46,9 +62,9 @@ export default {
     getAllSpecies() {
       this.collectingData = true;
       request
-        .get('/api/species')
+        .get('/api/butterfly_species')
         .then((res) => {
-          this.speciesData = JSON.parse(res.body.allSpeciesData)
+          this.speciesData = JSON.parse(res.body.allButterflies)
           var ind
           for (ind in this.speciesData) {
             this.speciesData[ind].id = this.speciesData[ind]._id.$oid
@@ -73,10 +89,10 @@ export default {
           console.log(this.editMessage)
       })
     },*/
-    /*deleteSpecies(row) {
+    deleteSpecies(row) {
       console.log("delete " + row)
       console.log(row._id)
-      request.post('/api/species/delete')
+      request.post('/api/butterfly_species/delete')
         .type('json')
         .send({
               _id: row._id.$oid,
@@ -89,7 +105,7 @@ export default {
           if (index !== undefined) this.speciesData.splice(index, 1);
 
       })
-    }*/
+    }
   },
 
   created() {
