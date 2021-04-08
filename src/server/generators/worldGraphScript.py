@@ -46,4 +46,4 @@ class MapGenerator:
         supra.add("17+ species",continents_dict_b)
 
         supra.render_to_file(static_path + "/graphs/worldMap.svg")
-        return (static_path + "/graphs/worldMap.svg")
+        return ("static/graphs/worldMap.svg")

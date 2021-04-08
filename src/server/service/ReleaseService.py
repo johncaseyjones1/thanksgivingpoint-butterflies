@@ -19,6 +19,13 @@ class GetAllReleases:
         releaseDAO = ReleaseDAO()
         return releaseDAO.getAllReleases()
 
+class GetReleasesInRange:
+    
+    @staticmethod
+    def getReleasesInRange(days):
+        releaseDAO = ReleaseDAO()
+        return releaseDAO.getReleasesInRange(days)
+
 class DownloadAllReleases:
     
     @staticmethod

@@ -8,6 +8,8 @@ import csv
 from bson.objectid import ObjectId
 import dateutil.parser as parser
 from datetime import datetime
+from datetime import datetime as DT
+from datetime import timedelta
 
 from request.release import getReleaseRequest
 from request.release import insertReleaseRequest
@@ -44,7 +46,7 @@ class ReleaseDAO:
         with open(static_path + "/releases/releases.json", 'r') as jsonFile:
             jsonData = json.load(jsonFile)
 
-        
+    
         csv_file = open(static_path + "/releases/releases.csv", 'w')
 
         csv_writer = csv.writer(csv_file)
@@ -62,6 +64,28 @@ class ReleaseDAO:
         jsonFile.close()
 
         return response
+
+    def getReleasesInRange(self, longestDays):
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        db = client["observatory"]
+        col = db["release"]
+
+        today = DT.utcnow().now()
+        sinceDay = today - timedelta(days = int(longestDays))
+
+        greaterThanOrEqual = "$gte"
+
+        query = {
+            "Date": { greaterThanOrEqual : sinceDay }
+        }
+
+        releases = col.find(query)
+        releaseList = list(releases)
+
+        response = getReleaseResponse.GetReleaseResponse(dumps(releaseList))
+
+        return response
+
 
     def generateAllReleasesDownload(request):
         client = pymongo.MongoClient("mongodb://localhost:27017/")

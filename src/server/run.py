@@ -21,10 +21,14 @@ from service.ObservationService import GetOneWeek
 from service.ReleaseService import GetAllReleases
 from service.ReleaseService import InsertRelease
 from service.ReleaseService import DeleteRelease
+from service.ReleaseService import GetReleasesInRange
 from service.ShipmentService import GetAllShipments
 from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
+from service.ButterflySpeciesService import DeleteSpecies
+from service.ButterflySpeciesService import InsertSpecies
 from service.LocationService import GetLocations
+from service.LongevityService import GetLongevity
 from response.butterfly_species.GetLocationResponse import *
 from data_access.request.observation.insertObservationRequest import InsertObservationRequest
 from data_access.request.shipment.insertShipmentRequest import InsertShipmentRequest
@@ -35,6 +39,8 @@ from data_access.request.release.deleteReleaseRequest import DeleteReleaseReques
 from data_access.request.observation.getObservationsInRangeRequest import GetObservationsInRangeRequest
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
+from data_access.request.butterfly_species.insertSpeciesRequest import InsertSpeciesRequest
+from data_access.request.butterfly_species.deleteButterflySpeciesRequest import DeleteButterflySpeciesRequest
 
 
 # from tornado import template
@@ -68,13 +74,16 @@ class LocationHandler(tornado.web.RequestHandler):
         responseMessage = GetLocations.getAllLocations()
         #Make graph here with request returned above?? Or just:
         #getLocationResponse
-        self.write({"pathToMap": responseMessage})
+        self.write({'pathToMap': responseMessage})
         #writes to body of http response and sends to front end, can access json from response body
         #when generate the graph, can either save it to a file location and send the path of that location to front end
         #or theres a better way for rendering that in the browser
         #Create a getlocationmap method and call it in the created method
         
-#class ActivitiesHandler(tornado.web.RequestHandler):
+class LongevityStillFlyingHandler(tornado.web.RequestHandler):
+    def get(self):
+        responseMessage = GetLongevity.getLongevityStillFlying()
+        self.write({'stillFlying': responseMessage.getLongevity()})
 
 class GetShipmentsHandler(tornado.web.RequestHandler):
     def get(self):
@@ -86,12 +95,53 @@ class GetReleasesHandler(tornado.web.RequestHandler):
         response = GetAllReleases.getAllReleases()
         self.write({ 'allReleases': response.getRelease() })
 
+class GetReleasesInRangeHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        numDays = int(requestBody["numDays"])
+        response = GetReleasesInRange.getReleasesInRange(numDays)
+        self.write({ 'releasesInRange' : response.getRelease() })
+
+
 class GetAllButterfliesHandler(tornado.web.RequestHandler):
     def get(self):
         response = GetAllSpecies.getAllSpecies()
         #json_response = JSONEncoder().encode(response.getResponse())
         #json_response = json.dumps([ob for ob in json_response])
         self.write({"allButterflies": response.getResponse()})
+
+class PostButterflyHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        scientificName = requestBody["scientificName"]
+        commonName = requestBody["commonName"]
+        size = requestBody['size']
+        wingShape = requestBody['wingShape']
+        primaryColor = requestBody['primaryColor']
+        secondaryColor = requestBody["secondaryColor"]
+        location = requestBody['location']
+        pattern = requestBody['pattern']
+        eyespot = requestBody['eyespot']
+        hostPlant = requestBody['hostPlant']
+        quickFact = requestBody['quickFact']
+        imagePath = requestBody['imagePath']
+        sexuallyDimorphic = requestBody['sexuallyDimorphic']
+        request = InsertSpeciesRequest(scientificName, commonName, size, wingShape, 
+        primaryColor, secondaryColor, location, pattern, eyespot, hostPlant, 
+        quickFact, imagePath, sexuallyDimorphic)
+        responseMessage = InsertSpecies.insertOneSpecies(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
+class DeleteButterflyHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        ID = requestBody["_id"]
+
+        request = DeleteButterflySpeciesRequest(ID)
+        responseMessage = DeleteSpecies.deleteOneSpecies(request).getMessage()
+        
+        self.write({"message": responseMessage})
 
 class ObservationHandler(tornado.web.RequestHandler):
     def post(self):
@@ -174,7 +224,21 @@ class DeleteReleaseHandler(tornado.web.RequestHandler):
 class PhotoHandler(tornado.web.RequestHandler):
     def post(self):
         hex = uuid.uuid4().hex
-        filePath = "/var/www/butterfly/static/uploads/" + hex + ".jpg"
+        static_path=os.path.join(os.path.dirname(__file__), "public")
+        filePath = static_path + "/observations/" + hex + ".jpg"
+        imgFile = self.request.files.get('image')
+        for img in imgFile:
+            img ['filename']
+            with open(filePath, "wb") as f:
+                f.write(img["body"])
+        
+        self.write({"filePath": filePath})
+
+class SpeciesPhotoHandler(tornado.web.RequestHandler):
+    def post(self):
+        hex = uuid.uuid4().hex
+        static_path=os.path.join(os.path.dirname(__file__), "public")
+        filePath = static_path + "/photos/" + hex + ".jpg"
         imgFile = self.request.files.get('image')
         for img in imgFile:
             img ['filename']
@@ -203,7 +267,6 @@ class GetObservationsOneWeek(tornado.web.RequestHandler):
 
 
 def make_app(bundle_path, debug):
-    static_path=os.path.join(os.path.dirname(__file__), "public")
     return tornado.web.Application(
        template_path=os.path.join(os.path.dirname(__file__), "views"),
        static_path=os.path.join(os.path.dirname(__file__), "public"),
@@ -212,7 +275,7 @@ def make_app(bundle_path, debug):
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/location", LocationHandler),
-           #(r".*/api/longevity", LongevityHandler),
+           (r".*/api/longevity/stillflying", LongevityStillFlyingHandler),
            #(r".*/api/longevity/data", LongevityDataHandler),
            #(r".*/api/activities", ActivitiesHandler),
            (r".*/api/shipment", GetShipmentsHandler),
@@ -220,11 +283,16 @@ def make_app(bundle_path, debug):
            (r".*/api/shipment/edit", EditShipmentHandler),
            (r".*/api/shipment/delete", DeleteShipmentHandler),
            (r".*/api/release", GetReleasesHandler),
+           (r".*/api/release/inrange", GetReleasesInRangeHandler),
            (r".*/api/release/post", PostReleaseHandler),
            (r".*/api/release/delete", DeleteReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
+           (r".*/api/butterfly_species/post", PostButterflyHandler),
+           (r".*/api/butterfly_species/delete", DeleteButterflyHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),
+           (r".*/api/photos/species", SpeciesPhotoHandler),
+           (r".*/api/photos/butterfly", PhotoHandler),
            (r".*/api/staff/dashboard", StaffDashboardHandler),
            (r".*/api/prediction/get", GetPotentialPredictions),
            (r".*/api/observations/week", GetObservationsOneWeek)
