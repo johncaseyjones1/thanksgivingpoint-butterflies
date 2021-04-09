@@ -4,12 +4,12 @@
       <div class="heading">Add a new species</div>
       <div class="column-div">
         <div class="input-group mb-3">
-          <div class="subheading">Scientific name:</div>
+          <h6 class="subheading">Scientific name:</h6>
           <input type="text" class="form-control input-w" v-model="scientificName"/>
         </div>
 
         <div class="input-group mb-3">
-          <div class="subheading">Common name:</div>
+          <h6 class="subheading">Common name:</h6>
           <input type="text" class="form-control input-w" v-model="commonName"/>
         </div>
 
@@ -106,30 +106,28 @@
           </div>
         </div>
 
-        <div>
-          <p>Quick fact:</p>
+        <div class="input-item">
+          <h6>Quick fact:</h6>
           <input type="text" class="form-control input-w" v-model="quickFact"/>
         </div>
 
-        <div>
-          <p>Caterpillar Host Plant:</p>
+        <div class="input-item">
+          <h6>Caterpillar Host Plant:</h6>
           <input type="text" class="form-control input-w" v-model="hostPlant"/>
         </div>
 
-        <div>
-          <div class="field-item" id="eyespot">
-            <h6>Sexually Dimorphic:</h6>
-            <input type="radio" id="yes" value="Y" v-model="sexuallyDimorphic">
-            <label for="yes">Yes</label>
-            <br>
-            <input type="radio" id="no" value="N" v-model="sexuallyDimorphic">
-            <label for="no">No</label>
-            <br>
-          </div>
+        <div class="field-item" id="eyespot">
+          <h6>Sexually Dimorphic:</h6>
+          <input type="radio" id="yes" value="Y" v-model="sexuallyDimorphic">
+          <label for="yes">Yes</label>
+          <br>
+          <input type="radio" id="no" value="N" v-model="sexuallyDimorphic">
+          <label for="no">No</label>
+          <br>
         </div>
 
         <div class="input-group mb-3">
-          <div class="subheading">Image:</div>
+          <h6 class="subheading">Image:</h6>
           <input class="predictionFormItem" type="file" name="photo" @change="fileChanged">
         </div>
 
@@ -316,6 +314,11 @@ export default {
 .field-item {
   margin-right: 80px;
   margin-top: 30px;
+}
+.input-item {
+  margin-right: 80px;
+  margin-top: 30px;
+  width: 100%;
 }
 .input-w {
   background-color: white;
