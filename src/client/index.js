@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 import { BootstrapVue } from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import App from './App'
@@ -16,6 +18,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.debug = true
 Vue.use(Router)
 Vue.use(BootstrapVue)
+Vue.use(vuetify)
+
+const opts = {}
+
+export default new vuetify(opts)
 
 const router = new Router({
   routes: [
@@ -27,10 +34,13 @@ const router = new Router({
   ]
 })
 
+
 new Vue({
   el: '#app',
+  vuetify,
   router,
   render (createElement) {
     return createElement(App)
   }
-})
+}).$mount('#app')
+
