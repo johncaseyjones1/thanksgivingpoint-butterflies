@@ -43,7 +43,7 @@
             <h6>{{numFromSouthAmerica}} of the butterfly species in the Biosphere come from South America!
               {{numFromAsia}} come from Asia, {{numFromAfrica}} come from Africa,
               {{numFromNorthAmerica}} come from North America, {{numFromAustralia}}
-               come from Australia, and {{numFromEurope}} come from Europe.</h6>
+              come from Australia, and {{numFromEurope}} come from Europe.</h6>
           </div>
         </div>
 

@@ -81,6 +81,7 @@
         <div class="row-div">
           <div class="field-item" id="pattern">
             <h5>Pattern:</h5>
+            <img class="pattern-img" src="/static/icons/patterns.png" alt="patterns"/><br />
             <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success pattern-button" type="button" value="Striped">
             <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success pattern-button" type="button" value="Veination">
             <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success pattern-button" type="button" value="Mottled">
@@ -388,6 +389,9 @@ export default {
     }
     .size-img {
       margin-bottom: 20px;
+    }
+    .pattern-img {
+      width: 100%;
     }
   }
 </style>
