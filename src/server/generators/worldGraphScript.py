@@ -14,9 +14,36 @@ class MapGenerator:
         static_path=os.path.join(os.path.dirname(__file__), "../public")
         
         locationDict = {}
+        reformatLocation = []
+        #locationList = ["Africa", "Asia", "Africa", "oceania"]
 
-        for location in locationList:
-            if locationDict.has_key(location):
+        copyList = []
+        for i in locationList:
+            val = i["Location"]
+            temp = val.lower()
+            copyList.append(temp)
+
+        for location in copyList:
+            if location == "africa":
+                reformatLocation.append("africa")
+            elif location == "asia":
+                reformatLocation.append("asia")
+            elif location == "antarctica":
+                reformatLocation.append("antartica")
+            elif location == "north america":
+                reformatLocation.append("north_america")
+            elif location == "south america":
+                reformatLocation.append("south_america")
+            elif location == "europe":
+                reformatLocation.append("europe")
+            elif location == "australia":
+                reformatLocation.append("oceania")
+            elif location == "oceania":
+                reformatLocation.append("oceania")
+            
+
+        for location in reformatLocation:
+            if location in locationDict:
                 count = locationDict[location]
                 count += 1
                 locationDict[location] = count
@@ -41,9 +68,10 @@ class MapGenerator:
         #continents_dict_a['antartica'] = 0
         #continents_dict_a['europe'] = 0
 
-        supra.add("0 species",continents_dict_c)
-        supra.add("1 to 17 species",continents_dict_a)
-        supra.add("17+ species",continents_dict_b)
+        #supra.add("0 species",continents_dict_c)
+        #supra.add("1 to 17 species",continents_dict_a)
+        #supra.add("17+ species",continents_dict_b)
+        supra.add("test",locationDict)
 
-        supra.render_to_file(static_path + "/graphs/worldMap.svg")
-        return ("static/graphs/worldMap.svg")
+        return supra.render_to_file(static_path + "/graphs/worldMap.svg")
+        #return ("static/graphs/worldMap.svg")

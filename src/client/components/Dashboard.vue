@@ -31,7 +31,7 @@
           <img class="notification-img" src="/static/graphs/worldMap.svg" alt="">
         </div>
         <div class="figure-1">
-          <h5>{{numFromSouthAmerica}} of the butterfliy species in the Biosphere come from South America!
+          <h5>{{numFromSouthAmerica}} of the butterfly species in the Biosphere come from South America!
              {{numFromAsia}} come from Asia, {{numFromAfrica}} come from Africa,
               {{numFromNorthAmerica}} come from North America. Right now, {{numFromAustralia}}
                species come from Australia and {{numFromEurope}} come from Europe.</h5>
@@ -69,6 +69,7 @@ export default {
       numFromEurope: 0,
       numFromAustralia: 0,
       pathToMap: "",
+      locations: [],
       stillFlying: null,
       totalButterfliesFlying: 0,
       totalSpeciesFlying: 0,
@@ -98,6 +99,7 @@ export default {
               .get('/api/location')
               .then((res) => {
                 this.pathToMap = res.body.pathToMap
+                //this.locations = res.body.locations
                 request
                 .get('/api/longevity/stillflying')
                 .then((res) => {

@@ -70,15 +70,9 @@ class DashboardHandler(tornado.web.RequestHandler):
 
 class LocationHandler(tornado.web.RequestHandler):
     def get(self):
-        #request = getLocationRequest(location)
         responseMessage = GetLocations.getAllLocations()
-        #Make graph here with request returned above?? Or just:
-        #getLocationResponse
         self.write({'pathToMap': responseMessage})
-        #writes to body of http response and sends to front end, can access json from response body
-        #when generate the graph, can either save it to a file location and send the path of that location to front end
-        #or theres a better way for rendering that in the browser
-        #Create a getlocationmap method and call it in the created method
+        #self.write({'locations': responseMessage})
         
 class LongevityStillFlyingHandler(tornado.web.RequestHandler):
     def get(self):
