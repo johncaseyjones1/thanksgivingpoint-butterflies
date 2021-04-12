@@ -65,7 +65,9 @@
   },
   "homepage": "https://github.com/shinux/vue-tornado-boilerplate#readme",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "deepmerge": "^4.2.2",
+    "font-awesome": "^4.7.0",
     "sass": "^1.32.8",
     "sass-loader": "^9.0.3"
   }

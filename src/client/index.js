@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard'
 import Gallery from './components/Gallery'
 import ObservationInput from './components/ObservationInput'
 import StaffDashboard from './components/StaffDashboard'
+import ButterflyInfo from './components/ButterflyInfo'
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -33,6 +34,7 @@ const router = new Router({
     { name: 'Gallery', path: '/gallery', component: Gallery },
     { name: 'ObservationInput', path: '/observationInput', component: ObservationInput },
     { name: 'StaffDashboard', path: '/staff/dashboard', component: StaffDashboard },
+    { name: 'SpeciesPage', path: '/species/:id', component: ButterflyInfo },
   ]
 })
 
