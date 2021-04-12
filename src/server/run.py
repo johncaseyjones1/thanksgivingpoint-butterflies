@@ -270,8 +270,6 @@ def make_app(bundle_path, debug):
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/location", LocationHandler),
            (r".*/api/longevity/stillflying", LongevityStillFlyingHandler),
-           #(r".*/api/longevity/data", LongevityDataHandler),
-           #(r".*/api/activities", ActivitiesHandler),
            (r".*/api/shipment", GetShipmentsHandler),
            (r".*/api/shipment/post", PostShipmentHandler),
            (r".*/api/shipment/edit", EditShipmentHandler),

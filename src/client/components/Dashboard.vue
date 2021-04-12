@@ -18,31 +18,42 @@
       </div>
     </div>
     <div class="center-div">
-      <div class="daily-notification">
+      <div class="daily-notification top-space">
         <div class="notification-text notification-item">
-          <p style="font-size: 18px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week. See if you can spot it!</p>
+          <p style="font-size: 18px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week. You should see this one easily!</p>
+        </div>
+        <div class="notification-item">
+          <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
+        </div>
+      </div>
+      <div class="daily-notification orange-background">
+        <div class="notification-text notification-item">
+          <p style="font-size: 18px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week. See if you can spot it!</p>
         </div>
         <div class="notification-item">
           <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
         </div>
       </div>
       <div class="main-column">
-        <div class="figure-1">
-          <img class="notification-img" src="/static/graphs/worldMap.svg" alt="">
+        <div class="figure-container">
+          <div class="figure">
+            <img class="world-img" src="/static/graphs/worldMap.svg" alt="world">
+          </div>
+          <div class="caption">
+            <h6>{{numFromSouthAmerica}} of the butterfly species in the Biosphere come from South America!
+              {{numFromAsia}} come from Asia, {{numFromAfrica}} come from Africa,
+              {{numFromNorthAmerica}} come from North America, {{numFromAustralia}}
+              come from Australia, and {{numFromEurope}} come from Europe.</h6>
+          </div>
         </div>
-        <div class="figure-1">
-          <h5>{{numFromSouthAmerica}} of the butterfly species in the Biosphere come from South America!
-             {{numFromAsia}} come from Asia, {{numFromAfrica}} come from Africa,
-              {{numFromNorthAmerica}} come from North America. Right now, {{numFromAustralia}}
-               species come from Australia and {{numFromEurope}} come from Europe.</h5>
-        </div>
-      </div>
-      <div class="main-column">
-        <div class="figure-1">
 
-        </div>
-        <div class="figure-1">
+        <div class="figure-container">
+          <div class="figure">
 
+          </div>
+          <div class="caption">
+
+          </div>
         </div>
       </div>
     </div>
@@ -307,11 +318,11 @@ export default {
 }
 .main-column {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
 }
 .daily-notification {
   display: flex;
@@ -320,15 +331,19 @@ export default {
   width: 100%;
   border-radius: 15px;
   background-color: white;
-  margin: 20px 20px 20px 20px;
+  margin: 0px 20px 0px 20px;
   padding: 15px;
 }
-.figure-1 {
-  width: 90%;
-  height: 200px;
+.top-space {
+  margin-top: 20px;
+}
+.figure-container {
+  width: 47%;
+  height: 500px;
   border-radius: 15px;
   margin: 10px;
   background-color: white;
+  padding: 20px;
 }
 .notification-text {
   padding: 10px;
@@ -338,7 +353,21 @@ export default {
   border-radius: 15px;
 }
 .notification-item {
-  padding: 0 40px 0 40px;
+  padding-right: 40px;
+}
+.figure {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.caption {
+  margin-top: 20px;
+}
+.world-img {
+
+}
+.orange-background {
+  background-color: #ffdece;
 }
 
 @media only screen and (max-width: 600px) {
