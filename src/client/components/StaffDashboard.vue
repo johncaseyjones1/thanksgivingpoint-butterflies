@@ -82,7 +82,7 @@ export default {
       }
     },
     checkPassword() {
-      if (this.password === "jsuHiosU8nY") {
+      if (this.password === "password") {
         this.passwordCorrect = true
       }
     }   
