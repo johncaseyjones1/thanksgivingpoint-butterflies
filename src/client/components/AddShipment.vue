@@ -6,36 +6,38 @@
         <div class="subheading">Date:</div>
         <v-date-picker color="orange" is-inline v-model="date" />
       </div>
-      <div class="input-group mb-3">
-        <div class="subheading">Supplier:</div>
-        <select class="custom-select" v-model="supplier">
-          <option>CRES</option>
-          <option>LPS</option>
-        </select>
+      <div class="column-div">
+        <div class="input-group mb-3">
+          <div class="subheading">Supplier:</div>
+          <input type="text" class="form-control" v-model="supplier"/>
+        </div>
+        <div class="options" v-if="supplier.length > 0 && supplierList.length > 0 && !selected">
+          <div v-for="supplier in supplierList" v-bind:key="supplier">
+            <button class="btn btn-outline-dark" @click="selectSupplier(supplier)">{{ supplier }}</button>
+          </div>
+        </div>
       </div>
       <div class="column-div">
         <div class="input-group mb-3">
           <div class="subheading">Species:</div>
-          <input type="text" class="form-control" v-model="searchText"/>
+          <input type="text" class="form-control" v-model="speciesName"/>
         </div>
-        <div class="options" v-if="searchText.length > 0 && speciesList.length > 0 && !selected">
+        <div class="options" v-if="speciesName.length > 0 && speciesList.length > 0 && !selected">
           <div v-for="option in speciesList" v-bind:key="option.Species">
             <button class="btn btn-outline-dark" @click="selectSpecies(option.Species)">{{ option.Species }}</button>
           </div>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <div class="subheading">Origin:</div>
-        <select class="custom-select" v-model="origin">
-          <option>BELIZE</option>
-          <option>COLOMBIA</option>
-          <option>COSTA RICA</option>
-          <option>KENYA</option>
-          <option>MALAYSIA</option>
-          <option>PHILIPPINES</option>
-          <option>THAILAND</option>
-          <option>USA</option>
-        </select>
+      <div class="column-div">
+        <div class="input-group mb-3">
+          <div class="subheading">Origin:</div>
+          <input type="text" class="form-control" v-model="origin"/>
+        </div>
+        <div class="options" v-if="origin.length > 0 && origin.length > 0 && !selected">
+          <div v-for="origin in originList" v-bind:key="origin">
+            <button class="btn btn-outline-dark" @click="selectOrigin(origin)">{{ origin }}</button>
+          </div>
+        </div>
       </div>
       <div class="input-group mb-3">
         <div class="subheading">Quantity:</div>
@@ -77,7 +79,7 @@ export default {
   data() {
     return {
       allButterflies: "",
-      searchText: "",
+      speciesName: "",
       selected: false,
       date: null,
       supplier: "",
@@ -92,7 +94,13 @@ export default {
 
   computed: {
     speciesList() {
-      return this.allButterflies.filter(allButterflies => allButterflies.Species.toLowerCase().search(this.searchText.toLowerCase()) >= 0);
+      return this.allButterflies.filter(allButterflies => allButterflies.Species.toLowerCase().search(this.speciesName.toLowerCase()) >= 0);
+    },
+    supplierList() {
+      return null; //Get list of suppliers
+    },
+    originList() {
+      return null; //Get list of origins
     }
   },
 
@@ -106,8 +114,16 @@ export default {
     },
 
     selectSpecies(species) {
-      this.searchText = species;
+      this.speciesName = species;
       this.selected = true;
+    },
+
+    selectSupplier(supplier) {
+      this.supplier = supplier;
+    },
+
+    selectOrigin(origin) {
+      this.origin = origin;
     },
 
     async submitShipment() {
@@ -115,7 +131,7 @@ export default {
         .type('json')
         .send({date: this.date,
               supplier: this.supplier,
-              species: this.searchText,
+              species: this.speciesName,
               origin: this.origin,
               quantity: this.quantity,
               emergedEarly: this.emergedEarly,
@@ -129,13 +145,13 @@ export default {
           this.quantity = ""
           this.emergedEarly = ""
           this.deadOnArrival = ""
-          this.searchText = ""
+          this.speciesName = ""
       })
     }
   },
 
   watch: {
-    searchText: function() {
+    speciesName: function() {
       this.selected = false;
     }
   },

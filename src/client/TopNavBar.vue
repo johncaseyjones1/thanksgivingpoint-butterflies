@@ -34,16 +34,11 @@ export default {
         },
         {
           id: 1,
-          name: 'Activities',
-          path: '/activities',
-        },
-        {
-          id: 2,
           name: 'Gallery',
           path: '/gallery',
         },
         {
-          id: 3,
+          id: 2,
           name: 'Observations',
           path: '/observationInput',
         }

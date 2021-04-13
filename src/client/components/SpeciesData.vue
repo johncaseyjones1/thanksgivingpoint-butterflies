@@ -263,6 +263,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-size: 12px;
+}
 .species-data-container {
   display: flex;
   flex-direction: column;

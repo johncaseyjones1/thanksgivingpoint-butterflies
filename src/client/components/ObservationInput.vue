@@ -11,6 +11,10 @@
       </div>
     </div>
 
+    <div class="prediction-heading">
+      Make a prediction
+    </div>
+
     <div class="center-div">
       <div id="predictionField">
         <div class="row-div">
@@ -19,6 +23,9 @@
             <button v-on:click="setSize('S')" id="S" class="btn btn-outline-success" data-toggle="button">Small</button>
             <button v-on:click="setSize('M')" id="M" class="btn btn-outline-success" data-toggle="button">Medium</button>
             <button v-on:click="setSize('L')" id="L" class="btn btn-outline-success" data-toggle="button">Large</button>
+          </div>
+          <div>
+            <img class="size-img" src="/static/icons/sizes.png" alt="sizes"/>
           </div>
         </div>
 
@@ -36,6 +43,7 @@
         <div class="row-div">
           <div class="field-item" id="primaryColor">
             <h5>Primary Color:</h5>
+            <img class="color-img" src="/static/icons/primary-color.png" alt="primary"/>
             <select class="custom-select" v-model="primaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
@@ -53,6 +61,7 @@
 
           <div class="field-item" id="secondaryColor">
             <h5>Secondary Color:</h5>
+            <img class="color-img" src="/static/icons/secondary-color.png" alt="secondary"/>
             <select class="custom-select" v-model="secondaryColor">
               <option disabled value="">Please select one</option>
               <option>Red</option>
@@ -72,6 +81,7 @@
         <div class="row-div">
           <div class="field-item" id="pattern">
             <h5>Pattern:</h5>
+            <img class="pattern-img" src="/static/icons/patterns.png" alt="patterns"/><br />
             <input v-on:click="setPattern('Striped')" id="Striped" class="btn btn-outline-success pattern-button" type="button" value="Striped">
             <input v-on:click="setPattern('Veination')" id="Veination" class="btn btn-outline-success pattern-button" type="button" value="Veination">
             <input v-on:click="setPattern('Mottled')" id="Mottled" class="btn btn-outline-success pattern-button" type="button" value="Mottled">
@@ -284,6 +294,13 @@ export default {
     flex-wrap: wrap;
     width: 100%;
   }
+  .prediction-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 30px;
+  }
   #predictionField {
     display: flex;
     flex-direction: column;
@@ -292,6 +309,7 @@ export default {
     margin-top: 50px;
     margin-bottom: 50px;
     border: 3px solid #eeeeed;
+    background-color: #eeeeed;
     border-radius: 15px;
     padding: 30px;
   }
@@ -326,6 +344,12 @@ export default {
   .speciesOptionImage {
     max-width: 20%;
   }
+  .color-img {
+    width: 100px;
+  }
+  .size-img {
+    width: 300px;
+  }
 
 
   @media only screen and (max-width: 600px) {
@@ -351,7 +375,7 @@ export default {
     }
     #predictionField {
       border: none;
-      margin-top: 20px;
+      margin: 50px 10px 20px 10px;
     }
     .predictionFormItem {
       width: 80%;
@@ -362,6 +386,12 @@ export default {
     }
     .pattern-button {
       margin-bottom: 5px !important;
+    }
+    .size-img {
+      margin-bottom: 20px;
+    }
+    .pattern-img {
+      width: 100%;
     }
   }
 </style>
