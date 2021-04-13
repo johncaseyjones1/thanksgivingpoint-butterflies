@@ -80,6 +80,7 @@ export default {
       numFromEurope: 0,
       numFromAustralia: 0,
       pathToMap: "",
+      locations: [],
       stillFlying: null,
       totalButterfliesFlying: 0,
       totalSpeciesFlying: 0,
@@ -109,6 +110,7 @@ export default {
               .get('/api/location')
               .then((res) => {
                 this.pathToMap = res.body.pathToMap
+                //this.locations = res.body.locations
                 request
                 .get('/api/longevity/stillflying')
                 .then((res) => {

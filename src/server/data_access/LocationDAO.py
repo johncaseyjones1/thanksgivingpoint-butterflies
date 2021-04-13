@@ -15,7 +15,7 @@ class LocationDAO:
             db = client["observatory"]
             col = db["butterfly_species"]
 
-            allLocations = col.inventory.find( {}, { "Location": 1 } )
+            allLocations = col.find({}, {"_id": 0, "Location": 1 }) #Specifically excludes the _id field
 
             locationsList = list(allLocations)
             pathToMap = MapGenerator.generateMap(locationsList)
@@ -23,4 +23,5 @@ class LocationDAO:
             #response = GetLocationResponse.getResponse()
             #response.setResponse(dumps(locationsList)) returns file path instead
 
+            #return copyList
             return pathToMap
