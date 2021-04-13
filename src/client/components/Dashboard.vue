@@ -31,7 +31,7 @@
           <p style="font-size: 18px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week. See if you can spot it!</p>
         </div>
         <div class="notification-item">
-          <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
+          <img class="notification-img" v-bind:src="leastCommonSpecies.ImagePath" alt="">
         </div>
       </div>
       <div class="main-column">
