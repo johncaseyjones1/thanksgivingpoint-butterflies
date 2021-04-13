@@ -42,7 +42,7 @@
     "vue-style-loader": "^3.0.1",
     "vue-tables-2": "^2.2.0",
     "vue-template-compiler": "^2.3.4",
-    "vuetify": "^2.4.8",
+    "vuetify": "^2.4.9",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.1"
   },

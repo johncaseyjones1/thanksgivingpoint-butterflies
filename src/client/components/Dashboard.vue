@@ -80,6 +80,7 @@ export default {
       numFromEurope: 0,
       numFromAustralia: 0,
       pathToMap: "",
+      pathToGraph: "",
       locations: [],
       stillFlying: null,
       totalButterfliesFlying: 0,
@@ -124,6 +125,12 @@ export default {
                   .then((res) => {
                     this.releasesInWeek = JSON.parse(res.body.releasesInRange)
                     this.getButterfliesAddedThisWeek()
+                    request
+                    .get('/api/longevity')
+                    .then((res) => {
+                    //this.pathToGraph = res.body.pathToGraph
+                    this.locations = res.body.locations
+                    })
                   })
                 })
               })
