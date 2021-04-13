@@ -11,14 +11,14 @@ export default {
   data() {
     return {
       collectingData: false,
-      butterfly: null
+      butterfly: null,
     }
   },
   methods: {
     getButterfly() {
     this.collectingData = true;
     request
-      .get('/api/ ... ' + $route.params.id)
+      .get('/api/')
       .then((res) => {
         this.butterfly = JSON.parse(res.body.butterfly)
       })
@@ -26,6 +26,7 @@ export default {
   },
   created() {
     this.getButterfly()
+    this.butterfly = this.$route.params
   }
 }
 </script>

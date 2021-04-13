@@ -9,7 +9,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "North America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are known as sisters because of the white markings on their wings which resemble a nun's habit. ",
         "CaterpillarHostPlants": "Celtis lindheimeri",
         "SexuallyDimorphic": "No"
@@ -24,7 +24,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "South America",
-        "ImagePath": "/static/photos/ascia-chlorinde.jpg",
+        "ImagePath": "/static/photos/anteos-chlorinde.jpg",
         "QuickFact": "These butterflies are very fast fliers. They can often be found in large groups drinking from mud puddles to absorb minerals - a behavior called puddling.",
         "CaterpillarHostPlants": "Cassia emarginata, Senna spectablis",
         "SexuallyDimorphic": "No"
@@ -39,7 +39,7 @@
         "Eyespot": "Y",
         "Size": "M",
         "Location": "North America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "Males perch on tree trunks or on foliage, sitting facing head-downwards and with wings half open. They take part in impressive aerial sorties, chasing each other in broad circles around the tree tops. After each sortie they each return to their original perch.",
         "CaterpillarHostPlants": "Persea americana,  Malpigia glabra",
         "SexuallyDimorphic": "No"
@@ -54,7 +54,7 @@
         "Eyespot": "Y",
         "Size": "L",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "When the larvae hatch on Sclerocarya birrea, which produces edible fruit, they are considered pest because they will do considerable damage to the plant. ",
         "CaterpillarHostPlants": "Sclerocarya birrea, Spirostachys africana, Excoecaria africana",
         "SexuallyDimorphic": "No"
@@ -84,7 +84,7 @@
         "Eyespot": "Y",
         "Size": "L",
         "Location": "Asia",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These moths are considered the largest butterfly or moth by surface area. The White Witch Moth (Thsania agrippina) has the largest wingspan. ",
         "CaterpillarHostPlants": "Citrus sp, Cinnamomum sp",
         "SexuallyDimorphic": "Yes"
@@ -99,7 +99,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are nectar drinkers, but males are often found absorbing mineralalized moisture from the side of streams.",
         "CaterpillarHostPlants": "Aristolochia sp",
         "SexuallyDimorphic": "No"
@@ -114,7 +114,7 @@
         "Eyespot": "N",
         "Size": "L",
         "Location": "North America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are nectar drinkers, but males are often found absorbing mineralalized moisture from the side of streams.",
         "CaterpillarHostPlants": "Aristolochia californica, Aristolochia serpentaria",
         "SexuallyDimorphic": "No"
@@ -129,7 +129,7 @@
         "Eyespot": "Y",
         "Size": "L",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "Since one of their host plants is the banana plant the Owl Butterfly is considered a pest in areas where bananas are grown. They are such a big pest that work is being done with parasitic wasps to find a biological control agent. ",
         "CaterpillarHostPlants": "Heliconia sp, Musa sp",
         "SexuallyDimorphic": "No"
@@ -174,7 +174,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This species exhibits sexual dimorphism, meaning males and females look different. The males have a thick orange stripe on a velvet black background, while the females have three cream colored horizontal bands down their backs and cream colored splotches on their wings.",
         "CaterpillarHostPlants": "Alchornea latifolia, Veconcibea pleistemona, Dalechampia triphylla",
         "SexuallyDimorphic": "Yes"
@@ -204,7 +204,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Asia",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This butterfly earns its name by its migratory behaviors. The adults fly in groups from one breeding site to another. ",
         "CaterpillarHostPlants": "Senna surattensis",
         "SexuallyDimorphic": "No"
@@ -249,7 +249,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are known for their fast, powerful flight. In the wild, they can often be found feeding on dung and carrion to obtain salts. ",
         "CaterpillarHostPlants": "Croton sylvaticus, Croton gratissimus, Croton meyalocapus",
         "SexuallyDimorphic": "No"
@@ -294,7 +294,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are known for their fast, powerful flight. In the wild, they can often be found feeding on dung and carrion to obtain salts. ",
         "CaterpillarHostPlants": "Afzelia quanzensis, Paramacrolobium coeruleum, Brachystegia spiciforms",
         "SexuallyDimorphic": "Yes"
@@ -309,7 +309,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are known for their fast, powerful flight. In the wild, they can often be found feeding on dung and carrion to obtain salts. ",
         "CaterpillarHostPlants": "Afzelia quanzensis",
         "SexuallyDimorphic": "Yes"
@@ -444,7 +444,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This butterfly is bright orange and black to advertise that it is poisonous to predators. It acquires and stores these toxins as a caterpillar from the host plants it eats - passion vines. ",
         "CaterpillarHostPlants": "Passiflora platyloba, Passiflora ambigua",
         "SexuallyDimorphic": "No"
@@ -504,7 +504,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "Males have a fold on the inner edge of eaach hindwing which encloses plumes of androconial scales that disseminate pheromones to entice females into copulation. ",
         "CaterpillarHostPlants": "Annona reticulate, Artabotrys monteiroae, Uvaria caffra",
         "SexuallyDimorphic": "No"
@@ -519,7 +519,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "Males have a fold on the inner edge of eaach hindwing which encloses plumes of androconial scales that disseminate pheromones to entice females into copulation. ",
         "CaterpillarHostPlants": "Artabotrys sp, Uvaria sp, Annona sp",
         "SexuallyDimorphic": "No"
@@ -594,7 +594,7 @@
         "Eyespot": "Y",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "",
         "CaterpillarHostPlants": "",
         "SexuallyDimorphic": ""
@@ -684,7 +684,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "The postman butterflies are named for their habit of visiting the same nectar sources, in the same order, every day - reminiscent of the consistent neighborhood routes of postal workers. ",
         "CaterpillarHostPlants": "Passiflora talamancensis, Passiflora coreacea, Passiflora biflora",
         "SexuallyDimorphic": "No"
@@ -789,7 +789,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This species has 22 sub-species, each with variying colors and patterns. ",
         "CaterpillarHostPlants": "Solanum sp",
         "SexuallyDimorphic": "No"
@@ -819,7 +819,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies have a characteristic wing shape that have a remarkable resemblance to a fallen leaf. The brown color in addition to markings resembling mold aid in the disguise.",
         "CaterpillarHostPlants": "Croton sp",
         "SexuallyDimorphic": "No"
@@ -849,7 +849,7 @@
         "Eyespot": "Y",
         "Size": "L",
         "Location": "North America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This butterfly may be white but it still has the iridescent qualities of the Blue Morpho. ",
         "CaterpillarHostPlants": "Paullinia pinnata, Inga sp",
         "SexuallyDimorphic": "No"
@@ -864,7 +864,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "North America",
-        "ImagePath": "/static/photos/myselia.ethusa.jpg",
+        "ImagePath": "/static/photos/myselia-ethusa.jpg",
         "QuickFact": "These butterflies are part of the family Nymphalidae, or Brush-footed Butterflies, meaning their front pair of legs are small or reduced, giving the appearance that they only have 4 legs. ",
         "CaterpillarHostPlants": "Dolechampia triphylla, Adelia triloba",
         "SexuallyDimorphic": "No"
@@ -894,7 +894,7 @@
         "Eyespot": "N",
         "Size": "L",
         "Location": "Australia",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "There is a record of this butterfly from over 200 years ago. Since then, the species has been broken up into several different subspecies which inhabit different geographic ranges. ",
         "CaterpillarHostPlants": "Aristolochia tagala",
         "SexuallyDimorphic": "Yes"
@@ -909,7 +909,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Asia",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This butterfly is distinguished by the red fur covering its body. The chrysalis mimics the appearance of fungus, making it undesirable to potential predators. ",
         "CaterpillarHostPlants": "Aristolochia sp",
         "SexuallyDimorphic": "No"
@@ -1029,7 +1029,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are part of the Swallowtail family, Papilionidae, even though they do not have the characteristic tails on their hind wings. Males of this species frequently aggregate around mud puddles to drink the mineralized water, a behavior called puddling.",
         "CaterpillarHostPlants": "Euoida sp",
         "SexuallyDimorphic": "No"
@@ -1044,7 +1044,7 @@
         "Eyespot": "Y",
         "Size": "L",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "These butterflies are part of the Swallowtail family, Papilionidae, meaning they are often large, colorful, and have a tail on each hindwing. The largest butterflies in the world are members of this family. In fact, this butterfly is the largest in flight in southern Africa.  ",
         "CaterpillarHostPlants": "Clausema inqequalis, Fagara capensis, Calodendron capense",
         "SexuallyDimorphic": "No"
@@ -1134,7 +1134,7 @@
         "Eyespot": "N",
         "Size": "S",
         "Location": "South America",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This butterfly is a close relative of the Longwings (Heliconius butterflies). The differences between these groups are the shapes of the chrysalids, the slight differences in adult appearance, and how the females lay their eggs. With these differences in mind, scientists consider this butterfly to be the most primitive member of the Heliconiinae subfamily. ",
         "CaterpillarHostPlants": "Passiflora ambigua, Passiflora edulis, Passiflora vitifolia",
         "SexuallyDimorphic": "No"
@@ -1164,7 +1164,7 @@
         "Eyespot": "N",
         "Size": "M",
         "Location": "Africa",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "While this butterfly looks black and white, upon closer inspection it is iridescent and shines with a variety of colors.",
         "CaterpillarHostPlants": "Asystasia schimperi, Asystasia gangetica ",
         "SexuallyDimorphic": "Yes"
@@ -1209,7 +1209,7 @@
         "Eyespot": "Y",
         "Size": "M",
         "Location": "Asia",
-        "ImagePath": "",
+        "ImagePath": "/static/icons/default.png",
         "QuickFact": "This species is sexually dimorphic, the inside of the males wings are a brilliant orange, females have a grayish color inside their wings with a white stripe. ",
         "CaterpillarHostPlants": "Adenia sp, Passiflora sp",
         "SexuallyDimorphic": "Yes"

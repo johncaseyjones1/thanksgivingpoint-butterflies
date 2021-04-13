@@ -11,7 +11,20 @@
     </div>
     <v-flex d-flex>
       <v-layout wrap>
-        <v-card v-for="species in butterflies" :key="species.CommonName" v-on:click="$router.push({ name: 'SpeciesPage', params: { id: species.CommonName } })"
+        <v-card v-for="species in butterflies" :key="species.CommonName" v-on:click="$router.push({ name: 'SpeciesPage', params: { id: species._id.$oid,
+                                                                                                                                   commonName: species.CommonName,
+                                                                                                                                   quickFact:  species.QuickFact,
+                                                                                                                                   eyespot: species.Eyespot,
+                                                                                                                                   imagePath: species.ImagePath,
+                                                                                                                                   location: species.Location,
+                                                                                                                                   pattern: species.Pattern,
+                                                                                                                                   primaryColor: species.PrimaryColor,
+                                                                                                                                   secondaryColor: species.SecondaryColor,
+                                                                                                                                   size: species.Size,
+                                                                                                                                   caterpillarHostPlants: species.CaterpillarHostPlants,
+                                                                                                                                   sexuallyDimorphic: species.SexuallyDimorphic,
+                                                                                                                                   wingShape: species.WingShape,
+                                                                                                                                   scientificName: species.Species} })"
           class="mx-auto" 
           width="300px"  
           hover="true">
