@@ -46,12 +46,7 @@ export default {
           id: 3,
           name: 'Observations',
           path: '/observationInput',
-        },
-        {
-          id: 4,
-          name: 'Staff',
-          path: '/staff/dashboard',
-        },
+        }
       ],
     }
   },

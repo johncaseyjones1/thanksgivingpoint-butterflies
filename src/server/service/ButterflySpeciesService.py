@@ -38,3 +38,11 @@ class InsertSpecies:
         request.setImagePath("/static/photos/" + scientificName.replace(" ", "") + ".jpg")
         butterflySpeciesDAO = ButterflySpeciesDAO()
         return butterflySpeciesDAO.insertOneSpecies(request)
+
+class EditSpecies:
+    
+    @staticmethod
+    def editOneSpecies(request):
+        # Rename image to name of butterfly
+        butterflySpeciesDAO = ButterflySpeciesDAO()
+        return butterflySpeciesDAO.editOneSpecies(request)

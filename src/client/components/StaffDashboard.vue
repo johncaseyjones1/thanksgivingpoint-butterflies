@@ -4,14 +4,21 @@
       <div class="header-text">Welcome Staff Member</div>
       <div>This is where the magic happens</div>
     </div>
-    <div class="page-buttons">
-      <button v-on:click="setPage('releases')" id="release-button" class="btn btn-outline-dark" @click="showReleases()">Releases</button>
-      <button v-on:click="setPage('shipments')" id="shipment-button" class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
-      <button v-on:click="setPage('species')" id="species-data-button" class="btn btn-outline-dark" @click="showSpeciesData()">Species data</button>   
+    <div v-if="passwordCorrect">
+      <div class="page-buttons">
+        <button v-on:click="setPage('releases')" id="release-button" class="btn btn-outline-dark" @click="showReleases()">Releases</button>
+        <button v-on:click="setPage('shipments')" id="shipment-button" class="btn btn-outline-dark" @click="showShipments()">Shipments</button>
+        <button v-on:click="setPage('species')" id="species-data-button" class="btn btn-outline-dark" @click="showSpeciesData()">Species data</button>   
+      </div>
+      <Shipments v-show="shipments"/>
+      <Releases v-show="releases"/>
+      <SpeciesData v-show="species"/>
     </div>
-    <Shipments v-show="shipments"/>
-    <Releases v-show="releases"/>
-    <SpeciesData v-show="species"/>
+    <div v-else>
+      Password
+      <input v-model="password" type="password">
+      <button @click="checkPassword()">Submit</button>
+    </div>
   </div>
 </template>
 
@@ -29,7 +36,9 @@ export default {
     return {
       shipments: false,
       releases: false,
-      species: false
+      species: false,
+      passwordCorrect: false,
+      password: ""
     }
   },
 
@@ -71,13 +80,15 @@ export default {
         document.getElementById("shipment-button").classList.remove("active");
         document.getElementById("species-data-button").classList.add("active");
       }
-    }
-      
+    },
+    checkPassword() {
+      if (this.password === "jsuHiosU8nY") {
+        this.passwordCorrect = true
+      }
+    }   
   },
-
-  created() {
-    
-  }
+  
+  
 }
 
 </script>

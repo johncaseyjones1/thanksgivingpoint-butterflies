@@ -1,7 +1,8 @@
-class InsertSpeciesRequest:
+class EditSpeciesRequest:
     
-    def __init__(self, scientificName, commonName, size, wingShape, primaryColor,
+    def __init__(self, speciesID, scientificName, commonName, size, wingShape, primaryColor,
      secondaryColor, location, pattern, eyespot, hostPlant, quickFact, imagePath, sexuallyDimorphic):
+        self.speciesID = speciesID
         self.scientificName = scientificName
         self.commonName = commonName
         self.size = size
@@ -15,6 +16,9 @@ class InsertSpeciesRequest:
         self.imagePath = imagePath
         self.pattern = pattern
         self.sexuallyDimorphic = sexuallyDimorphic
+
+    def getSpeciesID(self):
+        return self.speciesID
 
     def getScientificName(self):
         return self.scientificName

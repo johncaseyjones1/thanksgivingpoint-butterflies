@@ -27,6 +27,7 @@ from service.ButterflySpeciesService import GetPotentialSpecies
 from service.ButterflySpeciesService import GetAllSpecies
 from service.ButterflySpeciesService import DeleteSpecies
 from service.ButterflySpeciesService import InsertSpecies
+from service.ButterflySpeciesService import EditSpecies
 from service.LocationService import GetLocations
 from service.LongevityService import GetLongevity
 from response.butterfly_species.GetLocationResponse import *
@@ -40,6 +41,7 @@ from data_access.request.observation.getObservationsInRangeRequest import GetObs
 #from data_access.request.shipment.getShipmentRequest import GetShipmentsInRangeRequest
 from data_access.request.butterfly_species.GetButterflySpeciesRequest import GetButterflySpeciesRequest
 from data_access.request.butterfly_species.insertSpeciesRequest import InsertSpeciesRequest
+from data_access.request.butterfly_species.editSpeciesRequest import EditSpeciesRequest
 from data_access.request.butterfly_species.deleteButterflySpeciesRequest import DeleteButterflySpeciesRequest
 
 
@@ -132,6 +134,32 @@ class PostButterflyHandler(tornado.web.RequestHandler):
         responseMessage = InsertSpecies.insertOneSpecies(request).getMessage()
         
         self.write({"message": responseMessage})
+
+
+class EditButterflyHandler(tornado.web.RequestHandler):
+    def post(self):
+        requestBody = tornado.escape.json_decode(self.request.body)
+        id = requestBody["_id"]
+        scientificName = requestBody["Species"]
+        commonName = requestBody["CommonName"]
+        size = requestBody['Size']
+        wingShape = requestBody['WingShape']
+        primaryColor = requestBody['PrimaryColor']
+        secondaryColor = requestBody["SecondaryColor"]
+        location = requestBody['Location']
+        pattern = requestBody['Pattern']
+        eyespot = requestBody['Eyespot']
+        hostPlant = requestBody['CaterpillarHostPlants']
+        quickFact = requestBody['QuickFact']
+        imagePath = requestBody['ImagePath']
+        sexuallyDimorphic = requestBody['SexuallyDimorphic']
+        request = EditSpeciesRequest(id, scientificName, commonName, size, wingShape, 
+        primaryColor, secondaryColor, location, pattern, eyespot, hostPlant, 
+        quickFact, imagePath, sexuallyDimorphic)
+        responseMessage = EditSpecies.editOneSpecies(request).getMessage()
+        
+        self.write({"message": responseMessage})
+
 
 class DeleteButterflyHandler(tornado.web.RequestHandler):
     def post(self):
@@ -288,6 +316,7 @@ def make_app(bundle_path, debug):
            (r".*/api/release/delete", DeleteReleaseHandler),
            (r".*/api/butterfly_species", GetAllButterfliesHandler),
            (r".*/api/butterfly_species/post", PostButterflyHandler),
+           (r".*/api/butterfly_species/edit", EditButterflyHandler),
            (r".*/api/butterfly_species/delete", DeleteButterflyHandler),
            (r".*/api/observations", ObservationHandler),
            (r".*/api/photos", PhotoHandler),

@@ -142,7 +142,7 @@ class ShipmentDAO:
                 }
 
         objectID = ObjectId(request.getShipmentID())
-        wrongFilter = {"Species": request.getSpecies}
+
         filter = {"_id": objectID}
         result = col.update_one(filter, data)
         message = "success"
