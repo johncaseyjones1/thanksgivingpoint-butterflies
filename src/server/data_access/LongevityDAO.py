@@ -87,18 +87,15 @@ class LongevityDAO:
         col = db["longevity"]
 
         for item in releaseList:
-            longevitySpecific = col.find_one({"Scientific_name": item["Species"]}, {"Probable_Longevity": 1, "_id": 0})
+            longevitySpecific = col.find_one({"Scientific_name": item["Species"]}, {'Scientific_name': 1, 'Probable_Longevity': 1, '_id': 0})
             if longevitySpecific is not None:
                 lifeSpan = longevitySpecific["Probable_Longevity"]
                 if lifeSpan != 'na':
                     sinceDay = today - timedelta(days = int(lifeSpan))
                     if item["Date"] > sinceDay:
-                        goodReleasesList.append(item)
+                        if longevitySpecific not in goodReleasesList:
+                            goodReleasesList.append(longevitySpecific)
 
         pathToGraph = MapGenerator.generateGraph(goodReleasesList)
 
-        #response = GetLongevityResponse(dumps(goodReleasesList))
-
-        #return response
         return pathToGraph
-        #return response

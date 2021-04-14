@@ -77,8 +77,6 @@ class LongevityHandler(tornado.web.RequestHandler):
     def get(self):
         responseMessage = GetLongevity.getLongevityRecentReleases()
         self.write({'pathToGraph': responseMessage})
-        #self.write({'locations': responseMessage})
-
         
 class LongevityStillFlyingHandler(tornado.web.RequestHandler):
     def get(self):

@@ -68,28 +68,40 @@ class MapGenerator:
         return supra.render_to_file(static_path + "/graphs/worldMap.svg")
 
     @staticmethod
-    def generateGraph(longevityList):
+    def generateGraph(goodReleasesList):
         static_path=os.path.join(os.path.dirname(__file__), "../public")
-
-        species = ['Adelpha fessonia', 'Agraulis vanillae', 'Amauris niavius', 'Anartia fatima', 'Archaeprepona demophon', 'Archaeprepona meander', 'Ascia limona', 'Athyma perius', 'Atrophaenura nevilli', 'Battus belus', 'Battus polydamas', 'Biblis hyperia', 'Brassolis isthmia', 'Caligo sp.', 'Callinaga buddha', 'Catonephele numilia', 'Catopsilia pomona', 'Catopsilia pyranthe', 'Catopsilia scylla', 'Catopsilis florella', 'Cethosia biblis', 'Cethosia cyane', 'Cethosia hypsea', 'Charaxes brutus', 'Charaxes castor']
-        longevity = [14, 9, 15, 21, 12, 12, 38, 30, 10, 7, 36, 42, 6, 35, 35, 90, 14, 9, 30, 14, 8, 60, 21, 12, 19]
 
         width = 0.35 #width of the bars
 
-        res = {longevity[i]: species[i] for i in range(len(longevity))} #make dictionary with species names as values so can be accessed by longevity
+        res = {}
 
-        sortedLongevity = sorted(longevity, reverse = True)
+        res = {item["Probable_Longevity"]: item["Scientific_name"] for item in goodReleasesList}
+
+        longevity = []
+        for item in goodReleasesList:
+            longevity.append(item.pop("Probable_Longevity"))
+
+        sortedLongevity = sorted(longevity, reverse = True)                                      
 
         sortedSpecies = [None]*len(longevity)
-        for val in range(len(sortedLongevity)):
-                sortedSpecies[val] = (res[sortedLongevity[val]])
-
-        avg = sum(sortedLongevity)/float(len(sortedLongevity))
+        for val in range(len(sortedLongevity)):                                                  
+                sortedSpecies[val] = (res[sortedLongevity[val]])                              
+                                                                                                
+        avg = sum(sortedLongevity)/float(len(sortedLongevity))                                   
 
         #Make the actual bar chart below
-
-        bar_chart = pygal.Bar(title=u'Butterfly Longevity', x_title='Species', y_title='Average Life Span (Days)', show_legend=False, x_label_rotation=30)
+                                                                                                
+        custom_style = Style(
+                major_guide_stroke_dasharray='4,4',                                              
+                guide_stroke_color = 'black',                                                    
+                major_guide_stroke_color = 'black',                                              
+                foreground='black',
+                foreground_strong='black',
+                foreground_subtle='black',
+                colors=('#F38C3C', '#daa520', '#9BC850', '#ffeb44', '#ff00ff'))                  
+                                                                                                
+        bar_chart = pygal.HorizontalStackedBar(title=u'Butterfly Longevity', y_title='Species', x_title='Average Life Span (Days)', show_legend=False, style=custom_style)
         bar_chart.add('Butterflies', sortedLongevity)
         bar_chart.x_labels = sortedSpecies
 
-        bar_chart.render_to_file(static_path + "/graphs/longevityGraph.svg")
+        return bar_chart.render_to_file(static_path + "/graphs/longevityGraph.svg")
