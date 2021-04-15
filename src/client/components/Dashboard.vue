@@ -332,7 +332,7 @@ export default {
   border-radius: 15px;
   background-color: white;
   margin: 0px 20px 0px 20px;
-  padding: 5px;
+  padding: 5px 0 5px 15px;
 }
 .top-space {
   margin-top: 20px;
