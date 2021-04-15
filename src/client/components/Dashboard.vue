@@ -20,7 +20,7 @@
     <div class="center-div">
       <div class="daily-notification top-space">
         <div class="notification-text notification-item">
-          <p style="font-size: 18px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week. You should see this one easily!</p>
+          <div style="font-size: 22px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week. You should see this one easily!</div>
         </div>
         <div class="notification-item">
           <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
@@ -28,7 +28,7 @@
       </div>
       <div class="daily-notification orange-background">
         <div class="notification-text notification-item">
-          <p style="font-size: 18px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week. See if you can spot it!</p>
+          <div style="font-size: 22px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week. See if you can spot it!</div>
         </div>
         <div class="notification-item">
           <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
@@ -332,7 +332,7 @@ export default {
   border-radius: 15px;
   background-color: white;
   margin: 0px 20px 0px 20px;
-  padding: 15px;
+  padding: 5px;
 }
 .top-space {
   margin-top: 20px;
@@ -363,9 +363,6 @@ export default {
 .caption {
   margin-top: 20px;
 }
-.world-img {
-
-}
 .orange-background {
   background-color: #ffdece;
 }
@@ -387,15 +384,18 @@ export default {
   .daily-notification {
     flex-direction: column;
     margin: 0;
-    margin-bottom: 30px;
     border-radius: 0;
-    padding: 30px 0 30px 0;
+    padding: 20px 10px 20px 10px;
   }
   .notification-img {
     width: 300px;
   }
   .main-column {
     width: 100%;
+  }
+  .figure-container {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
