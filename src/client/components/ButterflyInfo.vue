@@ -1,16 +1,16 @@
 <template>
   <div class="butterfly-container">
     <div class="heading">
-      <h2 class="heading-text">I'm {{this.article}} {{this.butterfly.commonName}} butterfly!</h2>
+      <h2 class="heading-text">I'm {{this.article}} {{this.butterfly.commonName}}!</h2>
     </div>
     <div class="photo-column">
       <img :src="this.butterfly.imagePath" alt="Butterfly Image" class="image"/>
+    </div>
+    <div class="details-column">
       <div class="name-container">
         <h6>Scientific name: <em>{{this.butterfly.scientificName}}</em></h6>
         <h6>Common name: <em>{{this.butterfly.commonName}}</em></h6>
       </div>
-    </div>
-    <div class="details-column">
       <div class="details-container">
         <h6>Location: <em>{{this.butterfly.location}}</em></h6>
         <h6>Primary color: <em>{{this.butterfly.primaryColor}}</em></h6>
@@ -89,25 +89,47 @@ export default {
 .photo-column {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .details-column {
   width: 50%;
   height: 100%;
 }
 .image {
-  width: 100%;
+  max-width: 100%;
   border-radius: 5px;
 }
 .name-container {
   border-radius: 5px;
   background-color: white;
   padding: 20px;
-  margin-top: 20px;
+  margin: 0 20px 20px 20px;
 }
 .details-container {
   border-radius: 5px;
   background-color: white;
   padding: 20px;
   margin: 0 20px 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .butterfly-container {
+    flex-direction: column;
+  }
+  .photo-column {
+    width: 100%;
+  }
+  .details-column {
+    width: 100%;
+  }
+  .name-container {
+    margin: 20px 0 0 0;
+  }
+  .details-container {
+    margin: 20px 0 0 0;
+  }
+
 }
 </style>
