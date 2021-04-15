@@ -351,7 +351,6 @@ export default {
     width: 300px;
   }
 
-
   @media only screen and (max-width: 600px) {
     .cover-photo {
       width: 80%;

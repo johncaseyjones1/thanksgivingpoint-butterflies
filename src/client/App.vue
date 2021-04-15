@@ -25,27 +25,21 @@ export default {
   * {
     font-family: 'Montserrat', sans-serif;
   }
-
   h1 {
     font-size: 5vh;
   }
-
   p {
     font-size: 14px;
   }
-
   .navbar-light {
     background-color: white !important;
   }
-
   .logo-text {
     font-size: 16px;
   }
-
   .active-link {
     color: #fe4600 !important;
   }
-
   .shadow-box {
     box-shadow: 3px 3px 6px lightgray;
     border-radius: 10px;

@@ -106,11 +106,9 @@ export default {
     background-color: #eeeeed;
     border-bottom: 30px solid #598400;
   }
-
   .header-text {
     font-size: 40px;
   }
-
   .page-buttons {
     display: flex;
     justify-content: center;
@@ -119,13 +117,11 @@ export default {
     margin-top: 40px;
     margin-bottom: 40px;
   }
-
   .btn {
     margin-left: 20px;
     margin-right: 20px;
     width: 150px;
   }
-
   .password-div {
     display: flex;
     flex-direction: column;
@@ -142,23 +138,18 @@ export default {
   }
 
   @media only screen and (max-width: 600px) {
-
     .header-div {
       height: 200px;
     }
-
     .header-text {
       font-size: 22px;
       font-weight: bold;
     }
-
     .page-buttons {
       flex-direction: column;
     }
-
     .btn {
       margin-bottom: 20px;
     }
-
   }
 </style>
