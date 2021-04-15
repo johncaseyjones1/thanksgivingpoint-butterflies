@@ -35,6 +35,7 @@
     "superagent-bluebird-promise": "^4.2.0",
     "v-calendar": "^1.0.8",
     "vue": "^2.6.12",
+    "vue-carousel": "^0.18.0",
     "vue-gallery": "^2.0.1",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.0",

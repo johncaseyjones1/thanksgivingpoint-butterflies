@@ -4,6 +4,7 @@ import {ClientTable} from 'vue-tables-2'
 import VCalendar from 'v-calendar'
 import vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueCarousel from 'vue-carousel'
 
 import { BootstrapVue } from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import App from './App'
@@ -23,6 +24,7 @@ Vue.use(BootstrapVue)
 Vue.use(ClientTable, {}, false, 'bootstrap4')
 Vue.use(VCalendar, {})
 Vue.use(vuetify)
+Vue.use(VueCarousel)
 
 const opts = {}
 

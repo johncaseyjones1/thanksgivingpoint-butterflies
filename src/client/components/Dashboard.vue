@@ -6,36 +6,40 @@
       </div>
       <div class="daily-item item-1">
         <p><span style="color: #fe4600; font-size: 50px;">{{totalReleasedThisWeek}}</span></p>
-        <p style="font-size: 18px;">new butterflies this week</p>
+        <p style="font-size: 18px; font-weight: 700;">butterflies released in the past 7 days</p>
       </div>
       <div class="daily-item item-2">
         <p><span style="color: #fe4600; font-size: 50px;">{{totalButterfliesFlying}}</span></p>
-        <p style="font-size: 18px;">butterflies in the Biosphere</p>
+        <p style="font-size: 18px; font-weight: 700;">butterflies flying in the Biosphere</p>
       </div>
       <div class="daily-item item-3">
         <p><span style="color: #fe4600; font-size: 50px;">{{totalSpeciesFlying}}</span></p>
-        <p style="font-size: 18px;">different species in the Biosphere</p>
+        <p style="font-size: 18px; font-weight: 700;">different species in the Biosphere</p>
       </div>
     </div>
     <div class="center-div">
-      <div class="daily-notification top-space">
-        <div class="notification-text notification-item">
-          <div style="font-size: 22px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week. You should see this one easily!</div>
-        </div>
-        <div class="notification-item">
-          <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
-        </div>
-      </div>
-      <div class="daily-notification orange-background">
-        <div class="notification-text notification-item">
-          <div style="font-size: 22px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week. See if you can spot it!</div>
-        </div>
-        <div class="notification-item">
-          <img class="notification-img" v-bind:src="leastCommonSpecies.ImagePath" alt="">
-        </div>
-      </div>
+      <carousel :per-page="1" paginationActiveColor="#fe4600" paginationPosition="bottom-overlay" centerMode="true">
+        <slide>
+          <div class="notification-text notification-item">
+            <div style="font-size: 22px;">The {{mostCommonSpecies.CommonName}} butterfly has been spotted <span style="color: #fe4600">{{mostCommonSpeciesNum}}</span> times this week.<br />You should see this one easily!</div>
+          </div>
+          <div class="notification-item">
+            <img class="notification-img" v-bind:src="mostCommonSpecies.ImagePath" alt="">
+          </div>
+        </slide>
+        <slide>
+          <div class="notification-text notification-item">
+            <div style="font-size: 22px;">The {{leastCommonSpecies.CommonName}} butterfly has only been seen <span style="color: #fe4600">{{leastCommonSpeciesNum}}</span> times this week.<br />See if you can spot it!</div>
+          </div>
+          <div class="notification-item">
+            <img class="notification-img" v-bind:src="leastCommonSpecies.ImagePath" alt="">
+          </div>
+        </slide>
+      </carousel>
+
       <div class="main-column">
         <div class="figure-container">
+          <div class="figure-title">Geographical Distribution of Species</div>
           <div class="figure">
             <img class="world-img" src="/static/graphs/worldMap.svg" alt="world">
           </div>
@@ -48,11 +52,12 @@
         </div>
 
         <div class="figure-container">
+          <div class="figure-title">Average Longevity of Species</div>
           <div class="figure">
-
+            <img class="longevity-img" src="/static/graphs/longevityGraph.svg" alt="longevity">
           </div>
           <div class="caption">
-
+            <h6>These are the average life spans in days of the butterfly species currently flying in the Biosphere.</h6>
           </div>
         </div>
       </div>
@@ -62,6 +67,7 @@
 
 <script>
 import request from 'superagent-bluebird-promise'
+import { Carousel, Slide } from 'vue-carousel'
 
 export default {
   data () {
@@ -87,6 +93,11 @@ export default {
       totalSpeciesFlying: 0,
       totalReleasedThisWeek: 0,
     }
+  },
+
+  components: {
+    Carousel,
+    Slide
   },
 
   methods: {
@@ -201,7 +212,7 @@ export default {
       var ind;
       for (ind in this.stillFlying) {
         var el = this.stillFlying[ind].Species
-        console.log("el " + el)
+        //console.log("el " + el)
 
         if (modeMap[el] == null)
           modeMap[el] = 1;
@@ -213,7 +224,7 @@ export default {
           maxCount = modeMap[el]
         }
       }
-      console.log("length of map: " + Object.keys(modeMap).length)
+      //console.log("length of map: " + Object.keys(modeMap).length)
       this.totalSpeciesFlying = Object.keys(modeMap).length
       maxEl
     },
@@ -225,7 +236,7 @@ export default {
         var ind;
         for (ind in this.observations) {
           var el = this.observations[ind].commonName
-          console.log("el " + el)
+          //console.log("el " + el)
 
           if (modeMap[el] == null)
             modeMap[el] = 1;
@@ -255,7 +266,7 @@ export default {
             modeMap[el]++;
         }
 
-        console.log(modeMap);
+        //console.log(modeMap);
         var [lowest] = Object.entries(modeMap).sort(([ ,v1], [ ,v2]) => v1 - v2);
         
         this.leastCommonSpecies = lowest[0];
@@ -298,6 +309,7 @@ export default {
   height: 91.2vh;
   width: 75%;
   background-image: linear-gradient(#eeeeed, #fff7ef);
+  padding-top: 20px;
 }
 .heading {
   padding-top: 30px;
@@ -305,6 +317,7 @@ export default {
 .daily-item {
   padding: 20px;
   margin-bottom: 20px;
+  height: 30%;
 }
 .item-1 {
   width: 70%;
@@ -329,22 +342,14 @@ export default {
   flex-wrap: wrap;
   width: 100%;
 }
-.daily-notification {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border-radius: 15px;
-  background-color: white;
-  margin: 0px 20px 0px 20px;
-  padding: 5px 0 5px 15px;
-}
-.top-space {
-  margin-top: 20px;
+.figure-title {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #606977;
 }
 .figure-container {
   width: 47%;
-  height: 500px;
+  height: 550px;
   border-radius: 15px;
   margin: 10px;
   background-color: white;
@@ -357,9 +362,6 @@ export default {
   width: 200px;
   border-radius: 15px;
 }
-.notification-item {
-  padding-right: 40px;
-}
 .figure {
   width: 100%;
   display: flex;
@@ -370,6 +372,15 @@ export default {
 }
 .orange-background {
   background-color: #ffdece;
+}
+.VueCarousel-slide {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 15px;
+  background-color: white;
+  margin: 0px 20px 0px 20px;
+  padding: 5px 0 5px 15px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -385,12 +396,6 @@ export default {
     height: auto;
     flex-direction: column;
     justify-content: flex-start;
-  }
-  .daily-notification {
-    flex-direction: column;
-    margin: 0;
-    border-radius: 0;
-    padding: 20px 10px 20px 10px;
   }
   .notification-img {
     width: 300px;

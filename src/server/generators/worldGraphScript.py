@@ -100,7 +100,7 @@ class MapGenerator:
                 foreground_subtle='black',
                 colors=('#F38C3C', '#daa520', '#9BC850', '#ffeb44', '#ff00ff'))                  
                                                                                                 
-        bar_chart = pygal.HorizontalStackedBar(title=u'Butterfly Longevity', y_title='Species', x_title='Average Life Span (Days)', show_legend=False, style=custom_style)
+        bar_chart = pygal.HorizontalStackedBar(y_title='Species', x_title='Average Life Span (Days)', show_legend=False, style=custom_style)
         bar_chart.add('Butterflies', sortedLongevity)
         bar_chart.x_labels = sortedSpecies
 
