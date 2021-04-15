@@ -15,9 +15,11 @@
       <SpeciesData v-show="species"/>
     </div>
     <div v-else>
-      Password
-      <input v-model="password" type="password">
-      <button @click="checkPassword()">Submit</button>
+      <div class="password-div">
+        <h4>Password:</h4>
+        <input class="form-control input-p" v-model="password" type="password">
+        <button class="btn btn-dark" @click="checkPassword()">Submit</button>
+      </div>
     </div>
   </div>
 </template>
@@ -122,6 +124,21 @@ export default {
     margin-left: 20px;
     margin-right: 20px;
     width: 150px;
+  }
+
+  .password-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .input-p {
+    background-color: white;
+    border: 3px solid #598400;
+    border-radius: 15px !important;
+    width: 30%;
+    margin-bottom: 20px;
   }
 
   @media only screen and (max-width: 600px) {
