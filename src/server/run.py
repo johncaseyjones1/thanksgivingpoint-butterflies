@@ -67,14 +67,18 @@ class MainHandler(tornado.web.RequestHandler):
 
 class DashboardHandler(tornado.web.RequestHandler):
     def get(self):
-        #acces mongodb
+        #access mongodb
         self.write({ 'dashboard': 'Dashboard!' })
 
 class LocationHandler(tornado.web.RequestHandler):
     def get(self):
         responseMessage = GetLocations.getAllLocations()
         self.write({'pathToMap': responseMessage})
-        #self.write({'locations': responseMessage})
+
+class LongevityHandler(tornado.web.RequestHandler):
+    def get(self):
+        responseMessage = GetLongevity.getLongevityRecentReleases()
+        self.write({'pathToGraph': responseMessage})
         
 class LongevityStillFlyingHandler(tornado.web.RequestHandler):
     def get(self):
@@ -297,6 +301,7 @@ def make_app(bundle_path, debug):
            (r"/", MainHandler, dict(bundle_path=bundle_path)),
            (r".*/api/dashboard", DashboardHandler),
            (r".*/api/location", LocationHandler),
+           (r".*/api/longevity", LongevityHandler),
            (r".*/api/longevity/stillflying", LongevityStillFlyingHandler),
            (r".*/api/shipment", GetShipmentsHandler),
            (r".*/api/shipment/post", PostShipmentHandler),

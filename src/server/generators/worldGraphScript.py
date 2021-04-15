@@ -50,11 +50,9 @@ class MapGenerator:
             else:
                 locationDict[location] = 1
 
-        #dark_lighten_style = LightenStyle('#62AD50', step=30)
         custom_style = Style(colors=('#2a5835','#5e944d','#79ac54'))
 
         supra = pygal.maps.world.SupranationalWorld(show_legend=False,interpolate='cubic',style=custom_style)
-        supra.title = 'Species Distribution by Continent'
 
         continents_dict_a = {}
         continents_dict_b = {}
@@ -64,14 +62,46 @@ class MapGenerator:
         continents_dict_b['africa'] = 17
         continents_dict_b['north_america'] = 14
         continents_dict_c['south_america'] = 32
-        #continents_dict_a['oceania'] = 0
-        #continents_dict_a['antartica'] = 0
-        #continents_dict_a['europe'] = 0
-
-        #supra.add("0 species",continents_dict_c)
-        #supra.add("1 to 17 species",continents_dict_a)
-        #supra.add("17+ species",continents_dict_b)
+        
         supra.add("test",locationDict)
 
         return supra.render_to_file(static_path + "/graphs/worldMap.svg")
-        #return ("static/graphs/worldMap.svg")
+
+    @staticmethod
+    def generateGraph(goodReleasesList):
+        static_path=os.path.join(os.path.dirname(__file__), "../public")
+
+        width = 0.35 #width of the bars
+
+        res = {}
+
+        res = {item["Probable_Longevity"]: item["Scientific_name"] for item in goodReleasesList}
+
+        longevity = []
+        for item in goodReleasesList:
+            longevity.append(item.pop("Probable_Longevity"))
+
+        sortedLongevity = sorted(longevity, reverse = True)                                      
+
+        sortedSpecies = [None]*len(longevity)
+        for val in range(len(sortedLongevity)):                                                  
+                sortedSpecies[val] = (res[sortedLongevity[val]])                              
+                                                                                                
+        avg = sum(sortedLongevity)/float(len(sortedLongevity))                                   
+
+        #Make the actual bar chart below
+                                                                                                
+        custom_style = Style(
+                major_guide_stroke_dasharray='4,4',                                              
+                guide_stroke_color = 'black',                                                    
+                major_guide_stroke_color = 'black',                                              
+                foreground='black',
+                foreground_strong='black',
+                foreground_subtle='black',
+                colors=('#F38C3C', '#daa520', '#9BC850', '#ffeb44', '#ff00ff'))                  
+                                                                                                
+        bar_chart = pygal.HorizontalStackedBar(title=u'Butterfly Longevity', y_title='Species', x_title='Average Life Span (Days)', show_legend=False, style=custom_style)
+        bar_chart.add('Butterflies', sortedLongevity)
+        bar_chart.x_labels = sortedSpecies
+
+        return bar_chart.render_to_file(static_path + "/graphs/longevityGraph.svg")

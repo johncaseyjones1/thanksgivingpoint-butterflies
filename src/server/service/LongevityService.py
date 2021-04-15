@@ -13,3 +13,8 @@ class GetLongevity:
     def getLongevityStillFlying():
         longevityDAO = LongevityDAO()
         return longevityDAO.getLongevityStillFlying()
+
+    @staticmethod
+    def getLongevityRecentReleases():
+        longevityDAO = LongevityDAO()
+        return longevityDAO.getLongevityRecentReleases()
